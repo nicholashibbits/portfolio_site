@@ -1,0 +1,15 @@
+@use "../abstracts/" as *;
+
+// child to section class, sets width of content and controls responsive margins
+
+.container {
+  --padding: #{$container-inline-padding} * 2;
+  --max-width: #{$container-max-width};
+
+  width: min(100% - var(--padding), var(--max-width));
+  margin-inline: auto;
+}
+
+.container[data-type="wide"] {
+  --max-width: #{$container-max-width-wide};
+}

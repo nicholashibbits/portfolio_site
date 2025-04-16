@@ -1,0 +1,12 @@
+@use "../abstracts" as *;
+
+@each $size-name, $size-value in $font-sizes {
+  .fs-#{$size-name} {
+    font-size: $size-value;
+
+    // can omit this style if setting line height on an individual basis
+    @if $size-name > 600 {
+      line-height: 1.1;
+    }
+  }
+}
