@@ -1,9 +1,9 @@
 // update to desired font-family combos
-$ff-sans: "Lato", sans-serif;
-$ff-serif: "Abril Fatface", sans-serif;
+$ff-sans: var(--font-switzer), sans-serif;
+// $ff-serif: "Abril Fatface", sans-serif;
 
 $ff-base: $ff-sans;
-$ff-accent: $ff-serif;
+// $ff-accent: $ff-serif;
 
 // update particular clamp values as needed
 $font-sizes: (
