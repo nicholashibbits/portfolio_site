@@ -1,1 +1,10 @@
 // Text utilities
+@use "../abstracts" as *;
+
+.text-clr-light {
+  color: $clr-light;
+}
+
+.text-clr-dark {
+  color: $clr-dark;
+}

@@ -13,3 +13,7 @@
 .container[data-type="wide"] {
   --max-width: #{$container-max-width-wide};
 }
+
+.background-container {
+  min-height: 100dvh;
+}
