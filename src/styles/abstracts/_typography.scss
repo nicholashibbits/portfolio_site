@@ -7,9 +7,11 @@ $ff-base: $ff-sans;
 
 // update particular clamp values as needed
 $font-sizes: (
+  1000: clamp(3.5rem, 0.5rem + 12vw, 7rem),
   900: clamp(2.5rem, 0.5rem + 10vw, 5rem),
-  800: clamp(2.5rem, 0.5rem + 7vw, 3.75rem),
-  600: clamp(1.4rem, 0.5rem + 3vw, 1.6875rem),
+  800: clamp(2rem, 0.5rem + 6vw, 2.8rem),
+  700: clamp(2rem, 0.5rem + 4vw, 2rem),
+  600: clamp(1rem, 0.5rem + 2.5vw, 1.5rem),
   500: 1.3125rem,
   400: 1.125rem,
   300: 1rem,

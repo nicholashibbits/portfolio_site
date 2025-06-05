@@ -5,8 +5,8 @@
     font-size: $size-value;
 
     // can omit this style if setting line height on an individual basis
-    @if $size-name > 600 {
-      line-height: 1.1;
-    }
+    // @if $size-name > 600 {
+    //   line-height: 1.1;
+    // }
   }
 }
