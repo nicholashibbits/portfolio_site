@@ -15,10 +15,36 @@ export default function Home() {
         </div>
       </BackgroundContainer>
       <BackgroundContainer color="primary" shade="400" textColor="dark">
-        <h1 className="h1">Work </h1>
+        <div className="container">
+          <div className="padding-block-64">
+            <h1 className="padding-block-end-8">Work </h1>
+            <p className="fs-600">
+              Collection of personal and professional projects
+            </p>
+
+            <ul className="flex flex-column padding-block-start-36">
+              <li>
+                <h2>Project 1</h2>
+                <p>Description of project 1</p>
+              </li>
+              <li>
+                <h2>Project 2</h2>
+                <p>Description of project 1</p>
+              </li>
+              <li>
+                <h2>Project 3</h2>
+                <p>Description of project 1</p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </BackgroundContainer>
       <BackgroundContainer color="primary" shade="500" textColor="light">
-        <h1 className="h1">Lets build something</h1>
+        <div className="container">
+          <div className="padding-block-64">
+            <h1 className="h1">Lets build something</h1>
+          </div>
+        </div>
       </BackgroundContainer>
     </>
   );
