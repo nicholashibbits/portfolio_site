@@ -3,7 +3,7 @@ const BackgroundContainer = ({ children, color, shade, textColor }) => {
     <div
       className={`background-container bg-${color}-${shade} text-clr-${textColor}`}
     >
-      <div className="container">{children}</div>
+      {children}
     </div>
   );
 };

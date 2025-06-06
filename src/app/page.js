@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <BackgroundContainer color="neutral" shade="900" textColor="light">
-        <div className="hero flex flex-justify-center flex-align-center">
+        <div className="hero container flex flex-justify-center flex-align-center">
           <div>
             <h1 className="fs-1000 fw-700">Nick Hibbits</h1>
             <h2 className="fs-800 "> Web Developer</h2>
