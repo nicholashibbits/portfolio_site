@@ -41,7 +41,36 @@ export default function Home() {
       </BackgroundContainer>
       <BackgroundContainer color="primary" shade="500" textColor="light">
         <div className="container">
-          <div className="padding-block-64">
+          <div className="contact-container padding-block-64 flex flex-column ">
+            <ul className="more-info-links flex">
+              <li className="link-group">
+                <span className="link-group-title fw-light">/CONTACT</span>
+                <div className="fw-normal">
+                  <a href="mailto:nicholas.hibbits@gmail.com">
+                    nicholas.hibbits@gmail.com
+                  </a>
+                </div>
+              </li>
+              <li className="link-group">
+                <span className="link-group-title fw-light">/GO TO</span>
+                <div className="flex flex-column fw-normal">
+                  <a href="" className="">
+                    Home
+                  </a>
+                  <a href="" className="">
+                    Work
+                  </a>
+                </div>
+              </li>
+              <li className="link-group">
+                <span className="link-group-title fw-light">/LINKS</span>
+                <div className="flex flex-column clr-neutral-100 fw-normal">
+                  <a href="">Github</a>
+                  <a href="">LinkedIn</a>
+                  <a href="">My Resume</a>
+                </div>
+              </li>
+            </ul>
             <h1 className="h1">Lets build something</h1>
           </div>
         </div>

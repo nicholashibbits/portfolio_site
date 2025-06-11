@@ -6,3 +6,13 @@
 .hero {
   min-height: 100dvh;
 }
+
+.contact-container {
+  border: 1px solid red;
+  height: 100%;
+  align-items: space-between;
+}
+
+.more-info-links {
+  justify-content: space-between;
+}
