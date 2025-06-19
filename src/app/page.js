@@ -41,7 +41,7 @@ export default function Home() {
       </BackgroundContainer>
       <BackgroundContainer color="primary" shade="500" textColor="light">
         <div className="container">
-          <div className="contact-container padding-block-64 flex flex-column ">
+          <div className="contact-container flex flex-column ">
             <ul className="more-info-links flex">
               <li className="link-group">
                 <span className="link-group-title fw-light">/CONTACT</span>
@@ -49,6 +49,14 @@ export default function Home() {
                   <a href="mailto:nicholas.hibbits@gmail.com">
                     nicholas.hibbits@gmail.com
                   </a>
+                </div>
+              </li>
+              <li className="link-group">
+                <span className="link-group-title fw-light">/LINKS</span>
+                <div className="flex flex-column clr-neutral-100 fw-normal">
+                  <a href="">Github</a>
+                  <a href="">LinkedIn</a>
+                  <a href="">My Resume</a>
                 </div>
               </li>
               <li className="link-group">
@@ -62,16 +70,8 @@ export default function Home() {
                   </a>
                 </div>
               </li>
-              <li className="link-group">
-                <span className="link-group-title fw-light">/LINKS</span>
-                <div className="flex flex-column clr-neutral-100 fw-normal">
-                  <a href="">Github</a>
-                  <a href="">LinkedIn</a>
-                  <a href="">My Resume</a>
-                </div>
-              </li>
             </ul>
-            <h1 className="h1">Lets build something</h1>
+            <h1 className="h1 padding-block-64">Lets build something</h1>
           </div>
         </div>
       </BackgroundContainer>
