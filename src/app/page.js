@@ -21,21 +21,22 @@ export default function Home() {
             <p className="fs-600">
               Collection of personal and professional projects
             </p>
-
-            <ul className="flex flex-column padding-block-start-36">
-              <li>
-                <h2>Project 1</h2>
-                <p>Description of project 1</p>
-              </li>
-              <li>
-                <h2>Project 2</h2>
-                <p>Description of project 1</p>
-              </li>
-              <li>
-                <h2>Project 3</h2>
-                <p>Description of project 1</p>
-              </li>
-            </ul>
+            <div className="project-wrapper">
+              <ul className="project-list flex flex-column padding-block-start-36">
+                <li>
+                  <h2>Project 1</h2>
+                  <p>Description of project 1</p>
+                </li>
+                <li>
+                  <h2>Project 2</h2>
+                  <p>Description of project 2</p>
+                </li>
+                <li>
+                  <h2>Project 3</h2>
+                  <p>Description of project 3</p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </BackgroundContainer>
