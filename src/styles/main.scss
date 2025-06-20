@@ -13,6 +13,13 @@
   gap: 2rem;
 }
 
+.project-item-content {
+  h2 {
+    width: fit-content;
+    cursor: pointer;
+  }
+}
+
 // CONTACT
 .contact-container {
   min-height: 100dvh;

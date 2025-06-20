@@ -1,4 +1,5 @@
 import BackgroundContainer from "@/app/components/BackgroundContainer";
+import ProjectListItem from "@/app/components/ProjectListItem";
 
 export default function Home() {
   return (
@@ -23,18 +24,26 @@ export default function Home() {
             </p>
             <div className="project-wrapper">
               <ul className="project-list flex flex-column padding-block-start-36">
-                <li>
-                  <h2>Project 1</h2>
-                  <p>Description of project 1</p>
-                </li>
-                <li>
-                  <h2>Project 2</h2>
-                  <p>Description of project 2</p>
-                </li>
-                <li>
-                  <h2>Project 3</h2>
-                  <p>Description of project 3</p>
-                </li>
+                <ProjectListItem
+                  project="Veteran's Affairs"
+                  description="Focused on pages in va.gov providing information on education benefits to veterans."
+                  extendedDescription=" Built applications, digitized forms, and maintained code according to the platform design system for the Veteran's Affairs department."
+                />
+                <ProjectListItem
+                  project="Studio Zoomies"
+                  description="A web-based CRM for gig photographers."
+                  extendedDescription="Performed software development on a web-application which offered customer relation services gig photographers. Built using React.js and Supabase."
+                />
+                <ProjectListItem
+                  project="Clarity Dose"
+                  description="Online platform featuring a live radio show, music label, blog, and merch shop."
+                  extendedDescription="Self engineered full-stack application to connect artists and share my favorite music. Built with Next.js"
+                />
+                <ProjectListItem
+                  project="NHIBIT Music"
+                  description="Site showcasing my own original electronic music."
+                  extendedDescription="Simple static site to promote my music, generate gigs, and faciliate connections. B'uilt with Framer."
+                />
               </ul>
             </div>
           </div>
