@@ -8,7 +8,6 @@
 
   width: min(100% - var(--padding), var(--max-width));
   margin-inline: auto;
-  min-height: 100dvh;
 }
 
 .container[data-type="wide"] {
@@ -16,5 +15,5 @@
 }
 
 .background-container {
-  min-height: 100dvh;
+  min-height: 110dvh;
 }
