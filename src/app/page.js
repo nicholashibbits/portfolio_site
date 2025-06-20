@@ -54,7 +54,9 @@ export default function Home() {
           <div className="contact-container flex flex-column ">
             <ul className="more-info-links flex">
               <li className="link-group">
-                <span className="link-group-title fw-light">/CONTACT</span>
+                <span className="link-group-title fs-600 fw-light">
+                  /CONTACT
+                </span>
                 <div className="fw-normal">
                   <a href="mailto:nicholas.hibbits@gmail.com">
                     nicholas.hibbits@gmail.com
@@ -62,7 +64,7 @@ export default function Home() {
                 </div>
               </li>
               <li className="link-group">
-                <span className="link-group-title fw-light">/LINKS</span>
+                <span className="link-group-title fs-600 fw-light">/LINKS</span>
                 <div className="flex flex-column clr-neutral-100 fw-normal">
                   <a href="">Github</a>
                   <a href="">LinkedIn</a>
@@ -70,7 +72,7 @@ export default function Home() {
                 </div>
               </li>
               <li className="link-group">
-                <span className="link-group-title fw-light">/GO TO</span>
+                <span className="link-group-title fs-600 fw-light">/GO TO</span>
                 <div className="flex flex-column fw-normal">
                   <a href="" className="">
                     Home
@@ -81,7 +83,9 @@ export default function Home() {
                 </div>
               </li>
             </ul>
-            <h1 className="h1 padding-block-64">Lets build something</h1>
+            <h1 className="h1 footer-call-to-action fs-1000 padding-block-64">
+              Let's build something
+            </h1>
           </div>
         </div>
       </BackgroundContainer>
