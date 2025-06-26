@@ -13,6 +13,7 @@ function Hero() {
           alt="abstract lines"
           width={1512}
           height={1113}
+          className="abstract-lines"
         ></Image>
         <div>
           <h1 className="fs-1000 fw-700">Nick Hibbits</h1>

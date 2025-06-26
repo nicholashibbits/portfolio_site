@@ -13,6 +13,7 @@ function Contact() {
           alt="abstract lines"
           width={1512}
           height={1113}
+          className="abstract-lines abstract-lines-2"
         ></Image>
         <div className="contact-container flex flex-column ">
           <ul className="more-info-links flex">
