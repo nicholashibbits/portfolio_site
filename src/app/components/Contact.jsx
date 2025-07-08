@@ -7,15 +7,7 @@ function Contact() {
   return (
     <BackgroundContainer color="primary" shade="500" textColor="light">
       <div className="container">
-        <Image
-          priority
-          src="/abstractLines2.svg"
-          alt="abstract lines"
-          width={1512}
-          height={1113}
-          className="abstract-lines abstract-lines-2"
-        ></Image>
-        <div className="contact-container flex flex-column ">
+        <div className="contact-container flex flex-column relative">
           <ul className="more-info-links flex">
             <li className="link-group">
               <span className="link-group-title fs-600 fw-light">/CONTACT</span>
