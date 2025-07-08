@@ -7,12 +7,14 @@ function Hero() {
   return (
     <BackgroundContainer color="neutral" shade="900" textColor="light">
       <div className="hero container flex flex-justify-center flex-align-center">
-        <div>
-          <h1 className="fs-1000 fw-700">Nick Hibbits</h1>
-          <h2 className="fs-800 ">Web Developer</h2>
-          <p className="fs-600">
-            Frontend engineer, specializing in web-based applications
-          </p>
+        <div className="hero-content">
+          <div className="hero-animated-text">
+            <h1 className="fs-1000 fw-700">NICK HIBBITS</h1>
+            <p className="fs-700">
+              Web developer • Frontend engineer • Specializing in web-based
+              applications
+            </p>
+          </div>
         </div>
       </div>
     </BackgroundContainer>
