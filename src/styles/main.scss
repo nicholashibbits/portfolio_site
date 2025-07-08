@@ -11,10 +11,24 @@
     position: absolute;
   }
 
+  &-animated-text {
+    display: inline-block;
+    white-space: nowrap;
+    transform: rotate(-20deg);
+    will-change: transform;
+  }
+
   h1 {
     color: #fff;
     font-size: 18.75rem;
     font-weight: 900;
+    animation: hero-primary-scroll 25s linear infinite;
+  }
+
+  &-subtitle {
+    font-size: 3.5rem;
+    font-weight: 900;
+    animation: hero-primary-scroll 27s linear infinite;
   }
 }
 
@@ -24,20 +38,12 @@
   position: relative;
 }
 
-.hero-animated-text {
-  display: inline-block;
-  white-space: nowrap;
-  transform: rotate(-20deg);
-  will-change: transform;
-  animation: hero-scroll 10s linear infinite;
-}
-
-@keyframes hero-scroll {
+@keyframes hero-primary-scroll {
   0% {
-    transform: translateX(100vw) translateY(-30vw) rotate(-20deg);
+    transform: translateX(100vw);
   }
   100% {
-    transform: translateX(-120%) translateY(200%) rotate(-20deg);
+    transform: translateX(-120%);
   }
 }
 

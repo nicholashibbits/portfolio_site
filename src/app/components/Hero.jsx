@@ -9,8 +9,8 @@ function Hero() {
       <div className="hero container flex flex-justify-center flex-align-center">
         <div className="hero-content">
           <div className="hero-animated-text">
-            <h1 className="fs-1000 fw-700">NICK HIBBITS</h1>
-            <p className="fs-700">
+            <h1 className="fw-700">NICK HIBBITS</h1>
+            <p className="hero-subtitle">
               Web developer • Frontend engineer • Specializing in web-based
               applications
             </p>
