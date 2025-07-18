@@ -8,7 +8,8 @@ function Hero() {
     <BackgroundContainer color="neutral" shade="900" textColor="light">
       <div className="hero container flex flex-justify-center flex-align-center">
         <div className="hero-content">
-          <GradientSphere />
+          <GradientSphere size={540} />
+          <GradientSphere size={200} />
           <div className="hero-animated-text">
             <h1 className="fw-700">NICK HIBBITS</h1>
             <p className="hero-subtitle">

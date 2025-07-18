@@ -1,13 +1,14 @@
 import React from "react";
 
-function GradientSphere() {
+function GradientSphere({ size }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="540"
-      height="540"
-      viewBox="0 0 540 540"
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
       fill="none"
+      className="gradient-sphere"
     >
       <path
         d="M540 270C540 419.117 419.117 540 270 540C120.883 540 0 419.117 0 270C0 120.883 120.883 0 270 0C419.117 0 540 120.883 540 270Z"
