@@ -13,9 +13,11 @@
 
   &-animated-text {
     // display: inline-block;
+    position: relative;
     white-space: nowrap;
     transform: rotate(-20deg);
     will-change: transform;
+    z-index: 2;
   }
 
   h1 {
@@ -36,6 +38,7 @@
   width: 100vw;
   max-width: 100vw;
   position: relative;
+  
 }
 
 @keyframes hero-primary-scroll {
@@ -49,10 +52,8 @@
 
 .gradient-sphere {
   position: absolute;
-  top: 0;
-  left: 0;
-
-  border: 1px solid white;
+  pointer-events: none;
+  z-index: 1;
 }
 
 // PROJECTS
