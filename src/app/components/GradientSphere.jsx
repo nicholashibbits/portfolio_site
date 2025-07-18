@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect, useRef } from "react";
 
-function GradientSphere({ size = 540 }) {
+function GradientSphere({ size = 540, initialVelocity = { x: 1, y: 0.8 } }) {
   const viewBoxSize = 540;
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [velocity, setVelocity] = useState({ x: 0.8, y: 0.6 });
+  const [velocity, setVelocity] = useState(initialVelocity);
   const containerRef = useRef(null);
   const animationRef = useRef(null);
 
@@ -23,35 +23,37 @@ function GradientSphere({ size = 540 }) {
         let newVelX = velocity.x;
         let newVelY = velocity.y;
 
-        // Bounce off horizontal boundaries
+        // Bounce off horizontal boundaries with more dramatic speed changes
         if (
           newX <= -viewportWidth / 2 + sphereRadius ||
           newX >= viewportWidth / 2 - sphereRadius
         ) {
-          newVelX = -velocity.x * 0.92; // Energy loss on bounce
+          newVelX = -velocity.x * 0.8; // Speed increase on horizontal bounce
+          newVelY = velocity.y * 0.5; // Slight speed reduction on other axis
         }
 
-        // Bounce off vertical boundaries
+        // Bounce off vertical boundaries with more dramatic speed changes
         if (
           newY <= -viewportHeight / 2 + sphereRadius ||
           newY >= viewportHeight / 2 - sphereRadius
         ) {
-          newVelY = -velocity.y * 0.92; // Energy loss on bounce
+          newVelY = -velocity.y * 1.1; // Speed increase on vertical bounce
+          newVelX = velocity.x * 0.9; // Slight speed reduction on other axis
         }
 
         // Add slight gravity effect (pulls downward)
-        newVelY += 0.002;
+        newVelY += 0.003;
 
-        // Add air resistance (gradual slowdown)
-        newVelX *= 0.9995;
-        newVelY *= 0.9995;
+        // Reduce air resistance for faster movement
+        newVelX *= 0.9998;
+        newVelY *= 0.9998;
 
         // Add some randomness to make it more organic
-        newVelX += (Math.random() - 0.5) * 0.01;
-        newVelY += (Math.random() - 0.5) * 0.01;
+        newVelX += (Math.random() - 0.5) * 0.02;
+        newVelY += (Math.random() - 0.5) * 0.02;
 
-        // Clamp velocity to prevent excessive speeds
-        const maxSpeed = 3;
+        // Clamp velocity to prevent excessive speeds but allow higher max speed
+        const maxSpeed = 6;
         newVelX = Math.max(-maxSpeed, Math.min(maxSpeed, newVelX));
         newVelY = Math.max(-maxSpeed, Math.min(maxSpeed, newVelY));
 
