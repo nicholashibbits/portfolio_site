@@ -2,66 +2,75 @@
 
 import React, { useState, useEffect, useRef } from "react";
 
-function GradientSphere({ size = 540, initialVelocity = { x: 1, y: 0.8 } }) {
+function GradientSphere({ size = 540, initialVelocity = { x: 1.7, y: 1.5 } }) {
   const viewBoxSize = 540;
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [velocity, setVelocity] = useState(initialVelocity);
+  const velocityRef = useRef(initialVelocity);
+  const positionRef = useRef({ x: 0, y: 0 });
   const containerRef = useRef(null);
   const animationRef = useRef(null);
 
   useEffect(() => {
     const animate = () => {
-      setPosition((prevPos) => {
-        const newX = prevPos.x + velocity.x;
-        const newY = prevPos.y + velocity.y;
+      let { x, y } = positionRef.current;
+      let { x: velX, y: velY } = velocityRef.current;
 
-        // Get viewport dimensions
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        const sphereRadius = size / 2;
+      const newX = x + velX;
+      const newY = y + velY;
 
-        let newVelX = velocity.x;
-        let newVelY = velocity.y;
+      // Get viewport dimensions
+      const sphereRadius = size / 2;
 
-        // Bounce off horizontal boundaries with more dramatic speed changes
-        if (
-          newX <= -viewportWidth / 2 + sphereRadius ||
-          newX >= viewportWidth / 2 - sphereRadius
-        ) {
-          newVelX = -velocity.x * 0.8; // Speed increase on horizontal bounce
-          newVelY = velocity.y * 0.5; // Slight speed reduction on other axis
-        }
+      let newVelX = velX;
+      let newVelY = velY;
 
-        // Bounce off vertical boundaries with more dramatic speed changes
-        if (
-          newY <= -viewportHeight / 2 + sphereRadius ||
-          newY >= viewportHeight / 2 - sphereRadius
-        ) {
-          newVelY = -velocity.y * 1.1; // Speed increase on vertical bounce
-          newVelX = velocity.x * 0.9; // Slight speed reduction on other axis
-        }
+      // Calculate the actual position in window coordinates
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const absX = centerX + newX;
+      const absY = centerY + newY;
 
-        // Add slight gravity effect (pulls downward)
-        newVelY += 0.003;
+      const maxSpeed = 8;
+      const minSpeed = 0.1;
 
-        // Reduce air resistance for faster movement
-        newVelX *= 0.9998;
-        newVelY *= 0.9998;
+      // Left boundary
+      if (absX - sphereRadius < 0) {
+        newVelX = Math.max(Math.abs(newVelX) * 0.8, minSpeed); // rightward, dampened
+        positionRef.current.x = -centerX + sphereRadius + 1; // snap just inside
+      }
+      // Right boundary
+      if (absX + sphereRadius > window.innerWidth) {
+        newVelX = -Math.max(Math.abs(newVelX) * 0.8, minSpeed); // leftward, dampened
+        positionRef.current.x = centerX - sphereRadius - 1; // snap just inside
+      }
+      // Top boundary
+      if (absY - sphereRadius < 0) {
+        newVelY = Math.max(Math.abs(newVelY) * 0.8, minSpeed); // downward, dampened
+        positionRef.current.y = -centerY + sphereRadius + 1;
+      }
+      // Bottom boundary
+      if (absY + sphereRadius > window.innerHeight) {
+        newVelY = -Math.max(Math.abs(newVelY) * 0.8, minSpeed); // upward, dampened
+        positionRef.current.y = centerY - sphereRadius - 1;
+      }
 
-        // Add some randomness to make it more organic
-        newVelX += (Math.random() - 0.5) * 0.02;
-        newVelY += (Math.random() - 0.5) * 0.02;
+      // Clamp to max speed
+      newVelX = Math.max(-maxSpeed, Math.min(maxSpeed, newVelX));
+      newVelY = Math.max(-maxSpeed, Math.min(maxSpeed, newVelY));
 
-        // Clamp velocity to prevent excessive speeds but allow higher max speed
-        const maxSpeed = 6;
-        newVelX = Math.max(-maxSpeed, Math.min(maxSpeed, newVelX));
-        newVelY = Math.max(-maxSpeed, Math.min(maxSpeed, newVelY));
+      // Gravity, air resistance, randomness
+      newVelY += 0.003;
+      newVelX *= 0.9998;
+      newVelY *= 0.9998;
+      newVelX += (Math.random() - 0.5) * 0.02;
+      newVelY += (Math.random() - 0.5) * 0.02;
 
-        // Update velocity
-        setVelocity({ x: newVelX, y: newVelY });
+      // Update refs
+      velocityRef.current = { x: newVelX, y: newVelY };
+      positionRef.current = { x: newX, y: newY };
 
-        return { x: newX, y: newY };
-      });
+      // Only update state for rendering
+      setPosition({ x: newX, y: newY });
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -73,7 +82,7 @@ function GradientSphere({ size = 540, initialVelocity = { x: 1, y: 0.8 } }) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [velocity, size]);
+  }, [size]);
 
   return (
     <svg
