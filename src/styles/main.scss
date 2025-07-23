@@ -38,7 +38,6 @@
   width: 100vw;
   max-width: 100vw;
   position: relative;
-  
 }
 
 @keyframes hero-primary-scroll {
@@ -46,7 +45,7 @@
     transform: translateX(100vw);
   }
   100% {
-    transform: translateX(-120%);
+    transform: translateX(-150%);
   }
 }
 
