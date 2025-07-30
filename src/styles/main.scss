@@ -1,7 +1,33 @@
-@use "abstracts";
+@use "abstracts" as *;
 @use "base";
 @use "layout";
 @use "utilities";
+
+.diagonal-bg-1 {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: skewY(-15deg);
+    background-color: $clr-neutral-900;
+    // z-index: -1;
+  }
+}
+
+.diagonal-bg-2 {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: skewY(-15deg);
+    background-color: $clr-primary-400;
+    z-index: -1;
+  }
+}
 
 .hero {
   min-height: 100dvh;
@@ -79,7 +105,7 @@
   justify-content: space-between;
   gap: 2rem;
 
-  @include abstracts.mq(small) {
+  @include mq(small) {
     flex-direction: row;
   }
 }

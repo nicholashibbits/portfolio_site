@@ -5,7 +5,12 @@ import ProjectListItem from "@/app/components/ProjectListItem";
 
 function Work() {
   return (
-    <BackgroundContainer color="primary" shade="400" textColor="dark">
+    <BackgroundContainer
+      color="primary"
+      shade="400"
+      textColor="dark"
+      diagonal="2"
+    >
       <div className="container">
         <div className="padding-block-80">
           <h1 className="padding-block-end-8">Work </h1>

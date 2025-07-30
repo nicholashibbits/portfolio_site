@@ -5,7 +5,12 @@ import GradientSphere from "@/app/components/GradientSphere";
 
 function Hero() {
   return (
-    <BackgroundContainer color="neutral" shade="900" textColor="light">
+    <BackgroundContainer
+      color="neutral"
+      shade="900"
+      textColor="light"
+      diagonal="1"
+    >
       <div className="hero container flex flex-justify-center flex-align-center">
         <div className="hero-content">
           <GradientSphere size={540} />
