@@ -1,13 +1,7 @@
-const BackgroundContainer = ({
-  children,
-  color,
-  shade,
-  textColor,
-  diagonal = 3,
-}) => {
+const BackgroundContainer = ({ children, color, shade, textColor }) => {
   return (
     <div
-      className={`background-container bg-${color}-${shade} text-clr-${textColor} diagonal-bg-${diagonal}`}
+      className={`background-container bg-${color}-${shade} text-clr-${textColor} diagonal`}
     >
       {children}
     </div>

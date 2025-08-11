@@ -9,7 +9,6 @@ function Hero() {
       color="neutral"
       shade="900"
       textColor="light"
-      diagonal="1"
     >
       <div className="hero container flex flex-justify-center flex-align-center">
         <div className="hero-content">

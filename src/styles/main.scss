@@ -3,7 +3,7 @@
 @use "layout";
 @use "utilities";
 
-.diagonal-bg-1 {
+.diagonal {
   position: relative;
 
   &::after {
@@ -12,20 +12,8 @@
     inset: 0;
     transform: skewY(-15deg);
     background-color: $clr-neutral-900;
+    outline: 1px solid white;
     // z-index: -1;
-  }
-}
-
-.diagonal-bg-2 {
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    transform: skewY(-15deg);
-    background-color: $clr-primary-400;
-    z-index: -1;
   }
 }
 
