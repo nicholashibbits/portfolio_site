@@ -22,7 +22,13 @@ function Contact() {
               <div className="flex flex-column clr-neutral-100 fw-normal">
                 <a href="">Github</a>
                 <a href="">LinkedIn</a>
-                <a href="">My Resume</a>
+                <a
+                  href="/Nicholas_Hibbits_AV_Tech_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  My Resume
+                </a>
               </div>
             </li>
             <li className="link-group">
