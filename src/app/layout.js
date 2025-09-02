@@ -2,8 +2,8 @@ import { switzer } from "./fonts";
 import "../styles/main.scss";
 
 export const metadata = {
-  title: "Portfolio Site",
-  description: "Portfolio Site",
+  title: "Nick Hibbits",
+  description: "Web development portfolio site for Nick Hibbits",
 };
 
 export default function RootLayout({ children }) {
