@@ -17,7 +17,7 @@ function Work() {
               <ProjectListItem
                 project="Veteran's Affairs"
                 description="Developed pages in va.gov providing information on education benefits to veterans."
-                extendedDescription="Migrated legacy applications, digitized forms, and maintained code in accordance with the platform design system for the Department of Veteran's Affairs."
+                extendedDescription="Migrated legacy applications, digitized forms, and maintained code for the Department of Veteran's Affairs."
               />
               <ProjectListItem
                 project="Studio Zoomies"
