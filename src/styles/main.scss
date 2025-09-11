@@ -3,19 +3,33 @@
 @use "layout";
 @use "utilities";
 
-.diagonal {
-  position: relative;
+// .diagonal {
+//   position: relative;
 
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    transform: skewY(-15deg);
-    background-color: $clr-neutral-900;
-    outline: 1px solid white;
-    // z-index: -1;
-  }
-}
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     inset: 0;
+//     transform: skewY(-15deg);
+//     background-color: $clr-neutral-900;
+//     outline: 1px solid white;
+//     // z-index: -1;
+//   }
+// }
+
+// .diagonal-2 {
+//   position: relative;
+
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     inset: 0;
+//     transform: skewY(15deg);
+//     background-color: $clr-neutral-900;
+//     outline: 1px solid white;
+//     z-index: -1;
+//   }
+// }
 
 .hero {
   min-height: 100dvh;

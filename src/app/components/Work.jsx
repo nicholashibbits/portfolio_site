@@ -5,9 +5,10 @@ import ProjectListItem from "@/app/components/ProjectListItem";
 
 function Work() {
   return (
-    <BackgroundContainer color="primary" shade="400" textColor="dark">
-      <div className="container">
-        <div className="padding-block-80">
+    // <BackgroundContainer color="primary" shade="400" textColor="dark">
+    <div className="work-wrapper background-container-diagonal-2">
+      <div className="container work-container">
+        <div className="padding-block-256">
           <h1 className="padding-block-end-8">Work </h1>
           <p className="fs-600">
             Collection of personal and professional projects
@@ -38,7 +39,8 @@ function Work() {
           </div>
         </div>
       </div>
-    </BackgroundContainer>
+      {/* // </BackgroundContainer> */}
+    </div>
   );
 }
 

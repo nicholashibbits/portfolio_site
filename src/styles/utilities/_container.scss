@@ -21,8 +21,37 @@
 }
 
 .background-container-lg {
-  border: 5px solid red;
+  background-color: $clr-primary-400;
   min-height: 350dvh;
   position: relative;
   overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -200px 0 0 0;
+    transform: skewY(-15deg);
+    background-color: $clr-neutral-900;
+  }
+}
+
+.background-container-diagonal-2 {
+  background-color: $clr-neutral-900;
+  min-height: 175dvh;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: skewY(-15deg);
+    background-color: $clr-primary-400;
+  }
+}
+
+.about-container,
+.work-container {
+  position: relative;
+  z-index: 1;
 }
