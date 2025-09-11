@@ -5,8 +5,7 @@ import ProjectListItem from "@/app/components/ProjectListItem";
 
 function Work() {
   return (
-    // <BackgroundContainer color="primary" shade="400" textColor="dark">
-    <div className="work-wrapper background-container-diagonal-2">
+    <div className="diagonal-container-2">
       <div className="container work-container">
         <div className="padding-block-256">
           <h1 className="padding-block-end-8">Work </h1>
@@ -39,7 +38,6 @@ function Work() {
           </div>
         </div>
       </div>
-      {/* // </BackgroundContainer> */}
     </div>
   );
 }

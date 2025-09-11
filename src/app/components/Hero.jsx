@@ -1,11 +1,10 @@
 import React from "react";
 
-import BackgroundContainer from "@/app/components/BackgroundContainer";
 import GradientSphere from "@/app/components/GradientSphere";
 
 function Hero() {
   return (
-    <BackgroundContainer color="neutral" shade="900" textColor="light">
+    <div className="background-container bg-neutral-900 text-clr-light">
       <div className="hero container flex flex-justify-center flex-align-center">
         <div className="hero-content">
           <GradientSphere size={540} />
@@ -15,7 +14,7 @@ function Hero() {
           </div>
         </div>
       </div>
-    </BackgroundContainer>
+    </div>
   );
 }
 

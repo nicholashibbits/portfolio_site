@@ -5,10 +5,10 @@ import Image from "next/image";
 
 function Contact() {
   return (
-    <BackgroundContainer color="neutral" shade="900" textColor="light">
-      <div className="container">
+    <div className="diagonal-container-3 text-clr-light">
+      <div className="contact-container container padding-block-96">
         <div className="contact-container flex flex-column relative">
-          <ul className="more-info-links flex padding-block-64">
+          <ul className="more-info-links flex">
             <li className="link-group">
               <span className="link-group-title fs-600 fw-light">/CONTACT</span>
               <div className="fw-normal">
@@ -45,7 +45,7 @@ function Contact() {
           </ul>
         </div>
       </div>
-    </BackgroundContainer>
+    </div>
   );
 }
 

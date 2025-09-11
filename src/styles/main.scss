@@ -3,34 +3,6 @@
 @use "layout";
 @use "utilities";
 
-// .diagonal {
-//   position: relative;
-
-//   &::after {
-//     content: "";
-//     position: absolute;
-//     inset: 0;
-//     transform: skewY(-15deg);
-//     background-color: $clr-neutral-900;
-//     outline: 1px solid white;
-//     // z-index: -1;
-//   }
-// }
-
-// .diagonal-2 {
-//   position: relative;
-
-//   &::after {
-//     content: "";
-//     position: absolute;
-//     inset: 0;
-//     transform: skewY(15deg);
-//     background-color: $clr-neutral-900;
-//     outline: 1px solid white;
-//     z-index: -1;
-//   }
-// }
-
 .hero {
   min-height: 100dvh;
   line-height: 1.4;
@@ -40,7 +12,6 @@
   }
 
   &-animated-text {
-    // display: inline-block;
     position: relative;
     white-space: nowrap;
     transform: rotate(-20deg);

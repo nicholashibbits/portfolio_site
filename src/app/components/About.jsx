@@ -1,11 +1,9 @@
 import React from "react";
 
-import BackgroundContainer from "@/app/components/BackgroundContainer";
-
 function About() {
   return (
     <div
-      className={`about-wrapper background-container-lg bg-neutral-900 text-clr-light`}
+      className={`about-wrapper diagonal-container-1 bg-neutral-900 text-clr-light`}
     >
       <div className="about-container container">
         <div>

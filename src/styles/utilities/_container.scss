@@ -14,13 +14,7 @@
   --max-width: #{$container-max-width-wide};
 }
 
-.background-container {
-  min-height: 110dvh;
-  position: relative;
-  overflow: hidden;
-}
-
-.background-container-lg {
+.diagonal-container-1 {
   background-color: $clr-primary-400;
   min-height: 350dvh;
   position: relative;
@@ -35,9 +29,9 @@
   }
 }
 
-.background-container-diagonal-2 {
+.diagonal-container-2 {
   background-color: $clr-neutral-900;
-  min-height: 175dvh;
+  min-height: 150dvh;
   position: relative;
   overflow: hidden;
 
@@ -50,7 +44,23 @@
   }
 }
 
+.diagonal-container-3 {
+  background-color: $clr-primary-400;
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: skewY(-15deg);
+    background-color: $clr-neutral-900;
+  }
+}
+
 .about-container,
+.contact-container,
 .work-container {
   position: relative;
   z-index: 1;
