@@ -9,7 +9,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={switzer.variable}>{children}</body>
+      <body className={switzer.variable}>
+        {children}
+        <div className="cursor-follower"></div>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('mousemove', (e) => {
+                const follower = document.querySelector('.cursor-follower');
+                if (follower) {
+                  follower.style.left = e.clientX + 'px';
+                  follower.style.top = e.clientY + 'px';
+                }
+              });
+            `,
+          }}
+        />
+      </body>
     </html>
   );
 }
