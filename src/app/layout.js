@@ -12,19 +12,6 @@ export default function RootLayout({ children }) {
       <body className={switzer.variable}>
         {children}
         <div className="cursor-follower"></div>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              document.addEventListener('mousemove', (e) => {
-                const follower = document.querySelector('.cursor-follower');
-                if (follower) {
-                  follower.style.left = e.clientX + 'px';
-                  follower.style.top = e.clientY + 'px';
-                }
-              });
-            `,
-          }}
-        />
       </body>
     </html>
   );
