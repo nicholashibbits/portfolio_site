@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "motion-plus": "https://api.motion.dev/registry?package=motion-plus&version=1.5.4&token=178b2885ee0758100c9bc9c5e5fa1bad4f7ddc61063754d2e14edd09c323b8ce",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
