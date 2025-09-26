@@ -3,33 +3,31 @@
 @use "layout";
 @use "utilities";
 
+.cursor {
+  background-color: white;
+}
+
+.reticule {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
 .hero {
-  min-height: 100dvh;
-  line-height: 1.4;
+  min-height: 150dvh;
+  overflow: hidden;
 
-  &-content {
-    position: absolute;
-  }
-
-  &-animated-text {
-    position: relative;
-    white-space: nowrap;
-    transform: rotate(-20deg);
-    will-change: transform;
-    z-index: 2;
-  }
-
-  h1 {
+  &-title {
     color: #fff;
-    font-size: 18.75rem;
+    font-size: clamp(7rem, 20vw, 15rem);
     font-weight: 900;
-    animation: hero-primary-scroll 25s linear infinite;
-  }
+    position: relative;
+    z-index: 3;
+    padding: 0 0 22rem 0rem;
 
-  &-subtitle {
-    font-size: 3.5rem;
-    font-weight: 900;
-    animation: hero-primary-scroll 27s linear infinite;
+    @include mq(medium) {
+      padding: 0 0 8rem 0rem;
+    }
   }
 }
 
@@ -61,9 +59,10 @@
 }
 
 .project-item-content {
+  cursor: pointer;
+
   h2 {
     width: fit-content;
-    cursor: pointer;
   }
 }
 
