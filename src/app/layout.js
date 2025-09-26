@@ -9,10 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={switzer.variable}>
-        {children}
-        <div className="cursor-follower"></div>
-      </body>
+      <body className={switzer.variable}>{children}</body>
     </html>
   );
 }
