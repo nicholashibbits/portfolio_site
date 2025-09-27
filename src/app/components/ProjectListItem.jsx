@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import * as motion from "motion/react-client";
+import { motion } from "motion/react";
 
 function ProjectListItem({ project, description, extendedDescription }) {
   const [isHovered, setIsHovered] = useState(false);
-
   return (
     <li>
       <div
@@ -13,7 +12,27 @@ function ProjectListItem({ project, description, extendedDescription }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <h2 className="fs-700">{project}</h2>
+        <h2
+          className="fs-700"
+          style={{ display: "flex", alignItems: "center", gap: "12px" }}
+        >
+          {project}
+        </h2>
+        <motion.div
+          className="project-line"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isHovered ? 0.27 : 0 }}
+          transition={{
+            duration: 0.6,
+            ease: "easeInOut",
+          }}
+          style={{
+            height: "2px",
+            backgroundColor: "currentColor",
+            transformOrigin: "left",
+            willChange: "transform",
+          }}
+        />
         <p className="fs-400">{description}</p>
         <motion.div
           className="extended-description-container"

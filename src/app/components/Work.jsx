@@ -15,7 +15,7 @@ function Work() {
           <div className="project-wrapper">
             <ul className="project-list flex flex-column padding-block-start-36">
               <ProjectListItem
-                project="Veteran's Affairs"
+                project="Veterans Affairs"
                 description="Developed pages in va.gov providing information on education benefits to veterans."
                 extendedDescription="Migrated legacy applications, digitized forms, and maintained code for the Department of Veteran's Affairs."
               />
