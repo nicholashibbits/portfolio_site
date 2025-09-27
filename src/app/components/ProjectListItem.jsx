@@ -1,10 +1,29 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "motion/react";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 
 function ProjectListItem({ project, description, extendedDescription }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [h2Width, setH2Width] = useState(0);
+  const h2Ref = useRef(null);
+  const lineWidth = useMotionValue(0);
+  const animatedLineWidth = useSpring(lineWidth, {
+    stiffness: 300,
+    damping: 30,
+  });
+  const lineWidthPx = useTransform(animatedLineWidth, (value) => `${value}px`);
+
+  useEffect(() => {
+    if (h2Ref.current) {
+      const width = h2Ref.current.offsetWidth;
+      setH2Width(width);
+    }
+  }, [project]);
+
+  useEffect(() => {
+    lineWidth.set(isHovered ? h2Width : 0);
+  }, [isHovered, h2Width, lineWidth]);
   return (
     <li>
       <div
@@ -13,6 +32,7 @@ function ProjectListItem({ project, description, extendedDescription }) {
         onMouseLeave={() => setIsHovered(false)}
       >
         <h2
+          ref={h2Ref}
           className="fs-700"
           style={{ display: "flex", alignItems: "center", gap: "12px" }}
         >
@@ -20,16 +40,10 @@ function ProjectListItem({ project, description, extendedDescription }) {
         </h2>
         <motion.div
           className="project-line"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: isHovered ? 0.27 : 0 }}
-          transition={{
-            duration: 0.6,
-            ease: "easeInOut",
-          }}
           style={{
+            width: lineWidthPx,
             height: "2px",
             backgroundColor: "currentColor",
-            transformOrigin: "left",
             willChange: "transform",
           }}
         />
