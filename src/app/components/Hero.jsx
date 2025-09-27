@@ -7,8 +7,7 @@ function Hero() {
     <div className=" bg-neutral-900 text-clr-light">
       <div className=" hero flex flex-justify-center flex-align-center">
         <div className="hero-content">
-          <GradientSphere size={540} />
-          <GradientSphere size={200} initialVelocity={{ x: 2.5, y: 2 }} />
+          
           <h1 className="hero-title fw-700">NICK HIBBITS</h1>
         </div>
       </div>
