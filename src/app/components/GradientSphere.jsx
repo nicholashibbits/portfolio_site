@@ -1,13 +1,26 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
+import { motion } from "motion/react";
 
-function GradientSphere({ size = 540, initialVelocity = { x: 1.7, y: 1.5 } }) {
+function GradientSphere({ size = 540, position = "left" }) {
   const viewBoxSize = 540;
 
+  const positionStyles = {
+    left: {
+      left: "200px",
+      top: "50%",
+      transform: "translateY(50%)",
+    },
+    right: {
+      right: "-100px",
+      top: "50%",
+      transform: "translateY(-50%)",
+    },
+  };
+
   return (
-    <svg
-      // ref={containerRef}
+    <motion.svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
@@ -16,11 +29,15 @@ function GradientSphere({ size = 540, initialVelocity = { x: 1.7, y: 1.5 } }) {
       className="gradient-sphere"
       style={{
         position: "absolute",
-        top: "50%",
-        left: "50%",
-        transition: "none",
+        ...positionStyles[position],
         willChange: "transform",
-        pointerEvents: "none",
+        pointerEvents: "auto",
+        zIndex: 1,
+      }}
+      whileHover={{
+        scale: 1.1,
+        x: position === "left" ? 20 : -20,
+        transition: { duration: 0.3, ease: "easeOut" },
       }}
     >
       <path
@@ -41,7 +58,7 @@ function GradientSphere({ size = 540, initialVelocity = { x: 1.7, y: 1.5 } }) {
           <stop offset="1" stopColor="#DB761D" />
         </linearGradient>
       </defs>
-    </svg>
+    </motion.svg>
   );
 }
 
