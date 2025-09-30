@@ -29,8 +29,10 @@ export default function RootLayout({ children }) {
         }}
         className="reticule"
       />
-      <Nav />
-      <body className={switzer.variable}>{children}</body>
+      <body className={switzer.variable}>
+        <Nav />
+        {children}
+      </body>
     </html>
   );
 }

@@ -2,8 +2,8 @@ import React from "react";
 
 function Nav() {
   return (
-    <nav>
-      <ul className="flex nav-list">
+    <nav className="nav">
+      <ul className="flex nav-list container ">
         <li>WORK</li>
         <li>CONTACT</li>
       </ul>
