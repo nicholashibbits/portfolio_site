@@ -1,6 +1,14 @@
 @use "../abstracts/" as *;
 
-// child to section class, sets width of content and controls responsive margins
+.nav {
+  // background-color: transparent;
+
+  &-list {
+    background-color: transparent;
+    width: 50%;
+    justify-content: space-between;
+  }
+}
 
 .container {
   --padding: #{$container-inline-padding} * 2;

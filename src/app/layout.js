@@ -2,6 +2,7 @@ import { switzer } from "./fonts";
 import "../styles/main.scss";
 
 import { Cursor } from "motion-plus/react";
+import Nav from "@/app/components/Nav";
 
 export const metadata = {
   title: "Nick Hibbits",
@@ -28,7 +29,7 @@ export default function RootLayout({ children }) {
         }}
         className="reticule"
       />
-
+      <Nav />
       <body className={switzer.variable}>{children}</body>
     </html>
   );
