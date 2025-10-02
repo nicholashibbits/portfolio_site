@@ -22,7 +22,6 @@
   color: white;
 
   &-list {
-    width: 50%;
     justify-content: space-between;
   }
 }
@@ -30,6 +29,7 @@
 .hero {
   min-height: 150dvh;
   overflow: hidden;
+  // background-color: $clr-neutral-900;
 
   &-title {
     color: #fff;

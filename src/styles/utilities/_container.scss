@@ -1,6 +1,5 @@
 @use "../abstracts/" as *;
 
-
 .container {
   --padding: #{$container-inline-padding} * 2;
   --max-width: #{$container-max-width};
@@ -29,7 +28,7 @@
 
 .diagonal-container-2 {
   background-color: $clr-neutral-900;
-  min-height: 150dvh;
+  min-height: 120dvh;
   position: relative;
   overflow: hidden;
 
