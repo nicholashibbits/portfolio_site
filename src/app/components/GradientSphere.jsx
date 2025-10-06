@@ -8,14 +8,27 @@ function GradientSphere({ size = 540, position = "left" }) {
 
   const positionStyles = {
     left: {
-      left: "200px",
-      top: "50%",
-      transform: "translateY(50%)",
-    },
-    right: {
-      right: "-100px",
+      left: "50px",
       top: "50%",
       transform: "translateY(-50%)",
+    },
+    right: {
+      right: "50px",
+      top: "50%",
+      transform: "translateY(-50%)",
+    },
+  };
+
+  // Create floating animation variants
+  const floatingVariants = {
+    float: {
+      y: [-10, 10, -10],
+      x: position === "left" ? [-5, 5, -5] : [5, -5, 5],
+      transition: {
+        duration: position === "left" ? 4 : 6,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
     },
   };
 
@@ -31,9 +44,11 @@ function GradientSphere({ size = 540, position = "left" }) {
         position: "absolute",
         ...positionStyles[position],
         willChange: "transform",
-        pointerEvents: "auto",
+        pointerEvents: "none",
         zIndex: 1,
       }}
+      variants={floatingVariants}
+      animate="float"
       whileHover={{
         scale: 1.1,
         x: position === "left" ? 20 : -20,
