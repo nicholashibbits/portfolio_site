@@ -29,7 +29,6 @@
 .hero {
   min-height: 150dvh;
   overflow: hidden;
-  // background-color: $clr-neutral-900;
 
   &-title {
     color: #fff;
@@ -65,7 +64,13 @@
 }
 
 .gradient-sphere-container {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .gradient-sphere {
