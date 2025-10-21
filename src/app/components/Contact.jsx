@@ -23,7 +23,7 @@ function Contact() {
                 <a href="">Github</a>
                 <a href="">LinkedIn</a>
                 <a
-                  href="/Nicholas_Hibbits_AV_Tech_Resume.pdf"
+                  href="/Nicholas_Hibbits_AV_Tech_Resume_1.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
