@@ -1,12 +1,9 @@
 import React from "react";
 
-import BackgroundContainer from "@/app/components/BackgroundContainer";
-import Image from "next/image";
-
 function Contact() {
   return (
-    <div className="diagonal-container-3 text-clr-light">
-      <div className="contact-container container padding-block-96">
+    <div className="background-container-3">
+      <div className="container padding-block-96">
         <div className="contact-container flex flex-column relative">
           <ul className="more-info-links flex">
             <li className="link-group">

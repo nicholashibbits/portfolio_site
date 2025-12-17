@@ -9,13 +9,11 @@ function GradientSphere({ size = 540, position = "left" }) {
   const positionStyles = {
     left: {
       left: "50px",
-      top: "50%",
-      transform: "translateY(-50%)",
+      top: "30%",
     },
     right: {
       right: "50px",
-      top: "50%",
-      transform: "translateY(-50%)",
+      top: "10%",
     },
   };
 

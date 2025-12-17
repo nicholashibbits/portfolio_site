@@ -12,53 +12,12 @@
   --max-width: #{$container-max-width-wide};
 }
 
-.diagonal-container-1 {
-  background-color: $clr-primary-400;
-  position: relative;
-  overflow: hidden;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: -200px 0 0 0;
-    transform: skewY(-15deg);
-    background-color: $clr-neutral-900;
-  }
-}
-
-.diagonal-container-2 {
-  background-color: $clr-neutral-900;
-  min-height: 120dvh;
-  position: relative;
-  overflow: hidden;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0 0 0 0;
-    transform: skewY(-15deg);
+.background-container {
+  &-2 {
     background-color: $clr-primary-400;
   }
-}
-
-.diagonal-container-3 {
-  background-color: $clr-primary-400;
-  min-height: 100dvh;
-  position: relative;
-  overflow: hidden;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0 0 0 0;
-    transform: skewY(-15deg);
+  &-3 {
     background-color: $clr-neutral-900;
+    color: $clr-neutral-100;
   }
-}
-
-.about-container,
-.contact-container,
-.work-container {
-  position: relative;
-  z-index: 1;
 }

@@ -1,11 +1,10 @@
 import React from "react";
 
-import BackgroundContainer from "@/app/components/BackgroundContainer";
 import ProjectListItem from "@/app/components/ProjectListItem";
 
 function Work() {
   return (
-    <div className="diagonal-container-2">
+    <div className="background-container-2">
       <div className="container work-container">
         <div className="padding-block-256">
           <h1 className="padding-block-end-8">Work </h1>
