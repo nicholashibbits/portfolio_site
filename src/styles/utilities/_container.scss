@@ -27,6 +27,13 @@
       background-size: auto;
       opacity: 0.6;
       z-index: 0;
+      transform-origin: center center;
+      transform: scale(1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &:has(.project-item-content:hover)::before {
+      transform: scale(1.07);
     }
 
     > * {
