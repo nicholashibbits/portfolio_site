@@ -31,12 +31,8 @@ function Contact() {
             <li className="link-group">
               <span className="link-group-title fs-600 fw-light">/GO TO</span>
               <div className="flex flex-column fw-normal">
-                <a href="" className="">
-                  Home
-                </a>
-                <a href="" className="">
-                  Work
-                </a>
+                <a href="#home">Home</a>
+                <a href="#work">Work</a>
               </div>
             </li>
           </ul>
