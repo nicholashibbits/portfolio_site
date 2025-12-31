@@ -2,7 +2,7 @@ import React from "react";
 
 function Contact() {
   return (
-    <div className="background-container-3">
+    <div id="contact" className="background-container-3">
       <div className="container padding-block-96">
         <div className="contact-container flex flex-column relative">
           <ul className="more-info-links flex">

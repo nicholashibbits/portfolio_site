@@ -4,7 +4,7 @@ import ProjectListItem from "@/app/components/ProjectListItem";
 
 function Work() {
   return (
-    <div className="background-container-2">
+    <div id="work" className="background-container-2">
       <div className="container work-container">
         <div className="padding-block-256">
           <h1 className="padding-block-end-8">Work </h1>
