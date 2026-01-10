@@ -13,16 +13,91 @@
   border-radius: 50%;
 }
 
+.menu-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  background-color: transparent;
+  border: 1px solid $clr-neutral-100;
+  color: $clr-neutral-100;
+  padding: 0.75rem 1.5rem;
+  font-family: inherit;
+  font-size: fs(300);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: $clr-neutral-100;
+    color: $clr-neutral-900;
+  }
+
+  &[aria-expanded="true"] {
+    background-color: $clr-neutral-100;
+    color: $clr-neutral-900;
+  }
+}
+
 .nav {
+  height: 0;
   background-color: $clr-neutral-900;
-  top: 0;
-  position: sticky;
+  // top: 0;
+  position: fixed;
   width: 100%;
-  z-index: 3;
+  z-index: 10;
   color: white;
+  overflow: hidden;
+  transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &--open {
+    height: 100dvh;
+  }
 
   &-list {
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 2rem;
+    height: 100%;
+    padding-top: 5rem;
+  }
+
+  &-item {
+    opacity: 0;
+    transform: translateY(100vh);
+    will-change: transform, opacity;
+    font-size: fs(700);
+  }
+
+  &--open &-item {
+    animation: nav-item-enter 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  // Staggered delays - each item enters 0.2s after the previous one
+  // Delays start slightly after container begins expanding
+  &--open &-item:nth-child(1) {
+    animation-delay: 0.15s;
+  }
+
+  &--open &-item:nth-child(2) {
+    animation-delay: 0.35s;
+  }
+
+  &--open &-item:nth-child(3) {
+    animation-delay: 0.55s;
+  }
+}
+
+@keyframes nav-item-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(80vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
