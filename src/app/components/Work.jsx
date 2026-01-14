@@ -11,7 +11,7 @@ function Work() {
     <div id="work" className="background-container-2 ">
       <div className="work-content-wrapper">
         <div className="container work-container">
-          <div className="padding-block-256">
+          <div className="padding-block-128">
             <h1 className="padding-block-end-8">Work </h1>
             <p className="fs-600">
               Collection of personal and professional projects

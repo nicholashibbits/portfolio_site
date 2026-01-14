@@ -12,7 +12,6 @@ function ProjectListItem({
   onHoverChange,
 }) {
   const isHovered = hoveredIndex === index;
-  const isOtherHovered = hoveredIndex !== null && hoveredIndex !== index;
   const [h2Width, setH2Width] = useState(0);
   const h2Ref = useRef(null);
   const lineWidth = useMotionValue(0);
@@ -25,36 +24,35 @@ function ProjectListItem({
   }, [project]);
 
   useEffect(() => {
-    // Animate line with double duration (twice as slow)
     animate(lineWidth, isHovered ? h2Width : 0, {
-      duration: 0.6, // Doubled from typical 0.3s
+      duration: 0.5,
       ease: "easeInOut",
     });
   }, [isHovered, h2Width, lineWidth]);
 
-  const lineWidthPx = useTransform(lineWidth, (value) => `${value * 1.3}px`);
+  const lineWidthPx = useTransform(lineWidth, (value) => `${value}px`);
 
   return (
     <motion.li
-      animate={{
-        filter: isOtherHovered
-          ? "blur(3.5px) brightness(0.5)"
-          : "blur(0px) brightness(1)",
-      }}
-      transition={{
-        duration: 0.3,
-        ease: "easeInOut",
-      }}
+      className="project-item-content"
+      style={
+        isHovered
+          ? {
+              backdropFilter: "blur(3px)",
+            }
+          : {
+              backdropFilter: "none",
+            }
+      }
     >
       <motion.div
-        className="project-item-content flex flex-column"
         onMouseEnter={() => onHoverChange(index)}
         onMouseLeave={() => onHoverChange(null)}
         animate={{
           borderWidth: isHovered ? "1px" : "0px",
         }}
         transition={{
-          duration: 0.3,
+          duration: 0,
           ease: "easeIn",
         }}
         style={{
@@ -117,7 +115,7 @@ function ProjectListItem({
             opacity: isHovered ? 1 : 0,
           }}
           transition={{
-            duration: 0.3,
+            duration: 0.5,
             ease: "easeInOut",
           }}
           style={{ overflow: "hidden" }}
