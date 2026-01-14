@@ -16,6 +16,8 @@
   &-2 {
     position: relative;
     background-color: $clr-primary-400;
+    overflow: hidden;
+    z-index: 1;
 
     &::before {
       content: "";
@@ -44,5 +46,6 @@
   &-3 {
     background-color: $clr-neutral-900;
     color: $clr-neutral-100;
+    z-index: 2;
   }
 }

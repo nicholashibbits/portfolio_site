@@ -4,10 +4,7 @@ import GradientSphere from "@/app/components/GradientSphere";
 
 function Hero() {
   return (
-    <div
-      id="home"
-      className=" bg-neutral-900 text-clr-light diagonal-container-1"
-    >
+    <div id="home" className=" bg-neutral-900 text-clr-light">
       <div
         className=" hero flex flex-justify-center flex-align-center"
         style={{ position: "relative" }}
