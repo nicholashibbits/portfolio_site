@@ -3,7 +3,11 @@
 import React from "react";
 import { motion } from "motion/react";
 
-function GradientSphere({ size = 540, position = "left" }) {
+function GradientSphere({
+  size = 540,
+  position = "left",
+  movementType = "float",
+}) {
   const viewBoxSize = 540;
 
   const positionStyles = {
@@ -14,6 +18,14 @@ function GradientSphere({ size = 540, position = "left" }) {
     right: {
       right: "50px",
       top: "10%",
+    },
+    "contact-left": {
+      left: "5%",
+      top: "15%",
+    },
+    "contact-right": {
+      right: "5%",
+      bottom: "15%",
     },
   };
 
@@ -50,6 +62,49 @@ function GradientSphere({ size = 540, position = "left" }) {
         ],
       },
     },
+    // Water-like fluid movement with smooth, organic flow - slower and wider range
+    water: {
+      y:
+        position === "contact-left"
+          ? [
+              0, -80, 60, -120, 90, -150, 110, -70, 140, -100, 90, -130, 120,
+              -60, 150, -85, 100, -110, 70, -90, 50, -60, 30, -40, 15, -20, 0,
+            ]
+          : [
+              0, 100, -80, 130, -100, 160, -120, 80, -150, 110, -90, 140, -110,
+              70, -160, 100, -80, 130, -100, 110, -60, 80, -40, 20, -10, 5, 0,
+            ],
+      x:
+        position === "contact-left"
+          ? [
+              0, 70, -100, 140, -90, 120, -150, 80, -110, 100, -130, 110, -70,
+              140, -90, 100, -80, 110, -60, 80, -40, 60, -20, 40, -10, 20, 0,
+            ]
+          : [
+              0, -90, 120, -150, 110, -140, 150, -90, 120, -110, 140, -120, 80,
+              -150, 110, -90, 120, -110, 90, -70, 60, -40, 30, -15, 10, -5, 0,
+            ],
+      rotate:
+        position === "contact-left"
+          ? [
+              0, 8, -12, 18, -15, 22, -18, 12, -15, 18, -12, 15, -8, 12, -15, 8,
+              -12, 8, -5, 4, -2, 2, -2, 1, -1, 0.5, 0,
+            ]
+          : [
+              0, -10, 15, -18, 12, -22, 18, -12, 15, -18, 12, -15, 8, -12, 15,
+              -8, 12, -8, 5, -4, 2, -2, 2, -1, 1, -0.5, 0,
+            ],
+      transition: {
+        duration: position === "contact-left" ? 90 : 95,
+        repeat: Infinity,
+        ease: [0.4, 0, 0.6, 1], // Custom cubic bezier for fluid motion
+        times: [
+          0, 0.038, 0.077, 0.115, 0.154, 0.192, 0.231, 0.269, 0.308, 0.346,
+          0.385, 0.423, 0.462, 0.5, 0.538, 0.577, 0.615, 0.654, 0.692, 0.731,
+          0.769, 0.808, 0.846, 0.885, 0.923, 0.962, 1,
+        ],
+      },
+    },
   };
 
   return (
@@ -68,7 +123,7 @@ function GradientSphere({ size = 540, position = "left" }) {
         zIndex: 1,
       }}
       variants={floatingVariants}
-      animate="float"
+      animate={movementType}
       whileHover={{
         scale: 1.1,
         x: position === "left" ? 20 : -20,

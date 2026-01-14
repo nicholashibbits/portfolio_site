@@ -1,8 +1,17 @@
+"use client";
+
 import React from "react";
+import GradientSphere from "./GradientSphere";
 
 function Contact() {
   return (
     <div id="contact" className="background-container-3">
+      <GradientSphere size={80} position="contact-left" movementType="water" />
+      <GradientSphere
+        size={200}
+        position="contact-right"
+        movementType="water"
+      />
       <div className="container padding-block-96">
         <div className="contact-container flex flex-column relative">
           <ul className="more-info-links flex">

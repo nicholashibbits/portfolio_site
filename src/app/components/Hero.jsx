@@ -10,8 +10,8 @@ function Hero() {
         style={{ position: "relative" }}
       >
         <div className="gradient-sphere-container">
-          <GradientSphere size={540} position="left" />
-          <GradientSphere size={200} position="right" />
+          <GradientSphere size={600} position="left" />
+          <GradientSphere size={175} position="right" />
         </div>
         <div className="hero-content">
           <h1 className="hero-title fw-700">NICK HIBBITS</h1>

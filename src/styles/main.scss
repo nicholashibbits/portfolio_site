@@ -52,6 +52,7 @@
 
   &--open {
     height: 100dvh;
+    border-bottom: 1px solid $clr-neutral-100;
   }
 
   &-list {
@@ -191,7 +192,7 @@
 }
 
 .work-content-wrapper {
-  height: 110dvh;
+  height: 120dvh;
 }
 
 // CONTACT
