@@ -18,6 +18,7 @@
     background-color: $clr-primary-400;
     overflow: hidden;
     z-index: 1;
+    height: 140dvh;
 
     &::before {
       content: "";
