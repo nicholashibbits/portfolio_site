@@ -12,12 +12,10 @@ function Work() {
       <div className="work-content-wrapper">
         <div className="container work-container">
           <div className="padding-block-128">
-            <h1 className="padding-block-end-8">Work </h1>
-            <p className="fs-600">
-              Collection of personal and professional projects
-            </p>
+            <h1 className="padding-block-end-16">Work </h1>
+
             <div className="project-wrapper">
-              <ul className="project-list flex flex-column padding-block-start-36">
+              <ul className="project-list grid-auto-fit">
                 <ProjectListItem
                   project="Veterans Affairs"
                   description="Developed pages in va.gov providing information on education benefits to veterans."
