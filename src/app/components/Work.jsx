@@ -15,7 +15,7 @@ function Work() {
             <h1 className="padding-block-end-16">Work </h1>
 
             <div className="project-wrapper">
-              <ul className="project-list grid-auto-fit">
+              <ul className="project-list">
                 <ProjectListItem
                   project="Veterans Affairs"
                   description="Developed pages in va.gov providing information on education benefits to veterans."

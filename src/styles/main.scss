@@ -178,6 +178,8 @@
 
 // PROJECTS
 .project-list {
+  display: grid;
+  grid-template-columns: 50% 50%;
   height: 100%;
   gap: 2rem;
 }
@@ -234,6 +236,8 @@
   padding: 15px;
   margin: -12px;
   border-width: 1px;
+  min-height: 140px;
+
 }
 
 .card-header {
@@ -242,4 +246,9 @@
 
 .project-line {
   margin: 0;
+}
+
+.extended-description {
+  transform: translateY(-100%);
+  opacity: 0;
 }
