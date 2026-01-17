@@ -38,19 +38,41 @@ function ProjectListItem({
           boxShadow: { duration: 0.3, ease: "easeInOut" },
         }}
       >
-        <motion.h2 
-          className="fs-700 card-header"
-          style={{
-            transformOrigin: "left center",
-          }}
-          animate={{
-            scale: isHovered ? 1.1 : 1,
-          }}
-          transition={{
-            duration: 0.3,
-            ease: "easeInOut",
-          }}
-        >{project}</motion.h2>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <motion.h2 
+            className="fs-700 card-header"
+            style={{
+              transformOrigin: "left center",
+            }}
+            animate={{
+              scale: isHovered ? 1.1 : 1,
+            }}
+            transition={{
+              duration: 0.3,
+              ease: "easeInOut",
+            }}
+          >{project}</motion.h2>
+          <motion.img
+            src="/arrow-circle-up-right-svgrepo-com.svg"
+            alt=""
+            style={{
+              width: "2rem",
+              height: "2rem",
+              opacity: 1,
+              transform: "rotate(-10deg)",
+            }}
+            animate={{
+              opacity: isHovered ? 1 : 0,
+              rotate: isHovered ? 10: -100,
+              x: isHovered ? 20 : -20,
+              y: isHovered ? 1 : 0,
+            }}
+            transition={{
+              duration: 0.3,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
         <motion.p 
           className="fs-400"
           style={{
@@ -73,9 +95,9 @@ function ProjectListItem({
         >{description}</motion.p>
         <motion.p className="fs-400 margin-block-start-12 extended-description"
         animate={{
-          transform: isHovered ? "translateY(0)" : "translateY(-100%)",
+          transform: isHovered ? "translateY(0)" : "translateY(-40%)",
           opacity: isHovered ? 1 : 0,
-          transition: {transform:{duration: 0.3}, opacity:{duration: 0.5}},
+          transition: {transform:{duration: 0.5, ease: "easeOut"}, opacity:{duration: 0.3, ease: "easeInOut"}},
           boxShadow: isHovered ? "rgba(0, 0, 0, 0.5)" : "transparent",
         }}
   
