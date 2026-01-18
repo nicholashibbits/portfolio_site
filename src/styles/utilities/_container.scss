@@ -18,8 +18,14 @@
     overflow: hidden;
     z-index: 3;
     height: 150dvh;
+
     @include mq(medium) {
+      padding-top: 2rem;
     height: 120dvh;
+    }
+    @include mq(large) {
+      height: 120dvh;
+      padding-top: 8rem;
     }
 
     &::before {
@@ -55,7 +61,6 @@
 .diagonal {
   position: relative;
   transform: skewY(-5deg);
-  padding-top: 5rem;
   
   &::after {
     content: "";
