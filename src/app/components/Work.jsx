@@ -8,7 +8,7 @@ function Work() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div id="work" className="background-container-2 ">
+    <div id="work" className="diagonal background-container-2 ">
       <div className="work-content-wrapper">
         <div className="container work-container">
           <div className="padding-block-128">

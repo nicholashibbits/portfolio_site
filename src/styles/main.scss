@@ -3,6 +3,11 @@
 @use "layout";
 @use "utilities";
 
+
+body {
+  background-color: $clr-neutral-900;
+}
+
 .cursor {
   background-color: white;
 }
