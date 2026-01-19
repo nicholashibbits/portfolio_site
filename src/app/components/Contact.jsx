@@ -26,11 +26,11 @@ function Contact() {
             <li className="link-group">
               <span className="link-group-title fs-600 fw-light">/LINKS</span>
               <ul className="flex flex-column clr-neutral-100 fw-normal">
-                <li><a href="">Github</a></li>
-                <li><a href="">LinkedIn</a></li>
+                <li><a href="https://github.com/nicholashibbits">Github</a></li>
+                <li><a href="https://www.linkedin.com/in/nicholas-hibbits/">LinkedIn</a></li>
                 <li>
                   <a
-                    href="/Nicholas_Hibbits_AV_Tech_Resume_1.pdf"
+                    href="/Nicholas_Hibbits_Resume_2026.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

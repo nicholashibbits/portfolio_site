@@ -22,6 +22,11 @@ function Nav() {
       <nav className={`nav ${isOpen ? "nav--open" : ""}`}>
         <ul className="nav-list container flex flex-column">
           <li className="nav-item">
+            <a href="#about" onClick={() => setIsOpen(false)}>
+              ABOUT
+            </a>
+          </li>
+          <li className="nav-item">
             <a href="#work" onClick={() => setIsOpen(false)}>
               WORK
             </a>
@@ -29,6 +34,11 @@ function Nav() {
           <li className="nav-item">
             <a href="#contact" onClick={() => setIsOpen(false)}>
               CONTACT
+            </a>
+          </li>
+          <li className="nav-item">
+            <a href="/Nicholas_Hibbits_Resume_2026.pdf" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+              RESUME
             </a>
           </li>
         </ul>
