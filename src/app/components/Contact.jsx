@@ -25,24 +25,26 @@ function Contact() {
             </li>
             <li className="link-group">
               <span className="link-group-title fs-600 fw-light">/LINKS</span>
-              <div className="flex flex-column clr-neutral-100 fw-normal">
-                <a href="">Github</a>
-                <a href="">LinkedIn</a>
-                <a
-                  href="/Nicholas_Hibbits_AV_Tech_Resume_1.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  My Resume
-                </a>
-              </div>
+              <ul className="flex flex-column clr-neutral-100 fw-normal">
+                <li><a href="">Github</a></li>
+                <li><a href="">LinkedIn</a></li>
+                <li>
+                  <a
+                    href="/Nicholas_Hibbits_AV_Tech_Resume_1.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    My Resume
+                  </a>
+                </li>
+              </ul>
             </li>
             <li className="link-group">
               <span className="link-group-title fs-600 fw-light">/GO TO</span>
-              <div className="flex flex-column fw-normal">
-                <a href="#home">Home</a>
-                <a href="#work">Work</a>
-              </div>
+              <ul className="flex flex-column fw-normal">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#work">Work</a></li>
+              </ul>
             </li>
           </ul>
         </div>

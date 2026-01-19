@@ -24,10 +24,10 @@ export default function RootLayout({ children }) {
         magnetic={{ snap: 0.9, padding: 0 }}
         matchTextSize={false}
         style={{ width: 40, height: 40, borderRadius: 200 }}
-        variants={{
-          magnetic: { opacity: 0 },
-        }}
         className="reticule"
+        variants={{
+          pointer: { scale: 1.5 }
+        }}
       />
       <body className={switzer.variable}>
         <Nav />

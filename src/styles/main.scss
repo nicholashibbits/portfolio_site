@@ -194,6 +194,7 @@ body {
 
 .project-item-content {
   padding: 15px;
+
 }
 
 .work-content-wrapper {
@@ -218,7 +219,7 @@ body {
 
 .link-group {
   &-title {
-    font-size: fs(400);
+    font-size: fs(500);
   }
   &:nth-of-type(1) {
     flex-grow: 2;
