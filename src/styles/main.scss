@@ -265,3 +265,21 @@ body {
   transform: translateY(-100%);
   opacity: 0;
 }
+
+.img-container {
+  height: 140dvh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+.img-container h2 {
+  color: $clr-neutral-100;
+  font-size: fs(800);
+  font-weight: $fw-700;
+  // letter-spacing: -3px;
+  // line-height: 1.2;
+}
