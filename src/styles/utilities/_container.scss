@@ -13,7 +13,6 @@
 }
 
 .background-container {
-
   &-2 {
     overflow: hidden;
     z-index: 3;
@@ -21,13 +20,12 @@
 
     @include mq(medium) {
       padding-top: 2rem;
-    height: 120dvh;
+      height: 120dvh;
     }
     @include mq(large) {
       height: 120dvh;
       padding-top: 8rem;
     }
-
   }
   &-3 {
     position: relative;
@@ -41,7 +39,7 @@
 .diagonal {
   position: relative;
   transform: skewY(-5deg);
-  
+
   &::after {
     content: "";
     background-color: $clr-primary-400;
@@ -56,7 +54,7 @@
   }
 
   &:has(.project-item-content:hover)::after {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
 }
 
