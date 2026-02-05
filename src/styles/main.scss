@@ -323,8 +323,9 @@ body {
   height: 160dvh;
   scroll-snap-align: start;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
 }
 
@@ -332,6 +333,7 @@ body {
   color: $clr-neutral-100;
   font-size: fs(800);
   font-weight: $fw-700;
+  position: relative;
   // letter-spacing: -3px;
   // line-height: 1.2;
 }
@@ -353,4 +355,11 @@ body {
 
 .about-text {
   color: $clr-neutral-100;
+  position: absolute;
+  background-color: clr(neutral, 900);
+  border-radius: 15px;
+  right: -12%;
+  bottom: 30%;
+  padding: .5rem 1.5rem;
+  max-width: 650px
 }
