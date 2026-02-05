@@ -25,6 +25,7 @@ npm run lint
 ## Architecture
 
 ### Tech Stack
+
 - **Framework**: Next.js 15 with App Router
 - **React**: Version 19
 - **Animations**: Motion Plus (motion-plus) and Framer Motion (motion/react)
@@ -58,17 +59,20 @@ src/
 ### Key Components
 
 **Layout & Navigation**
+
 - `layout.js`: Root layout includes dual custom cursors via Motion Plus (`<Cursor />`) - a small dot and a larger magnetic reticule. Navigation component is included here.
 - `Nav.jsx`: Full-screen overlay navigation with animated menu items that slide up when opened.
 
 **Page Sections** (composed in `page.js`)
+
 - `Hero.jsx`: Landing section with animated gradient spheres and large title text
 - `About.jsx`: Parallax scroll section with image and text that moves with scroll progress
 - `Work.jsx`: Project showcase grid with hover states managed via shared state
 - `Contact.jsx`: Contact information and footer
 
 **Reusable Components**
-- `GradientSphere.jsx`: Animated SVG gradient orbs with configurable movement patterns ("float" or "water"). Used in Hero and Contact sections with different sizes and positions.
+
+- `AnimatedBlob.jsx`: Animated SVG gradient orbs with configurable movement patterns ("float" or "water"). Used in Hero and Contact sections with different sizes and positions.
 - `ProjectListItem.jsx`: Individual project cards with hover effects and extended descriptions
 - `BackgroundContainer.jsx`: Layout wrapper component
 
@@ -88,10 +92,12 @@ The SCSS follows a modular pattern with clear separation of concerns:
 ### Animation Patterns
 
 **Motion Plus Cursors**: Two-cursor system with magnetic snapping and pointer variants
+
 - Small cursor: Fixed 5x5px dot
 - Reticule: 40x40px circle with magnetic behavior and pointer variant scaling
 
 **Framer Motion Patterns**:
+
 - Gradient spheres use complex multi-keyframe animations with custom easing
 - About section uses `useScroll` and `useTransform` for parallax effects
 - Navigation menu items use CSS keyframe animations with staggered delays
@@ -124,11 +130,13 @@ The SCSS follows a modular pattern with clear separation of concerns:
 ### Performance Best Practices
 
 **In animation frame functions** (`useTransform`, `onUpdate`, etc.):
+
 - Avoid object allocation, prefer mutation where safe
 - Prefer `for` loops over `forEach`/`map`
 - Avoid `Object.entries`, `Object.values` (creates new objects)
 
 **Hardware Acceleration**:
+
 - When animating transforms (`x`, `y`, `scale`, `rotate`, etc.), add `willChange: "transform"` to styles
 - For `opacity`, `clipPath`, `filter`, also add to `willChange`
 - Only ever add these to `willChange`: `transform`, `opacity`, `clipPath`, `filter`
@@ -154,6 +162,7 @@ The SCSS follows a modular pattern with clear separation of concerns:
 ### `useTransform` Syntax
 
 Two current syntaxes (prefer range mapping when possible):
+
 1. Range mapping: `useTransform(value, inputRange, outputRange, options)`
 2. Function: `useTransform(() => otherMotionValue.get() * 2)`
 
