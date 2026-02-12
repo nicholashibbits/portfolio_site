@@ -1,7 +1,21 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useId, useMemo, useState } from "react";
 import { motion } from "motion/react";
+
+// Generate a deterministic seed from a string
+function hashString(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash * 31 + str.charCodeAt(i)) | 0;
+  }
+  return hash;
+}
+
+// Round to 2 decimal places to avoid server/client floating-point mismatches
+function r(n) {
+  return Math.round(n * 100) / 100;
+}
 
 // Generate a blob path with organic, amorphous shape
 function generateBlobPath(cx, cy, baseRadius, points, variance, seed) {
@@ -13,8 +27,8 @@ function generateBlobPath(cx, cy, baseRadius, points, variance, seed) {
     const angle = i * angleStep;
     const randomFactor = seededRandom(seed + i) * 2 - 1;
     const radius = baseRadius + randomFactor * variance;
-    const x = cx + Math.cos(angle) * radius;
-    const y = cy + Math.sin(angle) * radius;
+    const x = r(cx + Math.cos(angle) * radius);
+    const y = r(cy + Math.sin(angle) * radius);
     pathPoints.push({ x, y });
   }
 
@@ -29,10 +43,10 @@ function generateBlobPath(cx, cy, baseRadius, points, variance, seed) {
 
     // Calculate control points for smooth curve
     const tension = 0.3;
-    const cp1x = p1.x + (p2.x - p0.x) * tension;
-    const cp1y = p1.y + (p2.y - p0.y) * tension;
-    const cp2x = p2.x - (p3.x - p1.x) * tension;
-    const cp2y = p2.y - (p3.y - p1.y) * tension;
+    const cp1x = r(p1.x + (p2.x - p0.x) * tension);
+    const cp1y = r(p1.y + (p2.y - p0.y) * tension);
+    const cp2x = r(p2.x - (p3.x - p1.x) * tension);
+    const cp2y = r(p2.y - (p3.y - p1.y) * tension);
 
     path += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
   }
@@ -51,17 +65,20 @@ function AnimatedBlob({
   position = "left",
   movementType = "float",
 }) {
+  // Only render on client to avoid hydration mismatches from Motion's
+  // runtime transform styles and floating-point differences in path generation
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   const viewBoxSize = 540;
   const center = viewBoxSize / 2;
   const baseRadius = 220;
   const numPoints = 8;
   const variance = 60;
 
-  // Generate unique gradient ID for each instance
-  const gradientId = useMemo(
-    () => `blob-gradient-${position}-${Math.random().toString(36).slice(2, 9)}`,
-    [position],
-  );
+  // Generate unique gradient ID for each instance (stable across server/client)
+  const instanceId = useId();
+  const gradientId = `blob-gradient-${position}-${instanceId}`;
 
   // Generate multiple blob path variations for morphing animation
   const blobPaths = useMemo(() => {
@@ -119,24 +136,27 @@ function AnimatedBlob({
     },
   };
 
-  // Random initial offsets for viewport position (generated once on mount)
+  // Deterministic seed based on position for consistent server/client rendering
+  const positionSeed = hashString(position);
+
+  // Deterministic initial offsets for viewport position
   const randomViewportOffset = useMemo(() => {
     const isContact = position.startsWith("contact");
     // Smaller offset for contact section to keep blobs more visible
     const xRange = isContact ? 120 : 300;
     const yRange = isContact ? 80 : 200;
     return {
-      x: Math.round((Math.random() - 0.5) * xRange),
-      y: Math.round((Math.random() - 0.5) * yRange),
+      x: Math.round((seededRandom(positionSeed + 100) - 0.5) * xRange),
+      y: Math.round((seededRandom(positionSeed + 200) - 0.5) * yRange),
     };
-  }, [position]);
+  }, [position, positionSeed]);
 
-  // Random start index for path morphing animation
+  // Deterministic start index for path morphing animation
   const randomPathStartIndex = useMemo(() => {
-    return Math.floor(Math.random() * (blobPaths.length - 1));
-  }, [blobPaths.length]);
+    return Math.floor(seededRandom(positionSeed + 300) * (blobPaths.length - 1));
+  }, [blobPaths.length, positionSeed]);
 
-  // Generate randomized traversal keyframes for organic movement
+  // Generate deterministic traversal keyframes for organic movement
   const randomKeyframes = useMemo(() => {
     const numPoints = 12;
     const xKeys = [0];
@@ -146,11 +166,12 @@ function AnimatedBlob({
     const times = [0];
 
     for (let i = 1; i < numPoints; i++) {
-      // Random values with some directional bias
-      xKeys.push((Math.random() - 0.5) * 2);
-      yKeys.push((Math.random() - 0.5) * 2);
-      rotateKeys.push((Math.random() - 0.5) * 60);
-      scaleKeys.push(0.94 + Math.random() * 0.12);
+      // Deterministic values seeded from position
+      const baseSeed = positionSeed + i * 37;
+      xKeys.push((seededRandom(baseSeed) - 0.5) * 2);
+      yKeys.push((seededRandom(baseSeed + 1000) - 0.5) * 2);
+      rotateKeys.push((seededRandom(baseSeed + 2000) - 0.5) * 60);
+      scaleKeys.push(0.94 + seededRandom(baseSeed + 3000) * 0.12);
       times.push(i / numPoints);
     }
 
@@ -162,7 +183,7 @@ function AnimatedBlob({
     times.push(1);
 
     return { xKeys, yKeys, rotateKeys, scaleKeys, times };
-  }, []);
+  }, [positionSeed]);
 
   // Traversal animation - blobs drift across the screen with randomized paths
   const positionAnimation = useMemo(() => {
@@ -219,6 +240,8 @@ function AnimatedBlob({
       },
     };
   }, [blobPaths, position, randomPathStartIndex]);
+
+  if (!mounted) return null;
 
   return (
     <motion.svg
