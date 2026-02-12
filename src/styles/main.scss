@@ -187,11 +187,11 @@ body {
 
 // PROJECTS
 .project-list {
-  display: grid;
   height: 100%;
   gap: 0.5rem;
 
   @include mq(medium) {
+    display: grid;
     grid-template-columns: 50% 50%;
   }
 }
@@ -222,6 +222,63 @@ body {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.project-item-content-inner {
+  border-style: solid;
+  border-color: currentColor;
+  border-radius: 10px;
+  padding: 20px;
+  border-width: 1px;
+  min-height: 140px;
+  max-height: 170px;
+  overflow: hidden;
+  transition:
+    max-height 0.3s ease,
+    box-shadow 0.3s ease-in-out;
+
+  @include mq(medium) {
+    max-height: 170px;
+  }
+}
+
+.project-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-header {
+  padding: 0;
+  transform-origin: left center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-arrow {
+  width: 2rem;
+  height: 2rem;
+  opacity: 0;
+  transform: translateX(-20px) rotate(-100deg);
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+
+.project-description {
+  transform-origin: left center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-line {
+  margin: 0;
+}
+
+.extended-description {
+  transform: translateY(-40%);
+  opacity: 0;
+  transition:
+    transform 0.5s ease-out,
+    opacity 0.3s ease-in-out;
 }
 
 .work-content-wrapper {
@@ -263,59 +320,6 @@ body {
 
 .footer-call-to-action {
   line-height: 1;
-}
-
-.project-item-content-inner {
-  border-style: solid;
-  border-color: currentColor;
-  border-radius: 10px;
-  padding: 20px;
-  border-width: 1px;
-  min-height: 140px;
-  max-height: 140px;
-  overflow: hidden;
-  transition:
-    max-height 0.3s ease,
-    box-shadow 0.3s ease-in-out;
-}
-
-.project-item-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.card-header {
-  padding: 0;
-  transform-origin: left center;
-  transition: transform 0.3s ease-in-out;
-}
-
-.project-arrow {
-  width: 2rem;
-  height: 2rem;
-  opacity: 0;
-  transform: translateX(-20px) rotate(-100deg);
-  transition:
-    opacity 0.3s ease-in-out,
-    transform 0.3s ease-in-out;
-}
-
-.project-description {
-  transform-origin: left center;
-  transition: transform 0.3s ease-in-out;
-}
-
-.project-line {
-  margin: 0;
-}
-
-.extended-description {
-  transform: translateY(-40%);
-  opacity: 0;
-  transition:
-    transform 0.5s ease-out,
-    opacity 0.3s ease-in-out;
 }
 
 .img-container {
