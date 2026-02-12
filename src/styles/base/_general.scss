@@ -3,6 +3,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -12,6 +13,7 @@ body {
   color: clr(neutral, 900);
   line-height: 1.5;
   position: relative;
+  overflow-x: hidden;
 }
 
 h1,
