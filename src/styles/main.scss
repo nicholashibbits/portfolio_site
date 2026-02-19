@@ -281,6 +281,31 @@ body {
     opacity 0.3s ease-in-out;
 }
 
+.wip {
+  .project-item-content-inner {
+    opacity: 0.35;
+  }
+
+  &:hover .project-item-content-inner {
+    max-height: 170px;
+    box-shadow: none;
+  }
+
+  &:hover .card-header {
+    transform: none;
+  }
+
+  &:hover .project-arrow {
+    opacity: 0;
+    transform: translateX(-20px) rotate(-100deg);
+  }
+
+  &:hover .project-description {
+    transform: none;
+    padding-right: 0;
+  }
+}
+
 .work-content-wrapper {
   height: 120dvh;
 }

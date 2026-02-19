@@ -32,6 +32,18 @@ function Work() {
                   description="Site showcasing my own original electronic music."
                   extendedDescription="Built a static site to promote my music, generate gigs, and faciliate connections. Built with Framer."
                 />
+                <ProjectListItem
+                  project="Topo Tunes"
+                  wip={true}
+                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                  extendedDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+                />
+                <ProjectListItem
+                  project="lil viz"
+                  wip={true}
+                  description="Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+                  extendedDescription="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                />
               </ul>
             </div>
           </div>

@@ -1,8 +1,8 @@
 import React from "react";
 
-function ProjectListItem({ project, description, extendedDescription }) {
+function ProjectListItem({ project, description, extendedDescription, wip = false }) {
   return (
-    <li className="project-item-content">
+    <li className={`project-item-content${wip ? " wip" : ""}`}>
       <div className="project-item-content-inner">
         <div className="project-item-header">
           <h2 className="fs-700 card-header">{project}</h2>
