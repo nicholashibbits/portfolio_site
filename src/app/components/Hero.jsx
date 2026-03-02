@@ -2,11 +2,11 @@
 
 import React, { useMemo } from "react";
 
-import AnimatedBlob from "@/app/components/AnimatedBlob";
+import GradientCircle from "@/app/components/GradientCircle";
 
 function Hero() {
-  // Randomly show 0, 1, or 2 extra blobs on each render
-  const extraBlobs = useMemo(() => {
+  // Randomly show 0, 1, or 2 extra circles on each render
+  const extraCircles = useMemo(() => {
     return {
       showCenter: Math.random() > 0.5,
       showBottom: Math.random() > 0.6,
@@ -20,13 +20,13 @@ function Hero() {
         style={{ position: "relative" }}
       >
         <div className="gradient-sphere-container">
-          <AnimatedBlob size={600} position="left" />
-          <AnimatedBlob size={175} position="right" />
-          {extraBlobs.showCenter && (
-            <AnimatedBlob size={280} position="hero-center" />
+          <GradientCircle size={600} speed="slow" id="hero-left" />
+          <GradientCircle size={175} speed="fast" id="hero-right" />
+          {extraCircles.showCenter && (
+            <GradientCircle size={280} speed="slow" id="hero-center" />
           )}
-          {extraBlobs.showBottom && (
-            <AnimatedBlob size={120} position="hero-bottom" />
+          {extraCircles.showBottom && (
+            <GradientCircle size={120} speed="fast" id="hero-bottom" />
           )}
         </div>
         <div className="hero-content">

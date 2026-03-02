@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useMemo } from "react";
-import AnimatedBlob from "./AnimatedBlob";
+import GradientCircle from "./GradientCircle";
 
 function Contact() {
-  // Randomly show 0, 1, or 2 extra blobs on each render
-  const extraBlobs = useMemo(() => {
+  // Randomly show 0, 1, or 2 extra circles on each render
+  const extraCircles = useMemo(() => {
     return {
       showCenter: Math.random() > 0.5,
       showTop: Math.random() > 0.6,
@@ -18,17 +18,13 @@ function Contact() {
       className="background-container-3"
       style={{ position: "relative" }}
     >
-      <AnimatedBlob size={80} position="contact-left" movementType="water" />
-      <AnimatedBlob size={200} position="contact-right" movementType="water" />
-      {extraBlobs.showCenter && (
-        <AnimatedBlob
-          size={150}
-          position="contact-center"
-          movementType="water"
-        />
+      <GradientCircle size={80} speed="slow" id="contact-left" />
+      <GradientCircle size={200} speed="fast" id="contact-right" />
+      {extraCircles.showCenter && (
+        <GradientCircle size={150} speed="slow" id="contact-center" />
       )}
-      {extraBlobs.showTop && (
-        <AnimatedBlob size={100} position="contact-top" movementType="water" />
+      {extraCircles.showTop && (
+        <GradientCircle size={100} speed="fast" id="contact-top" />
       )}
       <div
         className="container padding-block-96"

@@ -72,7 +72,7 @@ src/
 
 **Reusable Components**
 
-- `AnimatedBlob.jsx`: Animated SVG gradient orbs with configurable movement patterns ("float" or "water"). Used in Hero and Contact sections with different sizes and positions.
+- `GradientCircle.jsx`: Gradient circle with configurable `size` and `speed` ("slow" or "fast") props. Circles meander across the screen in seeded random paths. Used in Hero and Contact sections.
 - `ProjectListItem.jsx`: Individual project cards with hover effects and extended descriptions
 - `BackgroundContainer.jsx`: Layout wrapper component
 
