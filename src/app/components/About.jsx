@@ -34,15 +34,12 @@ function ImageWithText() {
         style={{ y, opacity, willChange: "transform, opacity" }}
         className="about-text"
       >
-        <h2>Sites and Sounds</h2>
+        <h2>Systems thinker, texture obsessive</h2>
         <p>
-          I'm a digital creative specializing in web development and audio
-          engineering. Inspired by the natural world I strive to maintain
-          life-like familiarity in computerized mediums. Either through smooth,
-          physics-based, animations that offer more satisfying UX on a website,
-          or programming swing into rhythmic elements of a track to make it
-          sound more human, I love blurring the lines between organic and
-          digital spaces.
+          I'm a web developer who cares about how digital experiences{" "}
+          <em>feel</em>, not just how they function. I come at design problems
+          from a background in music production, where timing, space, and
+          texture matter as much as structure.
         </p>
       </motion.div>
     </div>
