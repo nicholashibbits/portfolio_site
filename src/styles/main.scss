@@ -390,4 +390,25 @@ body {
   bottom: 30%;
   padding: 0.5rem 1.5rem;
   max-width: 650px;
+
+  .gradient-text {
+    background: linear-gradient(
+      90deg,
+      #9B4DCA 0%,
+      #E8913A 25%,
+      #F5B74C 50%,
+      #E8913A 75%,
+      #9B4DCA 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 100%;
+    background-position: 0% 50%;
+    transition: background-position 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    &:hover {
+      background-position: 100% 50%;
+    }
+  }
 }
