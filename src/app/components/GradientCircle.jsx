@@ -1,6 +1,13 @@
 "use client";
 
-import React, { useEffect, useId, useMemo, useState } from "react";
+import React, {
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { motion } from "motion/react";
 
 // Seeded random for deterministic values
@@ -17,49 +24,105 @@ function hashString(str) {
   return hash;
 }
 
-function GradientCircle({ size = 200, speed = "slow", id = "" }) {
+function GradientCircle({
+  size = 200,
+  speed = "slow",
+  id = "",
+  constrained = false,
+}) {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [containerSize, setContainerSize] = useState(null);
+  const circleRef = useRef(null);
+  const startOffset = useRef(0);
+
+  useEffect(() => {
+    startOffset.current = Math.random();
+
+    const mql = window.matchMedia("(min-width: 65em)");
+    setIsDesktop(mql.matches);
+    setMounted(true);
+
+    const handler = (e) => setIsDesktop(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+
+  // Measure parent container for constrained mode before paint
+  useLayoutEffect(() => {
+    if (mounted && constrained && circleRef.current) {
+      const parent = circleRef.current.parentElement;
+      if (parent) {
+        const rect = parent.getBoundingClientRect();
+        setContainerSize({ width: rect.width, height: rect.height });
+      }
+    }
+  }, [mounted, constrained]);
 
   const instanceId = useId();
-  const gradientId = `circle-gradient-${id}-${instanceId}`;
 
   // Seed from the id prop for deterministic but unique paths per instance
   const seed = hashString(id || instanceId);
 
   // Generate a meandering path with many waypoints
   const keyframes = useMemo(() => {
+    if (!mounted) return { x: [], y: [] };
+    if (constrained && !containerSize) return { x: [], y: [] };
+
     const numPoints = 16;
     const xKeys = [];
     const yKeys = [];
 
-    // Generate wandering waypoints using seeded random
-    // Values are in vw/vh-like percentages that we'll map to pixel offsets
-    for (let i = 0; i < numPoints; i++) {
-      const baseSeed = seed + i * 53;
-      // Wander across a large range: -30vw to +30vw, -20vh to +20vh
-      xKeys.push((seededRandom(baseSeed) - 0.5) * 60);
-      yKeys.push((seededRandom(baseSeed + 1000) - 0.5) * 40);
+    if (constrained && containerSize) {
+      // Constrained mode: wander across the parent container with slight overflow
+      const overflow = 0.15;
+      const xMin = -size * overflow;
+      const xMax = containerSize.width - size + size * overflow;
+      const yMin = -size * overflow;
+      const yMax = containerSize.height - size + size * overflow;
+
+      for (let i = 0; i < numPoints; i++) {
+        const baseSeed = seed + i * 53;
+        xKeys.push(xMin + seededRandom(baseSeed) * (xMax - xMin));
+        yKeys.push(yMin + seededRandom(baseSeed + 1000) * (yMax - yMin));
+      }
+    } else {
+      // Viewport mode: wider range on desktop
+      const xRange = isDesktop ? 90 : 60;
+      const yRange = isDesktop ? 60 : 40;
+
+      for (let i = 0; i < numPoints; i++) {
+        const baseSeed = seed + i * 53;
+        xKeys.push((seededRandom(baseSeed) - 0.5) * xRange);
+        yKeys.push((seededRandom(baseSeed + 1000) - 0.5) * yRange);
+      }
     }
 
+    // Rotate arrays by a random offset so each mount starts at a different point
+    const offset = Math.floor(startOffset.current * numPoints);
+    const xRotated = [...xKeys.slice(offset), ...xKeys.slice(0, offset)];
+    const yRotated = [...yKeys.slice(offset), ...yKeys.slice(0, offset)];
+
     // Close the loop back to start
-    xKeys.push(xKeys[0]);
-    yKeys.push(yKeys[0]);
+    xRotated.push(xRotated[0]);
+    yRotated.push(yRotated[0]);
 
-    // Convert percentages to vw/vh pixel values
-    // Using vw-based units so movement scales with viewport
-    const xVw = xKeys.map((k) => `${k}vw`);
-    const yVh = yKeys.map((k) => `${k}vh`);
+    const unit = constrained ? "px" : "";
 
-    return { xVw, yVh };
-  }, [seed]);
+    return {
+      x: xRotated.map((k) => `${k}${unit || "vw"}`),
+      y: yRotated.map((k) => `${k}${unit || "vh"}`),
+    };
+  }, [seed, isDesktop, constrained, containerSize, size, mounted]);
 
   const duration = speed === "fast" ? 40 : 90;
+  const hasKeyframes = keyframes.x.length > 0;
 
   if (!mounted) return null;
 
   return (
     <motion.div
+      ref={circleRef}
       className="gradient-circle"
       style={{
         width: size,
@@ -71,15 +134,17 @@ function GradientCircle({ size = 200, speed = "slow", id = "" }) {
         zIndex: 1,
         willChange: "transform",
       }}
-      animate={{
-        x: keyframes.xVw,
-        y: keyframes.yVh,
-      }}
-      transition={{
-        duration,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
+      {...(hasKeyframes && {
+        animate: {
+          x: keyframes.x,
+          y: keyframes.y,
+        },
+        transition: {
+          duration,
+          repeat: Infinity,
+          ease: "easeInOut",
+        },
+      })}
     />
   );
 }

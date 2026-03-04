@@ -1,15 +1,19 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import GradientCircle from "./GradientCircle";
 
 function Contact() {
-  // Randomly show 0, 1, or 2 extra circles on each render
-  const extraCircles = useMemo(() => {
-    return {
+  const [extraCircles, setExtraCircles] = useState({
+    showCenter: false,
+    showTop: false,
+  });
+
+  useEffect(() => {
+    setExtraCircles({
       showCenter: Math.random() > 0.5,
       showTop: Math.random() > 0.6,
-    };
+    });
   }, []);
 
   return (
@@ -18,13 +22,13 @@ function Contact() {
       className="background-container-3"
       style={{ position: "relative" }}
     >
-      <GradientCircle size={80} speed="slow" id="contact-left" />
-      <GradientCircle size={200} speed="fast" id="contact-right" />
+      <GradientCircle size={80} speed="slow" id="contact-left" constrained />
+      <GradientCircle size={200} speed="fast" id="contact-right" constrained />
       {extraCircles.showCenter && (
-        <GradientCircle size={150} speed="slow" id="contact-center" />
+        <GradientCircle size={150} speed="slow" id="contact-center" constrained />
       )}
       {extraCircles.showTop && (
-        <GradientCircle size={100} speed="fast" id="contact-top" />
+        <GradientCircle size={100} speed="fast" id="contact-top" constrained />
       )}
       <div
         className="container padding-block-96"

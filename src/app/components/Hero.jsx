@@ -1,16 +1,20 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 
 import GradientCircle from "@/app/components/GradientCircle";
 
 function Hero() {
-  // Randomly show 0, 1, or 2 extra circles on each render
-  const extraCircles = useMemo(() => {
-    return {
+  const [extraCircles, setExtraCircles] = useState({
+    showCenter: false,
+    showBottom: false,
+  });
+
+  useEffect(() => {
+    setExtraCircles({
       showCenter: Math.random() > 0.5,
       showBottom: Math.random() > 0.6,
-    };
+    });
   }, []);
 
   return (
