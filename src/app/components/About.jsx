@@ -6,19 +6,23 @@ import Image from "next/image";
 
 function ImageWithText() {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.3", "end 0.4"],
+  });
 
   const yRaw = useTransform(
     scrollYProgress,
-    [0.15, 0.4, 0.6, 0.9],
-    [200, 0, 0, -150],
+    [0.15, 0.4, 0.7, 0.9, 1],
+    [200, 0, 0, -100, -120],
   );
+
   const y = useSpring(yRaw, { stiffness: 100, damping: 15 });
 
   const opacity = useTransform(
     scrollYProgress,
-    [0.1, 0.2, 0.5, 0.7, 0.8, 0.9],
-    [0, 0.7, 1, 1, 0.5, 0],
+    [0.1, 0.2, 0.6, 0.7, .9, 0.98],
+    [0, 0.7, 1, 1, 1, 0],
   );
 
   return (
@@ -43,7 +47,7 @@ function ImageWithText() {
           >
             feel{" "}
           </span>{" "}
-          not just how they function. I come at design problems from a
+          as much as how they function. I come at design problems from a
           background in music production where timing, space, and texture matter
           as much as structure.
         </p>

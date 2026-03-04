@@ -348,7 +348,7 @@ body {
 }
 
 .img-container {
-  height: 160dvh;
+  height: 180dvh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
@@ -394,11 +394,11 @@ body {
   .gradient-text {
     background: linear-gradient(
       90deg,
-      #9B4DCA 0%,
-      #E8913A 25%,
-      #F5B74C 50%,
-      #E8913A 75%,
-      #9B4DCA 100%
+      #9b4dca 0%,
+      #e8913a 25%,
+      #f5b74c 50%,
+      #e8913a 75%,
+      #9b4dca 100%
     );
     background-clip: text;
     -webkit-background-clip: text;
