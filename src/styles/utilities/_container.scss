@@ -16,15 +16,19 @@
   &-2 {
     overflow: hidden;
     z-index: 3;
-    height: 170dvh;
+    height: 200dvh;
 
     @include mq(medium) {
       padding-top: 2rem;
-      height: 120dvh;
+      height: 200dvh;
     }
     @include mq(large) {
-      height: 120dvh;
+      height: 150dvh;
       padding-top: 8rem;
+    }
+
+    @include mq(xlarge) {
+      height: 130dvh;
     }
   }
   &-3 {
