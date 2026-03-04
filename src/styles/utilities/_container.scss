@@ -16,7 +16,7 @@
   &-2 {
     overflow: hidden;
     z-index: 3;
-    height: 200dvh;
+    height: 220dvh;
 
     @include mq(medium) {
       padding-top: 2rem;

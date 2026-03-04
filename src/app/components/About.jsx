@@ -1,20 +1,32 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import Image from "next/image";
 
 function ImageWithText() {
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 45em)");
+    setIsMobile(mql.matches);
+    const handler = (e) => setIsMobile(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 0.3", "end 0.4"],
   });
 
+  const restY = isMobile ? 160 : 0;
+
   const yRaw = useTransform(
     scrollYProgress,
     [0.15, 0.4, 0.7, 0.9, 1],
-    [200, 0, 0, -100, -120],
+    [200, restY, restY, -100, -120],
   );
 
   const y = useSpring(yRaw, { stiffness: 100, damping: 15 });
@@ -27,13 +39,23 @@ function ImageWithText() {
 
   return (
     <div className="img-container" ref={ref}>
-      <Image
-        src="/orange-headshot.jpg"
-        alt="Nick Hibbits"
-        width={600}
-        height={1000}
-        className="about-image"
-      />
+      <motion.div
+        animate={{ y: [0, -6, 2, -4, 0], x: [0, 3, -2, 4, 0] }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: [0.45, 0, 0.55, 1],
+        }}
+        style={{ willChange: "transform" }}
+      >
+        <Image
+          src="/orange-headshot.jpg"
+          alt="Nick Hibbits"
+          width={600}
+          height={1000}
+          className="about-image"
+        />
+      </motion.div>
       <motion.div
         style={{ y, opacity, willChange: "transform, opacity" }}
         className="about-text"
