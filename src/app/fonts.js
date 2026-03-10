@@ -30,3 +30,25 @@ export const switzer = localFont({
   ],
   variable: "--font-switzer",
 });
+
+export const supreme = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Supreme/Fonts/WEB/fonts/Supreme-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-supreme",
+});
+
+export const nunito = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Nunito/Fonts/WEB/fonts/Nunito-ExtraBold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  variable: "--font-nunito",
+});

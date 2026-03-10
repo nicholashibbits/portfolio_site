@@ -1,4 +1,4 @@
-import { switzer } from "./fonts";
+import { switzer, supreme, nunito } from "./fonts";
 import "../styles/main.scss";
 
 import { Cursor } from "motion-plus/react";
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           pointer: { scale: 1.5 }
         }}
       />
-      <body className={switzer.variable}>
+      <body className={`${switzer.variable} ${supreme.variable} ${nunito.variable}`}>
         <Nav />
         {children}
       </body>
