@@ -1,4 +1,4 @@
-import { switzer, supreme, nunito } from "./fonts";
+import { switzer, supreme } from "./fonts";
 import "../styles/main.scss";
 
 import { Cursor } from "motion-plus/react";
@@ -26,10 +26,10 @@ export default function RootLayout({ children }) {
         style={{ width: 40, height: 40, borderRadius: 200 }}
         className="reticule"
         variants={{
-          pointer: { scale: 1.5 }
+          pointer: { scale: 1.5 },
         }}
       />
-      <body className={`${switzer.variable} ${supreme.variable} ${nunito.variable}`}>
+      <body className={`${switzer.variable} ${supreme.variable}`}>
         <Nav />
         {children}
       </body>

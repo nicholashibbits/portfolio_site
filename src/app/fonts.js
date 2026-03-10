@@ -41,14 +41,3 @@ export const supreme = localFont({
   ],
   variable: "--font-supreme",
 });
-
-export const nunito = localFont({
-  src: [
-    {
-      path: "../../public/fonts/Nunito/Fonts/WEB/fonts/Nunito-ExtraBold.woff2",
-      weight: "800",
-      style: "normal",
-    },
-  ],
-  variable: "--font-nunito",
-});
