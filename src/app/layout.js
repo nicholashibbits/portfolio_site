@@ -1,24 +1,4 @@
-import {
-  switzer,
-  supreme,
-  latoThin,
-  latoLight,
-  latoRegular,
-  latoBold,
-  latoBlack,
-  oxygenLight,
-  oxygenRegular,
-  oxygenBold,
-  poppinsThin,
-  poppinsExtraLight,
-  poppinsLight,
-  poppinsRegular,
-  poppinsMedium,
-  poppinsSemiBold,
-  poppinsBold,
-  poppinsExtraBold,
-  poppinsBlack,
-} from "./fonts";
+import { switzer } from "./fonts";
 import "../styles/main.scss";
 
 import { Cursor } from "motion-plus/react";
@@ -49,9 +29,7 @@ export default function RootLayout({ children }) {
           pointer: { scale: 1.5 },
         }}
       />
-      <body
-        className={`${switzer.variable} ${supreme.variable} ${latoThin.variable} ${latoLight.variable} ${latoRegular.variable} ${latoBold.variable} ${latoBlack.variable} ${oxygenLight.variable} ${oxygenRegular.variable} ${oxygenBold.variable} ${poppinsThin.variable} ${poppinsExtraLight.variable} ${poppinsLight.variable} ${poppinsRegular.variable} ${poppinsMedium.variable} ${poppinsSemiBold.variable} ${poppinsBold.variable} ${poppinsExtraBold.variable} ${poppinsBlack.variable}`}
-      >
+      <body className={`${switzer.variable} `}>
         <Nav />
         {children}
       </body>
