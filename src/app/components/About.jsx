@@ -21,12 +21,12 @@ function ImageWithText() {
     offset: ["start 0.3", "end 0.4"],
   });
 
-  const restY = isMobile ? 160 : 0;
+  const restY = isMobile ? 155 : 0;
 
   const yRaw = useTransform(
     scrollYProgress,
     [0.15, 0.25, 0.4, 0.7, 0.9, 1],
-    [200, 0, restY, restY, -100, -120],
+    [200, restY, restY, restY, -100, -120],
   );
 
   const y = useSpring(yRaw, { stiffness: 100, damping: 15 });
