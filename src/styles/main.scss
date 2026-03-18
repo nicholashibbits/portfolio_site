@@ -348,13 +348,17 @@ body {
 }
 
 .img-container {
-  height: 180dvh;
+  height: 120dvh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   position: relative;
+}
+
+.img-wrapper {
+  padding-bottom: 12rem;
 }
 
 .img-container h2 {
