@@ -389,6 +389,17 @@ body {
   object-fit: cover;
 }
 
+.filler {
+  &-1 {
+    // border: solid 1px red;
+    height: 50rem;
+  }
+  &-2 {
+    // border: solid 1px red;
+    height: 20rem;
+  }
+}
+
 .about-text {
   color: $clr-neutral-100;
   position: absolute;

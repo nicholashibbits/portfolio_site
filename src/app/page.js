@@ -9,7 +9,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <About />
+      <div className="filler-container">
+        <div className="filler-1" />
+        <About />
+        <div className="filler-2" />
+      </div>
       <Work />
       <Contact />
     </>
