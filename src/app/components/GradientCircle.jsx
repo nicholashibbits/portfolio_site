@@ -128,7 +128,7 @@ function GradientCircle({
         width: size,
         height: size,
         borderRadius: "50%",
-        background: `linear-gradient(135deg, #001236 0%, #340242 10.5%, #DB761D 100%)`,
+        background: `linear-gradient(135deg, #001236 0%, #340242 10.5%, var(--sphere-primary, #DB761D) 100%)`,
         position: "absolute",
         pointerEvents: "none",
         zIndex: 1,

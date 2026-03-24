@@ -3,6 +3,13 @@
 @use "layout";
 @use "utilities";
 
+:root {
+  --clr-primary: #db761d;
+  --gradient-stop-1: #e8913a;
+  --gradient-stop-2: #f5b74c;
+  --sphere-primary: #db761d;
+}
+
 body {
   background-color: $clr-neutral-900;
 }
@@ -389,6 +396,29 @@ body {
   object-fit: cover;
 }
 
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 9999;
+  background-color: transparent;
+  border: 1px solid $clr-neutral-100;
+  color: $clr-neutral-100;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: fs(300);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  &:hover {
+    background-color: $clr-neutral-100;
+    color: $clr-neutral-900;
+  }
+}
+
 .filler {
   &-1 {
     // border: solid 1px red;
@@ -418,9 +448,9 @@ body {
     background: linear-gradient(
       90deg,
       #9b4dca 0%,
-      #e8913a 25%,
-      #f5b74c 50%,
-      #e8913a 75%,
+      var(--gradient-stop-1) 25%,
+      var(--gradient-stop-2) 50%,
+      var(--gradient-stop-1) 75%,
       #9b4dca 100%
     );
     background-clip: text;

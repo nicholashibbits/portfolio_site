@@ -3,6 +3,7 @@ import "../styles/main.scss";
 
 import { Cursor } from "motion-plus/react";
 import Nav from "@/app/components/Nav";
+import ThemeToggle from "@/app/components/ThemeToggle";
 
 export const metadata = {
   title: "Nick Hibbits",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
         }}
       />
       <body className={`${switzer.variable} `}>
+        <ThemeToggle />
         <Nav />
         {children}
       </body>
