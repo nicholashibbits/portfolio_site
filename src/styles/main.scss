@@ -72,6 +72,36 @@ body {
     z-index: -1;
     pointer-events: none;
   }
+
+  &__glow {
+    position: absolute;
+    inset: 0 0 -15% 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      var(--clr-primary) 30%,
+      transparent 60%
+    );
+    background-size: 100% 300%;
+    animation: glow-sweep 8s ease-in-out infinite;
+    mask-image: url("/Texture-1.png");
+    mask-repeat: repeat;
+    mask-size: auto;
+  }
+}
+
+@keyframes glow-sweep {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 .filler {

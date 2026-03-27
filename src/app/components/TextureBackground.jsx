@@ -11,7 +11,7 @@ export default function TextureBackground({ children }) {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
   return (
     <div className="texture-bg" ref={ref}>
@@ -19,6 +19,7 @@ export default function TextureBackground({ children }) {
         className="texture-bg__layer"
         style={{ y, willChange: "transform" }}
       />
+      <div className="texture-bg__glow" />
       {children}
     </div>
   );
