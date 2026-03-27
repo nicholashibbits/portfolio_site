@@ -57,7 +57,7 @@
     transition: transform 0.3s ease-in-out;
   }
 
-  &:has(.project-item-content:hover)::after {
+  &:has(.project-item-content:not(.wip):hover)::after {
     transform: scale(1.01);
   }
 }

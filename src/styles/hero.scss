@@ -28,6 +28,10 @@
   position: relative;
 }
 
+.backlayer {
+  @include container-z-layer(1);
+}
+
 @keyframes hero-primary-scroll {
   0% {
     transform: translateX(100vw);

@@ -61,17 +61,18 @@ function ImageWithText() {
           style={{ y, opacity, willChange: "transform, opacity" }}
           className="about-text"
         >
-          <h2>Sound check </h2>
+          <h2>About</h2>
           <p>
-            I'm a web developer who cares about how digital experiences{" "}
+            Hey I'm Nick, I build for the web. I care about how digital
+            experiences{" "}
             <span
               className="gradient-text fs-500"
               style={{ fontStyle: "italic" }}
             >
               feel{" "}
             </span>{" "}
-            as much as how they function. I come at design problems from a
-            background in music production where timing, space, and texture
+            as much as how they function. Coming at design problems from a
+            background in music production I understand timing, space, and texture
             matter as much as structure.
           </p>
         </motion.div>
