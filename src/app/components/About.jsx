@@ -55,6 +55,7 @@ function ImageWithText() {
             width={600}
             height={1000}
             className="about-image"
+            style={{ width: "100%", height: "auto" }}
           />
         </motion.div>
         <motion.div
