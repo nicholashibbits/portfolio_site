@@ -16,10 +16,12 @@ export default function TextureBackground({ children }) {
   return (
     <div className="texture-bg" ref={ref}>
       <motion.div
-        className="texture-bg__layer"
+        className="texture-bg__layers"
         style={{ y, willChange: "transform" }}
-      />
-      <div className="texture-bg__glow" />
+      >
+        <div className="texture-bg__layer" />
+        <div className="texture-bg__glow-layer" />
+      </motion.div>
       {children}
     </div>
   );
