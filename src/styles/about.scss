@@ -1,0 +1,79 @@
+@use "abstracts" as *;
+
+.img-container {
+  height: 100dvh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+
+  @include mq(medium) {
+    height: 120dvh;
+  }
+}
+
+.img-wrapper {
+  padding-bottom: 12rem;
+}
+
+.img-container h2 {
+  color: $clr-neutral-100;
+  font-size: fs(800);
+  font-weight: $fw-700;
+  position: relative;
+  // letter-spacing: -3px;
+  // line-height: 1.2;
+}
+
+.about-image {
+  // Preserve aspect ratio while controlling size
+  // Option 1: Control width, height auto-adjusts
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+
+  // height: auto;
+
+  // Make image circular
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.about-text {
+  color: $clr-neutral-100;
+  position: absolute;
+  background-color: clr(neutral, 900);
+  border-radius: 15px;
+  right: 0;
+  bottom: 30%;
+  padding: 0.5rem 1.5rem;
+  max-width: 650px;
+
+  @include mq(large) {
+    right: -12%;
+  }
+
+  .gradient-text {
+    background: linear-gradient(
+      90deg,
+      #9b4dca 0%,
+      var(--gradient-stop-1) 25%,
+      var(--gradient-stop-2) 50%,
+      var(--gradient-stop-1) 75%,
+      #9b4dca 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 100%;
+    background-position: 0% 50%;
+    transition: background-position 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    &:hover {
+      background-position: 100% 50%;
+    }
+  }
+}

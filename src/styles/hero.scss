@@ -1,0 +1,59 @@
+@use "abstracts" as *;
+
+.hero {
+  min-height: 150dvh;
+  overflow: hidden;
+
+  &-title {
+    color: #fff;
+    font-size: clamp(6rem, 25vw, 15rem);
+    font-weight: 900;
+    position: relative;
+    z-index: 3;
+    padding: 0 0 18rem 0rem;
+    animation: hero-title-flicker 1.2s ease-in-out;
+
+    @include mq(medium) {
+      padding: 0 0 8rem 0rem;
+    }
+
+    @include mq(large) {
+      padding-right: 25rem;
+    }
+  }
+}
+
+.hero-content {
+  width: 100%;
+  position: relative;
+}
+
+@keyframes hero-primary-scroll {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-150%);
+  }
+}
+
+@keyframes hero-title-flicker {
+  0% {
+    opacity: 1;
+  }
+  5.33% {
+    opacity: 0;
+  }
+  10.33% {
+    opacity: 1;
+  }
+  20.66% {
+    opacity: 0;
+  }
+  70.33% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}

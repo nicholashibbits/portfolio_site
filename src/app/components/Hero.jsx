@@ -23,7 +23,7 @@ function Hero() {
         className=" hero flex flex-justify-center flex-align-center"
         style={{ position: "relative" }}
       >
-        <div className="gradient-sphere-container">
+        <div className="backlayer">
           <GradientCircle size={600} speed="slow" id="hero-left" />
           <GradientCircle size={175} speed="fast" id="hero-right" />
           {extraCircles.showCenter && (
