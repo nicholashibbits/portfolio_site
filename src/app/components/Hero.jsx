@@ -18,7 +18,7 @@ function Hero() {
   }, []);
 
   return (
-    <div id="home" className=" bg-neutral-900 text-clr-light">
+    <div id="home" className=" text-clr-light">
       <div
         className=" hero flex flex-justify-center flex-align-center"
         style={{ position: "relative" }}
