@@ -9,6 +9,12 @@ function Nav() {
     setIsOpen(!isOpen);
   };
 
+  const handleAnchorClick = (e, id) => {
+    e.preventDefault();
+    setIsOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <button
@@ -22,17 +28,17 @@ function Nav() {
       <nav className={`nav ${isOpen ? "nav--open" : ""}`}>
         <ul className="nav-list container flex flex-column">
           <li className="nav-item">
-            <a href="#about" onClick={() => setIsOpen(false)}>
+            <a href="#about" onClick={(e) => handleAnchorClick(e, "about")}>
               ABOUT
             </a>
           </li>
           <li className="nav-item">
-            <a href="#work" onClick={() => setIsOpen(false)}>
+            <a href="#work" onClick={(e) => handleAnchorClick(e, "work")}>
               WORK
             </a>
           </li>
           <li className="nav-item">
-            <a href="#contact" onClick={() => setIsOpen(false)}>
+            <a href="#contact" onClick={(e) => handleAnchorClick(e, "contact")}>
               CONTACT
             </a>
           </li>

@@ -75,10 +75,30 @@ function Contact() {
               <span className="link-group-title fs-600 fw-light">/GO TO</span>
               <ul className="flex flex-column fw-normal">
                 <li>
-                  <a href="#home">Home</a>
+                  <a
+                    href="#home"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("home")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    Home
+                  </a>
                 </li>
                 <li>
-                  <a href="#work">Work</a>
+                  <a
+                    href="#work"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("work")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    Work
+                  </a>
                 </li>
               </ul>
             </li>
