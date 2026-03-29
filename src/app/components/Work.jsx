@@ -23,26 +23,28 @@ function Work() {
                   extendedDescription="Performed software development on a web-app offering customer relation services to gig photographers. Built using React.js and Supabase."
                 />
                 <ProjectListItem
-                  project="Clarity Dose"
-                  description="An online platform featuring a live radio show, music label, blog, and merch shop."
-                  extendedDescription="Crafted a full-stack application to connect artists and share my favorite music. Built with Next.js."
+                  project="NHIBIT Music"
+                  wip={true}
+                  description="original tracks and mixes "
+                  extendedDescription=""
                 />
                 <ProjectListItem
-                  project="NHIBIT Music"
-                  description="Site showcasing my own original electronic music."
-                  extendedDescription="Built a static site to promote my music, generate gigs, and faciliate connections. Built with Framer."
+                  project="Clarity Dose"
+                  wip="true"
+                  description="Interactive electronic music platform"
+                  extendedDescription=""
                 />
                 <ProjectListItem
                   project="Topo Tunes"
                   wip={true}
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                  extendedDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+                  description="Discover current popular music from around the world "
+                  extendedDescription=""
                 />
                 <ProjectListItem
                   project="lil viz"
                   wip={true}
-                  description="Ut enim ad minim veniam, quis nostrud exercitation ullamco."
-                  extendedDescription="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                  description="custom sound visualizer"
+                  extendedDescription=""
                 />
               </ul>
             </div>
