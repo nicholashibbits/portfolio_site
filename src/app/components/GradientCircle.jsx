@@ -29,6 +29,10 @@ function GradientCircle({
   speed = "slow",
   id = "",
   constrained = false,
+  xMin,
+  xMax,
+  yMin,
+  yMax,
 }) {
   const [mounted, setMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -76,25 +80,27 @@ function GradientCircle({
     if (constrained && containerSize) {
       // Constrained mode: wander across the parent container with slight overflow
       const overflow = 0.15;
-      const xMin = -size * overflow;
-      const xMax = containerSize.width - size + size * overflow;
-      const yMin = -size * overflow;
-      const yMax = containerSize.height - size + size * overflow;
+      const cxMin = -size * overflow;
+      const cxMax = containerSize.width - size + size * overflow;
+      const cyMin = -size * overflow;
+      const cyMax = containerSize.height - size + size * overflow;
 
       for (let i = 0; i < numPoints; i++) {
         const baseSeed = seed + i * 53;
-        xKeys.push(xMin + seededRandom(baseSeed) * (xMax - xMin));
-        yKeys.push(yMin + seededRandom(baseSeed + 1000) * (yMax - yMin));
+        xKeys.push(cxMin + seededRandom(baseSeed) * (cxMax - cxMin));
+        yKeys.push(cyMin + seededRandom(baseSeed + 1000) * (cyMax - cyMin));
       }
     } else {
-      // Viewport mode: wider range on desktop
-      const xRange = isDesktop ? 90 : 60;
-      const yRange = isDesktop ? 60 : 40;
+      // Viewport mode: range in vw/vh units
+      const xLo = xMin ?? (isDesktop ? -45 : -30);
+      const xHi = xMax ?? (isDesktop ? 45 : 30);
+      const yLo = yMin ?? (isDesktop ? -30 : -20);
+      const yHi = yMax ?? (isDesktop ? 30 : 20);
 
       for (let i = 0; i < numPoints; i++) {
         const baseSeed = seed + i * 53;
-        xKeys.push((seededRandom(baseSeed) - 0.5) * xRange);
-        yKeys.push((seededRandom(baseSeed + 1000) - 0.5) * yRange);
+        xKeys.push(xLo + seededRandom(baseSeed) * (xHi - xLo));
+        yKeys.push(yLo + seededRandom(baseSeed + 1000) * (yHi - yLo));
       }
     }
 
@@ -113,7 +119,7 @@ function GradientCircle({
       x: xRotated.map((k) => `${k}${unit || "vw"}`),
       y: yRotated.map((k) => `${k}${unit || "vh"}`),
     };
-  }, [seed, isDesktop, constrained, containerSize, size, mounted]);
+  }, [seed, isDesktop, constrained, containerSize, size, mounted, xMin, xMax, yMin, yMax]);
 
   const duration = speed === "fast" ? 40 : 90;
   const hasKeyframes = keyframes.x.length > 0;

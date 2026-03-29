@@ -6,15 +6,30 @@ import GradientCircle from "@/app/components/GradientCircle";
 
 function Hero() {
   const [extraCircles, setExtraCircles] = useState({
-    showCenter: false,
     showBottom: false,
   });
+  const [isMediumUp, setIsMediumUp] = useState(false);
+  const [isLargeUp, setIsLargeUp] = useState(false);
 
   useEffect(() => {
     setExtraCircles({
       showCenter: Math.random() > 0.5,
       showBottom: Math.random() > 0.6,
     });
+
+    const mediumMql = window.matchMedia("(min-width: 45em)");
+    const largeMql = window.matchMedia("(min-width: 65em)");
+    setIsMediumUp(mediumMql.matches);
+    setIsLargeUp(largeMql.matches);
+
+    const mediumHandler = (e) => setIsMediumUp(e.matches);
+    const largeHandler = (e) => setIsLargeUp(e.matches);
+    mediumMql.addEventListener("change", mediumHandler);
+    largeMql.addEventListener("change", largeHandler);
+    return () => {
+      mediumMql.removeEventListener("change", mediumHandler);
+      largeMql.removeEventListener("change", largeHandler);
+    };
   }, []);
 
   return (
@@ -24,13 +39,36 @@ function Hero() {
         style={{ position: "relative" }}
       >
         <div className="backlayer">
-          <GradientCircle size={600} speed="slow" id="hero-left" />
-          <GradientCircle size={175} speed="fast" id="hero-right" />
-          {extraCircles.showCenter && (
-            <GradientCircle size={280} speed="slow" id="hero-center" />
+          {isMediumUp && (
+            <GradientCircle
+              size={600}
+              speed="slow"
+              id="hero-left"
+              xMin={-5}
+              xMax={isLargeUp ? 60 : 40}
+              yMin={-5}
+              yMax={40}
+            />
           )}
+          <GradientCircle
+            size={175}
+            speed="fast"
+            id="hero-right"
+            xMin={-5}
+            xMax={isLargeUp ? 80 : 55}
+            yMin={-5}
+            yMax={55}
+          />
           {extraCircles.showBottom && (
-            <GradientCircle size={120} speed="fast" id="hero-bottom" />
+            <GradientCircle
+              size={120}
+              speed="fast"
+              id="hero-bottom"
+              xMin={-5}
+              xMax={isLargeUp ? 85 : 60}
+              yMin={-5}
+              yMax={60}
+            />
           )}
         </div>
         <div className="hero-content">
