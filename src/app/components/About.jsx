@@ -25,16 +25,16 @@ function ImageWithText() {
 
   const yRaw = useTransform(
     scrollYProgress,
-    [0.15, 0.25, 0.4, 0.7, 0.9, 1],
-    [200, restY, restY, restY, -100, -120],
+    [0.15, 0.25, 0.4],
+    [200, restY, restY],
   );
 
   const y = useSpring(yRaw, { stiffness: 100, damping: 15 });
 
   const opacity = useTransform(
     scrollYProgress,
-    [0.1, 0.2, 0.6, 0.7, 0.9, 0.98],
-    [0, 0.9, 1, 1, 1, 0],
+    [0.1, 0.2, 0.6],
+    [0, 0.9, 1],
   );
 
   return (

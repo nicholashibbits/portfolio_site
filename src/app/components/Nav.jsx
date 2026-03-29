@@ -12,7 +12,10 @@ function Nav() {
   const handleAnchorClick = (e, id) => {
     e.preventDefault();
     setIsOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (el) {
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
+    }
   };
 
   return (
