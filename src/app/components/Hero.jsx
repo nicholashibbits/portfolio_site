@@ -1,10 +1,28 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 import GradientCircle from "@/app/components/GradientCircle";
 
 function Hero() {
+  const heroRef = useRef(null);
+  const heroMetrics = useRef({ bottom: 0, ready: false });
+  const { scrollY } = useScroll();
+
+  const titleY = useTransform(() => {
+    const y = scrollY.get();
+    // Very slow parallax — title moves at 15% of scroll speed
+    // then releases after 20rem (320px) of visual travel
+    const parallaxSpeed = 0.7;
+    const maxOffset = 520;
+    const offset = y * parallaxSpeed;
+    if (offset <= maxOffset) {
+      return offset;
+    }
+    return maxOffset;
+  });
+
   const [extraCircles, setExtraCircles] = useState({
     showBottom: false,
   });
@@ -12,6 +30,14 @@ function Hero() {
   const [isLargeUp, setIsLargeUp] = useState(false);
 
   useEffect(() => {
+    const el = heroRef.current;
+    if (el) {
+      heroMetrics.current = {
+        bottom: el.offsetTop + el.offsetHeight,
+        ready: true,
+      };
+    }
+
     setExtraCircles({
       showCenter: Math.random() > 0.5,
       showBottom: Math.random() > 0.6,
@@ -35,6 +61,7 @@ function Hero() {
   return (
     <div id="home" className=" text-clr-light">
       <div
+        ref={heroRef}
         className=" hero flex flex-justify-center flex-align-center"
         style={{ position: "relative" }}
       >
@@ -71,9 +98,12 @@ function Hero() {
             />
           )}
         </div>
-        <div className="hero-content">
+        <motion.div
+          className="hero-content"
+          style={{ y: titleY, willChange: "transform" }}
+        >
           <h1 className="hero-title fw-700">NICK HIBBITS</h1>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

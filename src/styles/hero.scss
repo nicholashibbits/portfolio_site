@@ -2,7 +2,6 @@
 
 .hero {
   min-height: 150svh;
-  overflow: hidden;
 
   &-title {
     color: #fff;
@@ -26,10 +25,12 @@
 .hero-content {
   width: 100%;
   position: relative;
+  z-index: 2;
 }
 
 .backlayer {
   @include container-z-layer(1);
+  overflow: hidden;
 }
 
 @keyframes hero-primary-scroll {

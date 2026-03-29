@@ -83,7 +83,7 @@ body {
 
   &__glow-layer {
     position: absolute;
-    inset: -10px 0 50px 0;
+    inset: -10px 1000px 0 0;
     background-color: var(--clr-primary);
     mask-image: url("/Texture-1.png");
     mask-repeat: repeat;
@@ -128,7 +128,7 @@ body {
 .filler {
   &-1 {
     // border: solid 1px red;
-    height: 50rem;
+    height: 135rem;
   }
   &-2 {
     // border: solid 1px red;
