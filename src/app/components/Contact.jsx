@@ -25,7 +25,12 @@ function Contact() {
       <GradientCircle size={80} speed="slow" id="contact-left" constrained />
       <GradientCircle size={200} speed="fast" id="contact-right" constrained />
       {extraCircles.showCenter && (
-        <GradientCircle size={150} speed="slow" id="contact-center" constrained />
+        <GradientCircle
+          size={150}
+          speed="slow"
+          id="contact-center"
+          constrained
+        />
       )}
       {extraCircles.showTop && (
         <GradientCircle size={100} speed="fast" id="contact-top" constrained />
@@ -57,7 +62,7 @@ function Contact() {
                 </li>
                 <li>
                   <a
-                    href="/Nicholas_Hibbits_Resume_2026.pdf"
+                    href="/Nicholas_Hibbits_Resume_2026_01.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

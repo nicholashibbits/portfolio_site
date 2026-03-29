@@ -37,7 +37,12 @@ function Nav() {
             </a>
           </li>
           <li className="nav-item">
-            <a href="/Nicholas_Hibbits_Resume_2026.pdf" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+            <a
+              href="/Nicholas_Hibbits_Resume_2026_01.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsOpen(false)}
+            >
               RESUME
             </a>
           </li>
