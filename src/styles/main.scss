@@ -84,10 +84,6 @@ body {
   &__glow-layer {
     position: absolute;
     inset: -10px 0 0 -100px;
-
-    @include mq(large) {
-      inset: -10px 0 0 -50px;
-    }
     background-color: var(--clr-primary);
     mask-image: url("/Texture-1.png");
     mask-repeat: repeat;
@@ -98,6 +94,7 @@ body {
     animation: glow-pulse 6.9s ease-in-out infinite;
 
     @include mq(large) {
+      inset: -10px 0 0 -50px;
       mask-image: linear-gradient(to right, black calc(100% - 150px), transparent),
         url("/Texture-1.png");
       mask-repeat: no-repeat, repeat;
