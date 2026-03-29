@@ -1,7 +1,7 @@
 @use "abstracts" as *;
 
 .img-container {
-  height: 100dvh;
+  height: 100svh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
   position: relative;
 
   @include mq(medium) {
-    height: 120dvh;
+    height: 120svh;
   }
 }
 
