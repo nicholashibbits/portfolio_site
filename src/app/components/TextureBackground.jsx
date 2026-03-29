@@ -21,6 +21,7 @@ export default function TextureBackground({ children }) {
       >
         <div className="texture-bg__layer" />
         <div className="texture-bg__glow-layer" />
+        <div className="texture-bg__glow-layer texture-bg__glow-layer--ext" />
       </motion.div>
       {children}
     </div>
