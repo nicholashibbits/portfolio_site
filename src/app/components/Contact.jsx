@@ -97,7 +97,7 @@ function Contact() {
                         ?.scrollIntoView({ behavior: "smooth" });
                     }}
                   >
-                    Work
+                    Projects
                   </a>
                 </li>
               </ul>

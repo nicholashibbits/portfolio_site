@@ -40,7 +40,7 @@ function Nav() {
           </li>
           <li className="nav-item">
             <a href="#work" onClick={(e) => handleAnchorClick(e, "work")}>
-              WORK
+              PROJECTS
             </a>
           </li>
           <li className="nav-item">

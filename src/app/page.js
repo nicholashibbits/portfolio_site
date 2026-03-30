@@ -12,7 +12,6 @@ export default function Home() {
       <TextureBackground>
         <Hero />
         <div className="filler-container">
-          <div className="filler-1" />
           <About />
           <div className="filler-2" />
         </div>

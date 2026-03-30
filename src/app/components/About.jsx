@@ -60,7 +60,7 @@ function ImageWithText() {
         >
           <h2>About</h2>
           <h3>Code | Music | Mind</h3>
-          <p>
+          <div className="about-subtitle-wrapper">
             <span
               className="gradient-text fs-400"
               style={{ fontStyle: "italic" }}
@@ -68,21 +68,20 @@ function ImageWithText() {
               Feeling{" "}
             </span>{" "}
             matters as much as<code className="fs-300">function</code>
-          </p>
+          </div>
           <p className="padding-block-8">
-            On the web or in music, my favorite moments are in the details: the
-            tactile animation of a button when clicked, a subtle element in a
-            song that's not the focus but changes the mood entirely.
+            On the web or in music, my favorite moments are in the details: a subtle element in a
+            song that's not the focus but changes the mood entirely, or the
+            tactile animation of a button when clicked.
           </p>
           <p>
             Coming at design problems from a background in music production and
-            DJing, I understand timing, space, and texture matter as much as
-            structure.
+            DJing, timing, space, and texture matter as much as structure.
           </p>
           <p className="padding-block-8">
-            This site is my "brain map" 🧠 🧭 -- a central place to share
-            projects from my endeavors in programming and music, as well as
-            thoughts on topics of personal interest.
+            This site is a central place to share projects from my endeavors in
+            programming and music, as well as thoughts on topics of personal
+            interest.
           </p>
         </motion.div>
       </div>

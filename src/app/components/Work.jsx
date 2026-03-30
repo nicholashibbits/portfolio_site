@@ -8,7 +8,7 @@ function Work() {
       <div className="work-content-wrapper">
         <div className="container work-container">
           <div className="padding-block-128">
-            <h1 className="padding-block-end-16">Work</h1>
+            <h1 className="padding-block-end-16">Projects</h1>
 
             <div className="project-wrapper">
               <ul className="project-list">
