@@ -7,6 +7,7 @@
 @use "projects";
 @use "about";
 @use "contact";
+@use "texture-background";
 
 :root {
   --clr-primary: #db761d;
@@ -55,107 +56,5 @@ body {
   &:active {
     background-color: $clr-neutral-100;
     color: $clr-neutral-900;
-  }
-}
-
-.texture-bg {
-  background-color: $clr-neutral-900;
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
-
-  &__layers {
-    position: absolute;
-    inset: 0 0 -15% 0;
-    z-index: -1;
-    pointer-events: none;
-  }
-
-  &__layer {
-    position: absolute;
-    inset: 0;
-    background-image: url("/Texture-1.png");
-    background-repeat: repeat;
-    background-size: auto;
-    will-change: opacity;
-    animation: texture-breathe 9.2s ease-in-out infinite;
-  }
-
-  &__glow-layer {
-    position: absolute;
-    inset: -10px 0 0 -100px;
-    background-color: var(--clr-primary);
-    mask-image: url("/Texture-1.png");
-    mask-repeat: repeat;
-    mask-size: auto;
-    transform: rotate(5deg) scale(1.3);
-    transform-origin: 30% 40%;
-    will-change: opacity;
-    animation: glow-pulse 6.9s ease-in-out infinite;
-
-    @include mq(large) {
-      inset: -10px 0 0 -50px;
-      mask-image: linear-gradient(to right, black calc(100% - 150px), transparent),
-        url("/Texture-1.png");
-      mask-repeat: no-repeat, repeat;
-      mask-size: 100% 100%, auto;
-      mask-composite: intersect;
-    }
-
-    &--ext {
-      display: none;
-      inset: -10px 0 0 calc(100% - 1000px);
-      animation-delay: 3.45s;
-
-      @include mq(large) {
-        display: block;
-        mask-image: linear-gradient(to left, black calc(100% - 150px), transparent),
-          url("/Texture-1.png");
-        mask-repeat: no-repeat, repeat;
-        mask-size: 100% 100%, auto;
-        mask-composite: intersect;
-      }
-    }
-  }
-}
-
-@keyframes texture-breathe {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.9;
-  }
-
-  75% {
-    opacity: 0.8;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes glow-pulse {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.9;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-.filler {
-  &-1 {
-    // border: solid 1px red;
-    height: 135rem;
-  }
-  &-2 {
-    // border: solid 1px red;
-    height: 20rem;
   }
 }
