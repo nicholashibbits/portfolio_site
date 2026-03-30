@@ -62,7 +62,7 @@ function Contact() {
                 </li>
                 <li>
                   <a
-                    href="/Nicholas_Hibbits_Resume_2026_01.pdf"
+                    href="/Nicholas_Hibbits_Resume_2026.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

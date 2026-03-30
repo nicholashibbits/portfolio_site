@@ -14,7 +14,10 @@ function Nav() {
     setIsOpen(false);
     const el = document.getElementById(id);
     if (el) {
-      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
+      window.scrollTo({
+        top: el.getBoundingClientRect().top + window.scrollY,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -47,7 +50,7 @@ function Nav() {
           </li>
           <li className="nav-item">
             <a
-              href="/Nicholas_Hibbits_Resume_2026_01.pdf"
+              href="/Nicholas_Hibbits_Resume_2026.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
