@@ -21,7 +21,7 @@ function ImageWithText() {
     offset: ["start 0.3", "end 0.4"],
   });
 
-  const restY = isMobile ? 430 : 0;
+  const restY = isMobile ? 470 : 0;
 
   const yRaw = useTransform(
     scrollYProgress,
@@ -75,13 +75,14 @@ function ImageWithText() {
             song that's not the focus but changes the mood entirely.
           </p>
           <p>
-            Coming at design problems from a background in music production and DJing, I
-            understand timing, space, and texture matter as much as structure.
+            Coming at design problems from a background in music production and
+            DJing, I understand timing, space, and texture matter as much as
+            structure.
           </p>
           <p className="padding-block-8">
-            This site serves as a hub to showcase my projects in web development
-            and music, as well as share my thoughts on topics I'm thinking
-            about.
+            This site is my "brain map" 🧠 🧭 -- a central place to share
+            projects from my endeavors in programming and music, as well as
+            thoughts on topics of personal interest.
           </p>
         </motion.div>
       </div>
