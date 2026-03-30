@@ -59,8 +59,8 @@ function ImageWithText() {
           className="about-text"
         >
           <h2>About</h2>
-          <h3 className="padding-block-4">Code | Music | Mind</h3>
-          <p className="padding-top-4">
+          <h3>Code | Music | Mind</h3>
+          <p>
             <span
               className="gradient-text fs-400"
               style={{ fontStyle: "italic" }}
@@ -70,15 +70,17 @@ function ImageWithText() {
             matters as much as<code className="fs-300">function</code>
           </p>
           <p className="padding-block-8">
-            My favorite moments on the web or in music are always in the
-            details: the tactile animation of a button when clicked, a subtle
-            element in the background of a song that changes the mood entirely.
-            {/* Coming at design problems from a background in music I
-            understand timing, space, and texture matter as much as structure. */}
+            On the web or in music, my favorite moments are in the details: the
+            tactile animation of a button when clicked, a subtle element in the
+            background of a song that changes the mood entirely.
           </p>
           <p>
-            This site serves as a hub to showcase my work in web development and
-            music, as well as share my thoughts on certain topics I'm thinking
+            Coming at design problems from a background in music production, I
+            understand timing, space, and texture matter as much as structure.
+          </p>
+          <p className="padding-block-8">
+            This site serves as a hub to showcase my projects in web development
+            and music, as well as share my thoughts on topics I'm thinking
             about.
           </p>
         </motion.div>
