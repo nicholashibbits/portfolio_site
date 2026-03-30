@@ -55,6 +55,12 @@
     right: -12%;
   }
 
+  code {
+    font-family: monospace;
+    padding: 0.1em 0.2em;
+    color: var(--clr-primary);
+  }
+
   .gradient-text {
     background: linear-gradient(
       90deg,

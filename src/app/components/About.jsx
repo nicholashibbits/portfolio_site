@@ -31,11 +31,7 @@ function ImageWithText() {
 
   const y = useSpring(yRaw, { stiffness: 100, damping: 30 });
 
-  const opacity = useTransform(
-    scrollYProgress,
-    [0.1, 0.2, 0.6],
-    [0, 0.9, 1],
-  );
+  const opacity = useTransform(scrollYProgress, [0.1, 0.2, 0.6], [0, 0.9, 1]);
 
   return (
     <div className="img-container" ref={ref}>
@@ -63,18 +59,23 @@ function ImageWithText() {
           className="about-text"
         >
           <h2>About</h2>
-          <p>
-            Hey I'm Nick, I build for the web. I care about how digital
-            experiences{" "}
+          <h3 className="padding-block-4">Code | Music | Mind</h3>
+          <p className="padding-block-4">
             <span
               className="gradient-text fs-500"
               style={{ fontStyle: "italic" }}
             >
-              feel{" "}
+              Feeling{" "}
             </span>{" "}
-            as much as how they function. Coming at design problems from a
-            background in music production I understand timing, space, and texture
-            matter as much as structure.
+            matters as much as<code>function</code>
+          </p>
+          <p>
+            My favorite moments on the web or in music are always in the
+            details: the tactile animation of a button when clicked, a subtle
+            background noise in a song that's not the focus but changes the mood
+            entirely.
+            {/* Coming at design problems from a background in music I
+            understand timing, space, and texture matter as much as structure. */}
           </p>
         </motion.div>
       </div>
