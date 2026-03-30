@@ -21,17 +21,17 @@ function ImageWithText() {
     offset: ["start 0.3", "end 0.4"],
   });
 
-  const restY = isMobile ? 185 : 0;
+  const restY = isMobile ? 225 : 0;
 
   const yRaw = useTransform(
     scrollYProgress,
-    [0.15, 0.25, 0.4],
+    [0.55, 0.55, 0.55],
     [200, restY, restY],
   );
 
   const y = useSpring(yRaw, { stiffness: 100, damping: 30 });
 
-  const opacity = useTransform(scrollYProgress, [0.1, 0.2, 0.6], [0, 0.9, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.6], [0, 0.9, 1]);
 
   return (
     <div className="img-container" ref={ref}>
@@ -62,12 +62,12 @@ function ImageWithText() {
           <h3 className="padding-block-4">Code | Music | Mind</h3>
           <p className="padding-block-4">
             <span
-              className="gradient-text fs-500"
+              className="gradient-text fs-400"
               style={{ fontStyle: "italic" }}
             >
               Feeling{" "}
             </span>{" "}
-            matters as much as<code>function</code>
+            matters as much as<code className="fs-300">function</code>
           </p>
           <p>
             My favorite moments on the web or in music are always in the
