@@ -71,8 +71,8 @@ function ImageWithText() {
           </p>
           <p className="padding-block-8">
             On the web or in music, my favorite moments are in the details: the
-            tactile animation of a button when clicked, a subtle element in the
-            background of a song that changes the mood entirely.
+            tactile animation of a button when clicked, a subtle element in a
+            song that's not the focus but changes the mood entirely.
           </p>
           <p>
             Coming at design problems from a background in music production, I
