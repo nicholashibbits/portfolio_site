@@ -72,8 +72,7 @@ function ImageWithText() {
           <p>
             My favorite moments on the web or in music are always in the
             details: the tactile animation of a button when clicked, a subtle
-            background noise in a song that's not the focus but changes the mood
-            entirely.
+            element in the background of a song that changes the mood entirely.
             {/* Coming at design problems from a background in music I
             understand timing, space, and texture matter as much as structure. */}
           </p>
