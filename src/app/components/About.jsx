@@ -21,7 +21,7 @@ function ImageWithText() {
     offset: ["start 0.3", "end 0.4"],
   });
 
-  const restY = isMobile ? 155 : 0;
+  const restY = isMobile ? 185 : 0;
 
   const yRaw = useTransform(
     scrollYProgress,
@@ -29,7 +29,7 @@ function ImageWithText() {
     [200, restY, restY],
   );
 
-  const y = useSpring(yRaw, { stiffness: 100, damping: 15 });
+  const y = useSpring(yRaw, { stiffness: 100, damping: 30 });
 
   const opacity = useTransform(
     scrollYProgress,
@@ -53,7 +53,7 @@ function ImageWithText() {
             src="/orange-headshot.jpg"
             alt="Nick Hibbits"
             width={600}
-            height={1000}
+            height={600}
             className="about-image"
             style={{ width: "100%", height: "auto" }}
           />
