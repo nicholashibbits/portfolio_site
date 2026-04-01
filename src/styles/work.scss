@@ -1,0 +1,184 @@
+@use "abstracts" as *;
+
+// ─── Shared ──────────────────────────────────────────────────────────────────
+
+#work {
+  height: auto !important;
+}
+
+.work-container {
+  padding-block: 8rem;
+}
+
+.work-heading {
+  margin-block-end: 3rem;
+}
+
+.work-wip-tag {
+  font-size: fs(300);
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.work-content {
+  overflow: hidden;
+}
+
+.work-content-label {
+  font-size: fs(300);
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5rem;
+}
+
+.work-content-description {
+  font-size: fs(400);
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.work-content-links {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  a {
+    font-size: fs(400);
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// ─── Mobile Accordion ────────────────────────────────────────────────────────
+
+.work-accordion {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @include mq(medium) {
+    display: none;
+  }
+}
+
+.work-accordion-item {
+  border-bottom: 2px solid rgba($clr-neutral-900, 0.5);
+
+  &.wip {
+    opacity: 0.3;
+  }
+}
+
+.work-accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: fs(700);
+  text-align: left;
+  padding: 1rem 0;
+  cursor: pointer;
+  gap: 1rem;
+
+  .wip & {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.work-accordion-content {
+  padding-bottom: 1.75rem;
+}
+
+// ─── Desktop Grid ─────────────────────────────────────────────────────────────
+
+.work-desktop {
+  display: none;
+
+  @include mq(medium) {
+    display: grid;
+    grid-template-columns: auto 2px 1fr;
+    column-gap: 3rem;
+    align-items: start;
+    min-height: 55vh;
+  }
+}
+
+.work-desktop-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding-top: 0.15rem;
+}
+
+.work-desktop-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+
+  &::before {
+    content: "-";
+    font-size: fs(700);
+    opacity: 0;
+    width: 0.6em;
+    flex-shrink: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  &.is-selected::before {
+    opacity: 1;
+  }
+
+  &.wip {
+    opacity: 0.3;
+  }
+}
+
+.work-desktop-trigger {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: fs(700);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: opacity 0.2s ease;
+
+  &:not(:disabled):hover {
+    opacity: 0.7;
+  }
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.work-desktop-divider {
+  background-color: rgba($clr-neutral-900, 0.5);
+  align-self: stretch;
+}
+
+.work-desktop-panel {
+  padding-top: 0.15rem;
+  min-height: 12rem;
+}
