@@ -28,6 +28,7 @@ function Nav() {
         onClick={toggleMenu}
         aria-label="Toggle menu"
         aria-expanded={isOpen}
+        data-cursor="expand"
       >
         menu
       </button>

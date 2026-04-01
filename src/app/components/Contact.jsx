@@ -44,7 +44,7 @@ function Contact() {
             <li className="link-group">
               <span className="link-group-title fs-600 fw-light">/CONTACT</span>
               <div className="fw-normal">
-                <a href="mailto:nicholas.hibbits@gmail.com">
+                <a href="mailto:nicholas.hibbits@gmail.com" data-cursor="expand">
                   nicholas.hibbits@gmail.com
                 </a>
               </div>
@@ -53,10 +53,10 @@ function Contact() {
               <span className="link-group-title fs-600 fw-light">/LINKS</span>
               <ul className="flex flex-column clr-neutral-100 fw-normal">
                 <li>
-                  <a href="https://github.com/nicholashibbits">Github</a>
+                  <a href="https://github.com/nicholashibbits" data-cursor="expand">Github</a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/nicholas-hibbits/">
+                  <a href="https://www.linkedin.com/in/nicholas-hibbits/" data-cursor="expand">
                     LinkedIn
                   </a>
                 </li>
@@ -65,6 +65,7 @@ function Contact() {
                     href="/Nicholas_Hibbits_Resume_2026.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-cursor="expand"
                   >
                     My Resume
                   </a>
@@ -83,6 +84,7 @@ function Contact() {
                         .getElementById("home")
                         ?.scrollIntoView({ behavior: "smooth" });
                     }}
+                    data-cursor="expand"
                   >
                     Home
                   </a>
@@ -96,6 +98,7 @@ function Contact() {
                         .getElementById("work")
                         ?.scrollIntoView({ behavior: "smooth" });
                     }}
+                    data-cursor="expand"
                   >
                     Projects
                   </a>

@@ -51,7 +51,7 @@ export default function ThemeToggle() {
   }, [themeIndex]);
 
   return (
-    <button className="theme-toggle" onClick={cycleTheme}>
+    <button className="theme-toggle" onClick={cycleTheme} data-cursor="expand">
       Change Theme
     </button>
   );

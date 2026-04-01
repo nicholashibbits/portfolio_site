@@ -31,6 +31,12 @@ body {
   border-radius: 50%;
 }
 
+a,
+button {
+  cursor: pointer !important;
+}
+
+
 .gradient-circle {
   position: absolute;
   z-index: 1;

@@ -114,6 +114,7 @@ function Work() {
                 onClick={() => toggle(i)}
                 aria-expanded={selected === i}
                 disabled={!!project.wip}
+                data-cursor="expand"
               >
                 <span>{project.name}</span>
                 {project.wip && (
@@ -143,6 +144,7 @@ function Work() {
                   className="work-desktop-trigger"
                   onClick={() => toggle(i)}
                   disabled={!!project.wip}
+                  data-cursor="expand"
                 >
                   {project.name}
                 </button>

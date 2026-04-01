@@ -27,7 +27,8 @@ export default function RootLayout({ children }) {
         style={{ width: 40, height: 40, borderRadius: 200 }}
         className="reticule"
         variants={{
-          pointer: { scale: 1.5 },
+          pointer: { scale: 1 },
+          expand: { scale: 1.5 },
         }}
       />
       <body className={`${switzer.variable} `}>
