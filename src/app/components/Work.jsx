@@ -15,7 +15,7 @@ const PROJECTS = [
     name: "Studio Zoomies",
     description: "Engineered a web-based CRM for gig photographers.",
     details:
-      "Performed software development on a web-app offering customer relation services to gig photographers. Built using React.js and Supabase.",
+      "Performed software development on a web-app offering customer relation services to gig photographers.",
     links: [],
   },
   {
@@ -60,7 +60,7 @@ function ProjectContent({ project }) {
       exit={{ opacity: 0, y: 10, transition: exitTransition }}
       style={{ willChange: "transform, opacity" }}
     >
-      <p className="work-content-label">Description</p>
+      <p className="work-content-label">Overview</p>
       <p className="work-content-description">
         {project.description}
         {project.details && (
@@ -71,22 +71,25 @@ function ProjectContent({ project }) {
         )}
       </p>
 
-      <p className="work-content-label">Links</p>
-      {project.links?.length > 0 ? (
-        <ul className="work-content-links">
-          {project.links.map((link, i) => (
-            <li key={i}>
-              <a href={link.url} target="_blank" rel="noopener noreferrer">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="work-content-description" style={{ opacity: 0.4 }}>
-          —
-        </p>
-      )}
+      <div className="work-content-lower">
+        <p className="work-content-label">Description</p>
+        <p className="work-content-description" style={{ opacity: 0.4 }}>—</p>
+
+        <p className="work-content-label">Links</p>
+        {project.links?.length > 0 ? (
+          <ul className="work-content-links">
+            {project.links.map((link, i) => (
+              <li key={i}>
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="work-content-description" style={{ opacity: 0.4 }}>—</p>
+        )}
+      </div>
     </motion.div>
   );
 }
