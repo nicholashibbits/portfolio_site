@@ -58,7 +58,7 @@ function ImageWithText() {
           style={{ y, opacity, willChange: "transform, opacity" }}
           className="about-text"
         >
-          <h2>About</h2>
+          <h2 className="padding-top-12">About</h2>
           <h3>Music | Code | Mind</h3>
           <div className="about-subtitle-wrapper">
             <span
