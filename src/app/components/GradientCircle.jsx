@@ -66,13 +66,15 @@ function GradientCircle({
     const handleScroll = () => {
       currentScrollY.set(window.scrollY);
       clearTimeout(timer);
-      // After viewport has been still for ~3.5s, drift the circles into view
+      // After viewport has been still for ~.1s, drift the circles into view
       timer = setTimeout(() => {
         animate(scrollOffsetY, window.scrollY, {
-          duration: 7,
-          ease: "easeIn",
+          type: "spring",
+          stiffness: 10,
+          damping: 25,
+          mass: 1,
         });
-      }, 300);
+      }, 100);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -140,8 +142,20 @@ function GradientCircle({
       }
     }
 
-    // Rotate arrays by a random offset so each mount starts at a different point
-    const offset = Math.floor(startOffset.current * numPoints);
+    // Rotate arrays by a random offset so each mount starts at a different point.
+    // For viewport mode, restrict candidates to positions within the visible viewport
+    // so circles are always on-screen on first render.
+    let offset;
+    if (constrained) {
+      offset = Math.floor(startOffset.current * numPoints);
+    } else {
+      const inViewIndices = xKeys.reduce((acc, x, i) => {
+        if (x >= 0 && x <= 80 && yKeys[i] >= 0 && yKeys[i] <= 80) acc.push(i);
+        return acc;
+      }, []);
+      const candidates = inViewIndices.length > 0 ? inViewIndices : xKeys.map((_, i) => i);
+      offset = candidates[Math.floor(startOffset.current * candidates.length)];
+    }
     const xRotated = [...xKeys.slice(offset), ...xKeys.slice(0, offset)];
     const yRotated = [...yKeys.slice(offset), ...yKeys.slice(0, offset)];
 

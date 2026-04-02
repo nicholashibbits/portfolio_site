@@ -36,8 +36,8 @@ function Hero() {
           scrollFollow
           xMin={-5}
           xMax={isLargeUp ? 55 : 35}
-          yMin={-5}
-          yMax={75}
+          yMin={-40}
+          yMax={140}
         />
       )}
       <GradientCircle
@@ -47,8 +47,8 @@ function Hero() {
         scrollFollow
         xMin={-5}
         xMax={isLargeUp ? 80 : 60}
-        yMin={-5}
-        yMax={88}
+        yMin={-25}
+        yMax={110}
         zIndex={1}
       />
       <GradientCircle
@@ -58,8 +58,8 @@ function Hero() {
         scrollFollow
         xMin={-5}
         xMax={isLargeUp ? 85 : 65}
-        yMin={-5}
-        yMax={93}
+        yMin={-25}
+        yMax={110}
         zIndex={3}
       />
       <div
