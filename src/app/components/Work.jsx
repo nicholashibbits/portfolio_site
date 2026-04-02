@@ -28,7 +28,7 @@ const PROJECTS = [
     details:
       "Performed software development on a web-app offering customer relation services to gig photographers.",
     longDescription:
-      "Built a full-featured CRM web application called Studio Zoomies at JarvisWorks using React.js and Supabase. Delivered in-app SMS/email messaging via Twilio and a complete system for invoicing and Booking",
+      "Built a full-featured CRM web application called Studio Zoomies at JarvisWorks using Svelte and Supabase. Delivered in-app SMS/email messaging via Twilio and a complete system for invoicing and Booking",
     links: [
       {
         label: "Studio Zoomies",
@@ -87,7 +87,7 @@ function ProjectContent({ project }) {
       </p>
 
       <div className="work-content-lower">
-        <p className="work-content-label">Description</p>
+        <p className="work-content-label">Details</p>
         {project.longDescription ? (
           <p className="work-content-description">{project.longDescription}</p>
         ) : (

@@ -57,6 +57,7 @@
   max-width: 650px;
 
   h2 {
+    font-size: clamp(2.5rem, 0.5rem + 6vw, 2.8rem);
     line-height: 1;
     padding-top: 0.8rem;
   }

@@ -70,8 +70,8 @@ function ImageWithText() {
             matters as much as<code className="fs-300">function</code>
           </div>
           <p className="padding-block-8">
-            On the web or in music, my favorite moments are in the details. Like
-            a subtle element in a song that's not the focus but changes the mood
+            On the web or in music, my favorite moments are in the details. A
+            subtle element in a song that's not the focus but changes the mood
             entirely, or the tactile animation of a button when clicked.
           </p>
           <p>
