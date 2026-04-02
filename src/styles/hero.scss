@@ -1,7 +1,7 @@
 @use "abstracts" as *;
 
 .hero {
-  min-height: calc(var(--real-vh, 1svh) * 150);
+  min-height: calc(var(--app-height, 100svh) * 1.5);
 
   &-title {
     color: #fff;

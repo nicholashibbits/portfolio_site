@@ -40,7 +40,7 @@
   transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
 
   &--open {
-    height: calc(var(--real-vh, 1svh) * 100);
+    height: var(--app-height, 100svh);
     border-bottom: 1px solid $clr-neutral-100;
   }
 

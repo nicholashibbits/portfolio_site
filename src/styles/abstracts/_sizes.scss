@@ -21,8 +21,8 @@ $sizes: (
 );
 
 // update or add specific values as needed
-$hero-padding: clamp(15rem, calc(var(--real-vh, 1svh) * 15), 20rem);
-$section-padding: clamp(3rem, calc(var(--real-vh, 1svh) * 10), 7rem);
+$hero-padding: clamp(15rem, calc(var(--app-height, 100svh) * 0.15), 20rem);
+$section-padding: clamp(3rem, calc(var(--app-height, 100svh) * 0.10), 7rem);
 
 $card-body-padding: clamp(2rem, 3.5vw, 5rem);
 

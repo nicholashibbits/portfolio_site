@@ -6,7 +6,7 @@
 }
 
 .img-container {
-  height: calc(var(--real-vh, 1svh) * 100);
+  height: var(--app-height, 100svh);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,7 +14,7 @@
   position: relative;
 
   @include mq(medium) {
-    height: calc(var(--real-vh, 1svh) * 120);
+    height: calc(var(--app-height, 100svh) * 1.2);
   }
 }
 

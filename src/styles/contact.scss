@@ -1,7 +1,7 @@
 @use "abstracts" as *;
 
 .contact-container {
-  min-height: calc(var(--real-vh, 1svh) * 100);
+  min-height: var(--app-height, 100svh);
   justify-content: center;
 }
 

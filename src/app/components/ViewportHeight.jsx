@@ -4,26 +4,21 @@ import { useEffect } from "react";
 
 export default function ViewportHeight() {
   useEffect(() => {
-    let timeout;
-
-    const setVh = () => {
+    const setHeight = () => {
       document.documentElement.style.setProperty(
-        "--real-vh",
-        `${window.innerHeight * 0.01}px`
+        "--app-height",
+        `${window.innerHeight}px`
       );
     };
 
-    const handleResize = () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(setVh, 100);
+    const handleOrientationChange = () => {
+      setTimeout(setHeight, 100);
     };
 
-    setVh();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timeout);
-    };
+    setHeight();
+    window.addEventListener("orientationchange", handleOrientationChange);
+    return () =>
+      window.removeEventListener("orientationchange", handleOrientationChange);
   }, []);
 
   return null;

@@ -16,21 +16,21 @@
   &-2 {
     overflow: hidden;
     z-index: 3;
-    height: calc(var(--real-vh, 1svh) * 250);
+    height: calc(var(--app-height, 100svh) * 2.5);
     // Pull Work up to close the gap at its top-left caused by skewY(-5deg) with center transform-origin
     margin-top: calc(tan(5deg) * -50vw);
 
     @include mq(medium) {
       padding-top: 2rem;
-      height: calc(var(--real-vh, 1svh) * 200);
+      height: calc(var(--app-height, 100svh) * 2);
     }
     @include mq(large) {
-      height: calc(var(--real-vh, 1svh) * 150);
+      height: calc(var(--app-height, 100svh) * 1.5);
       padding-top: 8rem;
     }
 
     @include mq(xlarge) {
-      height: calc(var(--real-vh, 1svh) * 130);
+      height: calc(var(--app-height, 100svh) * 1.3);
     }
   }
   &-3 {
