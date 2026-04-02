@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 import GradientCircle from "@/app/components/GradientCircle";
 
@@ -9,6 +10,9 @@ function Hero() {
 
   const [isMediumUp, setIsMediumUp] = useState(false);
   const [isLargeUp, setIsLargeUp] = useState(false);
+
+  const { scrollYProgress } = useScroll();
+  const circleOpacity = useTransform(scrollYProgress, [0.6, 0.8], [1, 0]);
 
   useEffect(() => {
     const mediumMql = window.matchMedia("(min-width: 45em)");
@@ -28,40 +32,42 @@ function Hero() {
 
   return (
     <div id="home" className=" text-clr-light">
-      {isMediumUp && (
+      <motion.div style={{ opacity: circleOpacity, willChange: "opacity" }}>
+        {isMediumUp && (
+          <GradientCircle
+            size={600}
+            speed="slow"
+            id="hero-left"
+            scrollFollow
+            xMin={-5}
+            xMax={isLargeUp ? 55 : 35}
+            yMin={-40}
+            yMax={140}
+          />
+        )}
         <GradientCircle
-          size={600}
-          speed="slow"
-          id="hero-left"
+          size={175}
+          speed="fast"
+          id="hero-right"
           scrollFollow
           xMin={-5}
-          xMax={isLargeUp ? 55 : 35}
-          yMin={-40}
-          yMax={140}
+          xMax={isLargeUp ? 80 : 60}
+          yMin={-25}
+          yMax={110}
+          zIndex={1}
         />
-      )}
-      <GradientCircle
-        size={175}
-        speed="fast"
-        id="hero-right"
-        scrollFollow
-        xMin={-5}
-        xMax={isLargeUp ? 80 : 60}
-        yMin={-25}
-        yMax={110}
-        zIndex={1}
-      />
-      <GradientCircle
-        size={120}
-        speed="fast"
-        id="hero-bottom"
-        scrollFollow
-        xMin={-5}
-        xMax={isLargeUp ? 85 : 65}
-        yMin={-25}
-        yMax={110}
-        zIndex={3}
-      />
+        <GradientCircle
+          size={120}
+          speed="fast"
+          id="hero-bottom"
+          scrollFollow
+          xMin={-5}
+          xMax={isLargeUp ? 85 : 65}
+          yMin={-25}
+          yMax={110}
+          zIndex={3}
+        />
+      </motion.div>
       <div
         ref={heroRef}
         className=" hero flex flex-justify-center flex-align-center"

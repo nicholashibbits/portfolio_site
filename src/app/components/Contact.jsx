@@ -20,9 +20,15 @@ function Contact() {
     <div
       id="contact"
       className="background-container-3"
-      style={{ position: "relative" }}
+      style={{ position: "relative", overflow: "hidden" }}
     >
-      <GradientCircle size={80} speed="slow" id="contact-left" constrained zIndex={1} />
+      <GradientCircle
+        size={80}
+        speed="slow"
+        id="contact-left"
+        constrained
+        zIndex={1}
+      />
       <GradientCircle size={200} speed="fast" id="contact-right" constrained />
       {extraCircles.showCenter && (
         <GradientCircle
@@ -36,7 +42,7 @@ function Contact() {
         <GradientCircle size={100} speed="fast" id="contact-top" constrained />
       )}
       <div
-        className="container padding-block-96"
+        className="container contact-content"
         style={{ position: "relative", zIndex: 2 }}
       >
         <div className="contact-container flex flex-column relative">
@@ -44,7 +50,10 @@ function Contact() {
             <li className="link-group">
               <span className="link-group-title fs-600 fw-light">/CONTACT</span>
               <div className="fw-normal">
-                <a href="mailto:nicholas.hibbits@gmail.com" data-cursor="expand">
+                <a
+                  href="mailto:nicholas.hibbits@gmail.com"
+                  data-cursor="expand"
+                >
                   nicholas.hibbits@gmail.com
                 </a>
               </div>
@@ -53,10 +62,18 @@ function Contact() {
               <span className="link-group-title fs-600 fw-light">/LINKS</span>
               <ul className="flex flex-column clr-neutral-100 fw-normal">
                 <li>
-                  <a href="https://github.com/nicholashibbits" data-cursor="expand">Github</a>
+                  <a
+                    href="https://github.com/nicholashibbits"
+                    data-cursor="expand"
+                  >
+                    Github
+                  </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/nicholas-hibbits/" data-cursor="expand">
+                  <a
+                    href="https://www.linkedin.com/in/nicholas-hibbits/"
+                    data-cursor="expand"
+                  >
                     LinkedIn
                   </a>
                 </li>

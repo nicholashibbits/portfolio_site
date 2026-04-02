@@ -59,7 +59,7 @@ function ImageWithText() {
           className="about-text"
         >
           <h2>About</h2>
-          <h3>Code | Music | Mind</h3>
+          <h3>Music | Code | Mind</h3>
           <div className="about-subtitle-wrapper">
             <span
               className="gradient-text fs-400"
@@ -79,9 +79,8 @@ function ImageWithText() {
             DJing, timing, space, and texture matter as much as structure.
           </p>
           <p className="padding-block-8">
-            This site is a central place to share projects from my endeavors in
-            programming and music, as well as thoughts on topics of personal
-            interest.
+            I use this siteto share projects from my endeavors in music and
+            programming, as well as thoughts on topics of personal interest.
           </p>
         </motion.div>
       </div>
