@@ -40,6 +40,9 @@ function GradientCircle({
   const [mounted, setMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const [containerSize, setContainerSize] = useState(null);
+  // Lock viewport dimensions at mount — only update on orientation change.
+  // This prevents vw/vh keyframe targets from jumping when IAB toolbars appear.
+  const [lockedDimensions, setLockedDimensions] = useState(null);
   const circleRef = useRef(null);
   const startOffset = useRef(0);
 
@@ -51,13 +54,26 @@ function GradientCircle({
   useEffect(() => {
     startOffset.current = Math.random();
 
+    setLockedDimensions({ width: window.innerWidth, height: window.innerHeight });
+
     const mql = window.matchMedia("(min-width: 65em)");
     setIsDesktop(mql.matches);
     setMounted(true);
 
     const handler = (e) => setIsDesktop(e.matches);
     mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
+
+    const handleOrientationChange = () => {
+      setTimeout(() => {
+        setLockedDimensions({ width: window.innerWidth, height: window.innerHeight });
+      }, 100);
+    };
+    window.addEventListener("orientationchange", handleOrientationChange);
+
+    return () => {
+      mql.removeEventListener("change", handler);
+      window.removeEventListener("orientationchange", handleOrientationChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -130,7 +146,7 @@ function GradientCircle({
         yKeys.push(cyMin + seededRandom(baseSeed + 1000) * (cyMax - cyMin));
       }
     } else {
-      // Viewport mode: range in vw/vh units
+      // Viewport mode: range in vw/vh percentages, converted to locked px at mount
       const xLo = xMin ?? (isDesktop ? -45 : -30);
       const xHi = xMax ?? (isDesktop ? 45 : 30);
       const yLo = yMin ?? (isDesktop ? -30 : -20);
@@ -164,11 +180,21 @@ function GradientCircle({
     xRotated.push(xRotated[0]);
     yRotated.push(yRotated[0]);
 
-    const unit = constrained ? "px" : "";
+    if (constrained) {
+      return {
+        x: xRotated.map((k) => `${k}px`),
+        y: yRotated.map((k) => `${k}px`),
+      };
+    }
 
+    // Convert vw/vh percentages to fixed pixels using locked dimensions.
+    // This prevents keyframe targets from jumping when browser UI chrome
+    // (e.g. Instagram IAB toolbar) changes the viewport size mid-scroll.
+    const vwBase = lockedDimensions?.width ?? window.innerWidth;
+    const vhBase = lockedDimensions?.height ?? window.innerHeight;
     return {
-      x: xRotated.map((k) => `${k}${unit || "vw"}`),
-      y: yRotated.map((k) => `${k}${unit || "vh"}`),
+      x: xRotated.map((k) => `${(k / 100) * vwBase}px`),
+      y: yRotated.map((k) => `${(k / 100) * vhBase}px`),
     };
   }, [
     seed,
@@ -182,6 +208,7 @@ function GradientCircle({
     yMin,
     yMax,
     overflowFactor,
+    lockedDimensions,
   ]);
 
   const duration = speed === "fast" ? 40 : 90;
