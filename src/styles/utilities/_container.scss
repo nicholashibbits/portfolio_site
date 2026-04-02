@@ -68,4 +68,6 @@
 
 .work-content-wrapper {
   transform: skewY(5deg);
+  // Compensate for the Work div's negative margin-top so content stays at the same visual position
+  padding-top: calc(tan(5deg) * 50vw);
 }

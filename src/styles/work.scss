@@ -79,7 +79,7 @@
 .work-accordion-item {
   border-bottom: 2px solid rgba($clr-neutral-900, 0.5);
 
-  &.wip {
+  &.wip:not(.is-selected) {
     opacity: 0.3;
   }
 }
@@ -99,11 +99,6 @@
   padding: 1rem 0;
   cursor: pointer;
   gap: 1rem;
-
-  .wip & {
-    cursor: default;
-    pointer-events: none;
-  }
 }
 
 .work-accordion-content {
@@ -138,7 +133,7 @@
   display: flex;
   align-items: center;
 
-  &.wip {
+  &.wip:not(.is-selected) {
     opacity: 0.3;
   }
 }
@@ -172,10 +167,6 @@
     transform: scaleX(1);
   }
 
-  &:disabled {
-    cursor: default;
-    pointer-events: none;
-  }
 }
 
 .work-desktop-divider {

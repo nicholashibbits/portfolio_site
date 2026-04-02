@@ -35,17 +35,17 @@ function Nav() {
       <nav className={`nav ${isOpen ? "nav--open" : ""}`}>
         <ul className="nav-list container flex flex-column">
           <li className="nav-item">
-            <a href="#about" onClick={(e) => handleAnchorClick(e, "about")}>
+            <a href="#about" onClick={(e) => handleAnchorClick(e, "about")} data-cursor="expand">
               ABOUT
             </a>
           </li>
           <li className="nav-item">
-            <a href="#work" onClick={(e) => handleAnchorClick(e, "work")}>
+            <a href="#work" onClick={(e) => handleAnchorClick(e, "work")} data-cursor="expand">
               PROJECTS
             </a>
           </li>
           <li className="nav-item">
-            <a href="#contact" onClick={(e) => handleAnchorClick(e, "contact")}>
+            <a href="#contact" onClick={(e) => handleAnchorClick(e, "contact")} data-cursor="expand">
               CONTACT
             </a>
           </li>
@@ -55,6 +55,7 @@ function Nav() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
+              data-cursor="expand"
             >
               RESUME
             </a>

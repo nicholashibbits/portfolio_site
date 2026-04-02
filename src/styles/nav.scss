@@ -59,6 +59,30 @@
     transform: translateY(100vh);
     will-change: transform, opacity;
     font-size: fs(700);
+
+    a {
+      display: inline-block;
+    }
+
+    @include mq(medium) {
+      a {
+        background: linear-gradient(
+          to right,
+          var(--clr-primary) 50%,
+          $clr-neutral-100 50%
+        );
+        background-size: 200% 100%;
+        background-position: right;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: background-position 0.4s ease;
+
+        &:hover {
+          background-position: left;
+        }
+      }
+    }
   }
 
   &--open &-item {

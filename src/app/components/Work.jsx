@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 const PROJECTS = [
@@ -9,14 +9,32 @@ const PROJECTS = [
       "Developed pages in va.gov providing information on education benefits to veterans.",
     details:
       "Migrated legacy applications, digitized forms, and maintained code for the Department of Veteran's Affairs.",
-    links: [],
+    longDescription:
+      "Led frontend development on veteran-facing education products at va.gov as a React/Redux developer at GovCIO. Digitized over 15 VA education benefits forms and built the Licenses & Certifications search page used by veterans nationwide.",
+    links: [
+      {
+        label: "VA Licenses & Certifications",
+        url: "https://www.va.gov/education/gibill-comparison-tool/licenses-certifications-and-prep-courses",
+      },
+      {
+        label: "GI Bill Comparison Tool",
+        url: "https://www.va.gov/education/gi-bill-comparison-tool/schools-and-employers",
+      },
+    ],
   },
   {
     name: "Studio Zoomies",
     description: "Engineered a web-based CRM for gig photographers.",
     details:
       "Performed software development on a web-app offering customer relation services to gig photographers.",
-    links: [],
+    longDescription:
+      "Built a full-featured CRM web application for gig photographers at JarvisWorks using React.js and Supabase. Delivered in-app SMS/email messaging via Twilio and a complete invoicing and payments system powered by Stripe.",
+    links: [
+      {
+        label: "Studio Zoomies",
+        url: "https://www.studiozoomies.com/home",
+      },
+    ],
   },
   {
     name: "NHIBIT Music",
@@ -60,7 +78,7 @@ function ProjectContent({ project }) {
       exit={{ opacity: 0, y: 10, transition: exitTransition }}
       style={{ willChange: "transform, opacity" }}
     >
-      <p className="work-content-label">Overview</p>
+      <p className="work-content-label">Overview{project.wip && " (in development)"}</p>
       <p className="work-content-description">
         {project.description}
         {project.details && (
@@ -73,14 +91,18 @@ function ProjectContent({ project }) {
 
       <div className="work-content-lower">
         <p className="work-content-label">Description</p>
-        <p className="work-content-description" style={{ opacity: 0.4 }}>—</p>
+        {project.longDescription ? (
+          <p className="work-content-description">{project.longDescription}</p>
+        ) : (
+          <p className="work-content-description" style={{ opacity: 0.4 }}>—</p>
+        )}
 
         <p className="work-content-label">Links</p>
         {project.links?.length > 0 ? (
           <ul className="work-content-links">
             {project.links.map((link, i) => (
               <li key={i}>
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                <a href={link.url} target="_blank" rel="noopener noreferrer" data-cursor="expand">
                   {link.label}
                 </a>
               </li>
@@ -95,7 +117,13 @@ function ProjectContent({ project }) {
 }
 
 function Work() {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(min-width: 45em)").matches) {
+      setSelected(0);
+    }
+  }, []);
 
   const toggle = (i) => setSelected((prev) => (prev === i ? null : i));
 
@@ -110,22 +138,18 @@ function Work() {
           {PROJECTS.map((project, i) => (
             <li
               key={project.name}
-              className={`work-accordion-item${project.wip ? " wip" : ""}`}
+              className={`work-accordion-item${project.wip ? " wip" : ""}${selected === i ? " is-selected" : ""}`}
             >
               <button
                 className="work-accordion-trigger"
                 onClick={() => toggle(i)}
                 aria-expanded={selected === i}
-                disabled={!!project.wip}
                 data-cursor="expand"
               >
                 <span>{project.name}</span>
-                {project.wip && (
-                  <span className="work-wip-tag">soon</span>
-                )}
               </button>
               <AnimatePresence>
-                {selected === i && !project.wip && (
+                {selected === i && (
                   <div className="work-accordion-content">
                     <ProjectContent key={project.name} project={project} />
                   </div>
@@ -146,14 +170,10 @@ function Work() {
                 <button
                   className="work-desktop-trigger"
                   onClick={() => toggle(i)}
-                  disabled={!!project.wip}
                   data-cursor="expand"
                 >
                   {project.name}
                 </button>
-                {project.wip && (
-                  <span className="work-wip-tag">soon</span>
-                )}
               </li>
             ))}
           </ul>
@@ -162,7 +182,7 @@ function Work() {
 
           <div className="work-desktop-panel">
             <AnimatePresence mode="wait">
-              {selected !== null && !PROJECTS[selected]?.wip && (
+              {selected !== null && (
                 <ProjectContent key={selected} project={PROJECTS[selected]} />
               )}
             </AnimatePresence>
