@@ -69,7 +69,7 @@ function GradientCircle({
       // After viewport has been still for ~3.5s, drift the circles into view
       timer = setTimeout(() => {
         animate(scrollOffsetY, window.scrollY, {
-          duration: 5,
+          duration: 7,
           ease: "easeIn",
         });
       }, 300);

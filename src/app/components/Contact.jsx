@@ -22,7 +22,7 @@ function Contact() {
       className="background-container-3"
       style={{ position: "relative" }}
     >
-      <GradientCircle size={80} speed="slow" id="contact-left" constrained zIndex={3} />
+      <GradientCircle size={80} speed="slow" id="contact-left" constrained zIndex={1} />
       <GradientCircle size={200} speed="fast" id="contact-right" constrained />
       {extraCircles.showCenter && (
         <GradientCircle

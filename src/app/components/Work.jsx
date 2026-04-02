@@ -14,7 +14,7 @@ const PROJECTS = [
     links: [
       {
         label: "VA Licenses & Certifications",
-        url: "https://www.va.gov/education/gibill-comparison-tool/licenses-certifications-and-prep-courses",
+        url: "https://www.va.gov/education/gi-bill-comparison-tool/licenses-certifications-and-prep-courses",
       },
       {
         label: "GI Bill Comparison Tool",
@@ -78,15 +78,12 @@ function ProjectContent({ project }) {
       exit={{ opacity: 0, y: -20, transition: exitTransition }}
       style={{ willChange: "transform, opacity" }}
     >
-      <p className="work-content-label">Overview{project.wip && " (in development)"}</p>
+      <p className="work-content-label">
+        Overview{project.wip && " (in development)"}
+      </p>
       <p className="work-content-description">
         {project.description}
-        {project.details && (
-          <>
-            {" "}
-            {project.details}
-          </>
-        )}
+        {project.details && <> {project.details}</>}
       </p>
 
       <div className="work-content-lower">
@@ -94,7 +91,9 @@ function ProjectContent({ project }) {
         {project.longDescription ? (
           <p className="work-content-description">{project.longDescription}</p>
         ) : (
-          <p className="work-content-description" style={{ opacity: 0.4 }}>—</p>
+          <p className="work-content-description" style={{ opacity: 0.4 }}>
+            —
+          </p>
         )}
 
         <p className="work-content-label">Links</p>
@@ -102,14 +101,21 @@ function ProjectContent({ project }) {
           <ul className="work-content-links">
             {project.links.map((link, i) => (
               <li key={i}>
-                <a href={link.url} target="_blank" rel="noopener noreferrer" data-cursor="expand">
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="expand"
+                >
                   {link.label}
                 </a>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="work-content-description" style={{ opacity: 0.4 }}>—</p>
+          <p className="work-content-description" style={{ opacity: 0.4 }}>
+            —
+          </p>
         )}
       </div>
     </motion.div>
@@ -118,78 +124,88 @@ function ProjectContent({ project }) {
 
 function Work() {
   const [selected, setSelected] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(min-width: 45em)").matches) {
-      setSelected(0);
-    }
+    const mq = window.matchMedia("(min-width: 45em)");
+    const update = (e) => setIsDesktop(e.matches);
+    setIsDesktop(mq.matches);
+    if (mq.matches) setSelected(0);
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
-  const toggle = (i) => setSelected((prev) => (prev === i ? null : i));
+  const toggle = (i) =>
+    setSelected((prev) => (prev === i && !isDesktop ? null : i));
 
   return (
     <div id="work" className="diagonal background-container-2">
       <div className="work-content-wrapper">
-      <div className="container work-container">
-        <h1 className="work-heading">Projects</h1>
+        <div className="container work-container">
+          <h1 className="work-heading">Projects</h1>
 
-        {/* Mobile accordion */}
-        <ul className="work-accordion">
-          {PROJECTS.map((project, i) => (
-            <motion.li
-              key={project.name}
-              layout
-              transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-              className={`work-accordion-item${project.wip ? " wip" : ""}${selected === i ? " is-selected" : ""}`}
-              style={{ overflow: "hidden" }}
-            >
-              <button
-                className="work-accordion-trigger"
-                onClick={() => toggle(i)}
-                aria-expanded={selected === i}
-                data-cursor="expand"
-              >
-                <span>{project.name}</span>
-              </button>
-              <AnimatePresence>
-                {selected === i && (
-                  <ProjectContent key={project.name} project={project} />
-                )}
-              </AnimatePresence>
-            </motion.li>
-          ))}
-        </ul>
-
-        {/* Desktop grid */}
-        <div className="work-desktop">
-          <ul className="work-desktop-list">
+          {/* Mobile accordion */}
+          <ul className="work-accordion">
             {PROJECTS.map((project, i) => (
               <li
                 key={project.name}
-                className={`work-desktop-item${project.wip ? " wip" : ""}${selected === i ? " is-selected" : ""}`}
+                className={`work-accordion-item${project.wip ? " wip" : ""}${selected === i ? " is-selected" : ""}`}
               >
                 <button
-                  className="work-desktop-trigger"
+                  className="work-accordion-trigger"
                   onClick={() => toggle(i)}
+                  aria-expanded={selected === i}
                   data-cursor="expand"
                 >
-                  {project.name}
+                  <span>{project.name}</span>
                 </button>
+                <AnimatePresence initial={false}>
+                  {selected === i && (
+                    <motion.div
+                      key={project.name}
+                      initial={{ height: 0 }}
+                      animate={{ height: "auto", transition: enterTransition }}
+                      exit={{ height: 0, transition: exitTransition }}
+                      style={{ overflow: "hidden", willChange: "transform" }}
+                    >
+                      <ProjectContent project={project} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </li>
             ))}
           </ul>
 
-          <div className="work-desktop-divider" />
+          {/* Desktop grid */}
+          <div className="work-desktop">
+            <ul className="work-desktop-list">
+              {PROJECTS.map((project, i) => (
+                <li
+                  key={project.name}
+                  className={`work-desktop-item${project.wip ? " wip" : ""}${selected === i ? " is-selected" : ""}`}
+                >
+                  <button
+                    className="work-desktop-trigger"
+                    onClick={() => toggle(i)}
+                    data-cursor="expand"
+                  >
+                    {project.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
 
-          <div className="work-desktop-panel">
-            <AnimatePresence mode="wait">
-              {selected !== null && (
-                <ProjectContent key={selected} project={PROJECTS[selected]} />
-              )}
-            </AnimatePresence>
+            <div className="work-desktop-divider" />
+
+            <div className="work-desktop-panel">
+              <AnimatePresence mode="wait">
+                {selected !== null && (
+                  <ProjectContent key={selected} project={PROJECTS[selected]} />
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );

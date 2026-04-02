@@ -7,7 +7,12 @@
 }
 
 .work-container {
-  padding-block: 8rem;
+  padding-block-start: 8rem;
+  padding-block-end: 11rem;
+
+  @include mq(medium) {
+    padding-block-start: 5rem;
+  }
 }
 
 .work-heading {
@@ -23,14 +28,22 @@
 
 .work-content {
   overflow: hidden;
+  background-color: rgba(clr(neutral, 900), 0.82);
+  color: $clr-neutral-100;
+  border-radius: 15px;
+  padding: 1.5rem;
 }
 
 .work-content-label {
   font-size: fs(300);
-  opacity: 0.7;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.75rem;
+  display: inline-block;
+  background-color: var(--clr-primary);
+  color: $clr-neutral-100;
+  border-radius: 999px;
+  padding: 0.2em 0.85em;
 }
 
 .work-content-lower {
@@ -64,6 +77,29 @@
   }
 }
 
+// ─── Shared trigger styles ────────────────────────────────────────────────────
+
+.work-accordion-trigger,
+.work-desktop-trigger {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: fs(700);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+// ─── Shared wip opacity ───────────────────────────────────────────────────────
+
+.work-accordion-item,
+.work-desktop-item {
+  &.wip:not(.is-selected) {
+    opacity: 0.3;
+  }
+}
+
 // ─── Mobile Accordion ────────────────────────────────────────────────────────
 
 .work-accordion {
@@ -78,10 +114,6 @@
 
 .work-accordion-item {
   border-bottom: 2px solid rgba($clr-neutral-900, 0.5);
-
-  &.wip:not(.is-selected) {
-    opacity: 0.3;
-  }
 }
 
 .work-accordion-trigger {
@@ -89,20 +121,18 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background: none;
-  border: none;
-  color: inherit;
-  font-family: inherit;
-  font-size: fs(700);
-  font-weight: 600;
-  text-align: left;
   padding: 1rem 0;
-  cursor: pointer;
   gap: 1rem;
+  transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .is-selected & {
+    padding-block-end: 0rem;
+  }
 }
 
 .work-accordion .work-content {
-  padding-bottom: 1.75rem;
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 // ─── Desktop Grid ─────────────────────────────────────────────────────────────
@@ -132,22 +162,10 @@
 .work-desktop-item {
   display: flex;
   align-items: center;
-
-  &.wip:not(.is-selected) {
-    opacity: 0.3;
-  }
 }
 
 .work-desktop-trigger {
-  background: none;
-  border: none;
-  color: inherit;
-  font-family: inherit;
-  font-size: fs(700);
-  font-weight: 600;
-  cursor: pointer;
   padding: 0 0 0.15em;
-  text-align: left;
   position: relative;
 
   &::after {
@@ -166,7 +184,6 @@
   .is-selected &::after {
     transform: scaleX(1);
   }
-
 }
 
 .work-desktop-divider {
