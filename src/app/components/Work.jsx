@@ -67,7 +67,7 @@ const PROJECTS = [
 ];
 
 const enterTransition = { duration: 0.4, ease: [0.4, 0, 0.2, 1] };
-const exitTransition = { duration: 0.2, ease: [0.4, 0, 0.2, 1] };
+const exitTransition = { duration: 0.3, ease: [0.4, 0, 0.2, 1] };
 
 function ProjectContent({ project }) {
   return (
@@ -75,7 +75,7 @@ function ProjectContent({ project }) {
       className="work-content"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0, transition: enterTransition }}
-      exit={{ opacity: 0, y: 10, transition: exitTransition }}
+      exit={{ opacity: 0, y: -20, transition: exitTransition }}
       style={{ willChange: "transform, opacity" }}
     >
       <p className="work-content-label">Overview{project.wip && " (in development)"}</p>
@@ -136,9 +136,12 @@ function Work() {
         {/* Mobile accordion */}
         <ul className="work-accordion">
           {PROJECTS.map((project, i) => (
-            <li
+            <motion.li
               key={project.name}
+              layout
+              transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
               className={`work-accordion-item${project.wip ? " wip" : ""}${selected === i ? " is-selected" : ""}`}
+              style={{ overflow: "hidden" }}
             >
               <button
                 className="work-accordion-trigger"
@@ -150,12 +153,10 @@ function Work() {
               </button>
               <AnimatePresence>
                 {selected === i && (
-                  <div className="work-accordion-content">
-                    <ProjectContent key={project.name} project={project} />
-                  </div>
+                  <ProjectContent key={project.name} project={project} />
                 )}
               </AnimatePresence>
-            </li>
+            </motion.li>
           ))}
         </ul>
 
