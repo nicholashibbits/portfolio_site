@@ -17,6 +17,8 @@
     overflow: hidden;
     z-index: 3;
     height: 250svh;
+    // Pull Work up to close the gap at its top-left caused by skewY(-5deg) with center transform-origin
+    margin-top: calc(tan(5deg) * -50vw);
 
     @include mq(medium) {
       padding-top: 2rem;
@@ -37,6 +39,8 @@
     background-color: $clr-neutral-900;
     color: $clr-neutral-100;
     z-index: 2;
+    // Pull Contact up to close the gap at Work's bottom-right, preventing circles from showing through
+    margin-top: calc(tan(5deg) * -50vw);
   }
 }
 

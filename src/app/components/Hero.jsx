@@ -7,18 +7,10 @@ import GradientCircle from "@/app/components/GradientCircle";
 function Hero() {
   const heroRef = useRef(null);
 
-  const [extraCircles, setExtraCircles] = useState({
-    showBottom: false,
-  });
   const [isMediumUp, setIsMediumUp] = useState(false);
   const [isLargeUp, setIsLargeUp] = useState(false);
 
   useEffect(() => {
-    setExtraCircles({
-      showCenter: Math.random() > 0.5,
-      showBottom: Math.random() > 0.6,
-    });
-
     const mediumMql = window.matchMedia("(min-width: 45em)");
     const largeMql = window.matchMedia("(min-width: 65em)");
     setIsMediumUp(mediumMql.matches);
@@ -36,44 +28,45 @@ function Hero() {
 
   return (
     <div id="home" className=" text-clr-light">
+      {isMediumUp && (
+        <GradientCircle
+          size={600}
+          speed="slow"
+          id="hero-left"
+          scrollFollow
+          xMin={-5}
+          xMax={isLargeUp ? 55 : 35}
+          yMin={-5}
+          yMax={75}
+        />
+      )}
+      <GradientCircle
+        size={175}
+        speed="fast"
+        id="hero-right"
+        scrollFollow
+        xMin={-5}
+        xMax={isLargeUp ? 80 : 60}
+        yMin={-5}
+        yMax={88}
+        zIndex={1}
+      />
+      <GradientCircle
+        size={120}
+        speed="fast"
+        id="hero-bottom"
+        scrollFollow
+        xMin={-5}
+        xMax={isLargeUp ? 85 : 65}
+        yMin={-5}
+        yMax={93}
+        zIndex={3}
+      />
       <div
         ref={heroRef}
         className=" hero flex flex-justify-center flex-align-center"
-        style={{ position: "relative" }}
+        style={{ position: "relative", zIndex: 2 }}
       >
-        <div className="backlayer">
-          {isMediumUp && (
-            <GradientCircle
-              size={600}
-              speed="slow"
-              id="hero-left"
-              xMin={-5}
-              xMax={isLargeUp ? 60 : 40}
-              yMin={-5}
-              yMax={40}
-            />
-          )}
-          <GradientCircle
-            size={175}
-            speed="fast"
-            id="hero-right"
-            xMin={-5}
-            xMax={isLargeUp ? 80 : 55}
-            yMin={-5}
-            yMax={55}
-          />
-          {extraCircles.showBottom && (
-            <GradientCircle
-              size={120}
-              speed="fast"
-              id="hero-bottom"
-              xMin={-5}
-              xMax={isLargeUp ? 85 : 60}
-              yMin={-5}
-              yMax={60}
-            />
-          )}
-        </div>
         <div className="hero-content">
           <h1 className="hero-title fw-700">NICK HIBBITS</h1>
         </div>

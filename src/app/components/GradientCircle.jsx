@@ -8,7 +8,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { motion } from "motion/react";
+import { animate, motion, useMotionValue, useTransform } from "motion/react";
 
 // Seeded random for deterministic values
 function seededRandom(seed) {
@@ -29,16 +29,23 @@ function GradientCircle({
   speed = "slow",
   id = "",
   constrained = false,
+  scrollFollow = false,
   xMin,
   xMax,
   yMin,
   yMax,
+  zIndex = 1,
 }) {
   const [mounted, setMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const [containerSize, setContainerSize] = useState(null);
   const circleRef = useRef(null);
   const startOffset = useRef(0);
+
+  // Tracks real scroll position (updates immediately on scroll)
+  const currentScrollY = useMotionValue(0);
+  // Tracks the "settled" scroll position (updates with a delay)
+  const scrollOffsetY = useMotionValue(0);
 
   useEffect(() => {
     startOffset.current = Math.random();
@@ -51,6 +58,35 @@ function GradientCircle({
     mql.addEventListener("change", handler);
     return () => mql.removeEventListener("change", handler);
   }, []);
+
+  useEffect(() => {
+    if (!scrollFollow) return;
+
+    let timer;
+    const handleScroll = () => {
+      currentScrollY.set(window.scrollY);
+      clearTimeout(timer);
+      // After viewport has been still for ~3.5s, drift the circles into view
+      timer = setTimeout(() => {
+        animate(scrollOffsetY, window.scrollY, {
+          duration: 8,
+          ease: "easein",
+        });
+      }, 300);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
+    };
+  }, [scrollFollow, currentScrollY, scrollOffsetY]);
+
+  // wrapperY makes the fixed wrapper behave like position:absolute initially.
+  // When offset === current (caught up), wrapperY === 0 → circles back in viewport.
+  const wrapperY = useTransform(
+    () => scrollOffsetY.get() - currentScrollY.get(),
+  );
 
   // Measure parent container for constrained mode before paint
   useLayoutEffect(() => {
@@ -119,12 +155,61 @@ function GradientCircle({
       x: xRotated.map((k) => `${k}${unit || "vw"}`),
       y: yRotated.map((k) => `${k}${unit || "vh"}`),
     };
-  }, [seed, isDesktop, constrained, containerSize, size, mounted, xMin, xMax, yMin, yMax]);
+  }, [
+    seed,
+    isDesktop,
+    constrained,
+    containerSize,
+    size,
+    mounted,
+    xMin,
+    xMax,
+    yMin,
+    yMax,
+  ]);
 
   const duration = speed === "fast" ? 40 : 90;
   const hasKeyframes = keyframes.x.length > 0;
 
   if (!mounted) return null;
+
+  const circleMotionProps = hasKeyframes
+    ? {
+        animate: { x: keyframes.x, y: keyframes.y },
+        transition: { duration, repeat: Infinity, ease: "easeInOut" },
+      }
+    : {};
+
+  if (scrollFollow) {
+    return (
+      <motion.div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          y: wrapperY,
+          pointerEvents: "none",
+          zIndex,
+          willChange: "transform",
+        }}
+      >
+        <motion.div
+          ref={circleRef}
+          className="gradient-circle"
+          style={{
+            width: size,
+            height: size,
+            borderRadius: "50%",
+            background: `linear-gradient(135deg, #001236 0%, #340242 10.5%, var(--sphere-primary, #DB761D) 100%)`,
+            position: "absolute",
+            pointerEvents: "none",
+            willChange: "transform",
+          }}
+          {...circleMotionProps}
+        />
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
@@ -137,20 +222,10 @@ function GradientCircle({
         background: `linear-gradient(135deg, #001236 0%, #340242 10.5%, var(--sphere-primary, #DB761D) 100%)`,
         position: "absolute",
         pointerEvents: "none",
-        zIndex: 1,
+        zIndex,
         willChange: "transform",
       }}
-      {...(hasKeyframes && {
-        animate: {
-          x: keyframes.x,
-          y: keyframes.y,
-        },
-        transition: {
-          duration,
-          repeat: Infinity,
-          ease: "easeInOut",
-        },
-      })}
+      {...circleMotionProps}
     />
   );
 }
