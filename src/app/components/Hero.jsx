@@ -12,7 +12,7 @@ function Hero() {
   const [isLargeUp, setIsLargeUp] = useState(false);
 
   const { scrollYProgress } = useScroll();
-  const circleOpacity = useTransform(scrollYProgress, [0.6, 0.8], [1, 0]);
+  const circleOpacity = useTransform(scrollYProgress, [0.75, 0.8], [1, 0]);
 
   useEffect(() => {
     const mediumMql = window.matchMedia("(min-width: 45em)");

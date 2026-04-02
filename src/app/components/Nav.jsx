@@ -14,8 +14,12 @@ function Nav() {
     setIsOpen(false);
     const el = document.getElementById(id);
     if (el) {
+      const angleOffset =
+        id === "contact"
+          ? Math.tan((5 * Math.PI) / 180) * (window.innerWidth / 2)
+          : 0;
       window.scrollTo({
-        top: el.getBoundingClientRect().top + window.scrollY,
+        top: el.getBoundingClientRect().top + window.scrollY + angleOffset,
         behavior: "smooth",
       });
     }
