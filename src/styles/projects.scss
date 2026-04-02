@@ -230,5 +230,5 @@
 }
 
 .work-content-wrapper {
-  height: 120svh;
+  height: calc(var(--real-vh, 1svh) * 120);
 }

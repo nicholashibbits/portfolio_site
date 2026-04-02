@@ -16,21 +16,21 @@
   &-2 {
     overflow: hidden;
     z-index: 3;
-    height: 250svh;
+    height: calc(var(--real-vh, 1svh) * 250);
     // Pull Work up to close the gap at its top-left caused by skewY(-5deg) with center transform-origin
     margin-top: calc(tan(5deg) * -50vw);
 
     @include mq(medium) {
       padding-top: 2rem;
-      height: 200svh;
+      height: calc(var(--real-vh, 1svh) * 200);
     }
     @include mq(large) {
-      height: 150svh;
+      height: calc(var(--real-vh, 1svh) * 150);
       padding-top: 8rem;
     }
 
     @include mq(xlarge) {
-      height: 130svh;
+      height: calc(var(--real-vh, 1svh) * 130);
     }
   }
   &-3 {

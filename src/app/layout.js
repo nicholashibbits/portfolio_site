@@ -4,6 +4,7 @@ import "../styles/main.scss";
 import { Cursor } from "motion-plus/react";
 import Nav from "@/app/components/Nav";
 import ThemeToggle from "@/app/components/ThemeToggle";
+import ViewportHeight from "@/app/components/ViewportHeight";
 
 export const metadata = {
   title: "Nick Hibbits",
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         }}
       />
       <body className={`${switzer.variable} `}>
+        <ViewportHeight />
         <ThemeToggle />
         <Nav />
         {children}
