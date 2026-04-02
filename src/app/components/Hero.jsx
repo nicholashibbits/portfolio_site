@@ -56,17 +56,6 @@ function Hero() {
           yMax={110}
           zIndex={1}
         />
-        <GradientCircle
-          size={120}
-          speed="fast"
-          id="hero-bottom"
-          scrollFollow
-          xMin={-5}
-          xMax={isLargeUp ? 85 : 65}
-          yMin={-25}
-          yMax={110}
-          zIndex={3}
-        />
       </motion.div>
       <div
         ref={heroRef}
@@ -77,6 +66,26 @@ function Hero() {
           <h1 className="hero-title fw-700">NICK HIBBITS</h1>
         </div>
       </div>
+      <motion.div
+        style={{
+          opacity: circleOpacity,
+          willChange: "opacity",
+          position: "relative",
+          zIndex: 3,
+        }}
+      >
+        <GradientCircle
+          size={120}
+          speed="fast"
+          id="hero-bottom"
+          scrollFollow
+          xMin={-5}
+          xMax={isLargeUp ? 85 : 65}
+          yMin={-25}
+          yMax={110}
+          zIndex={1}
+        />
+      </motion.div>
     </div>
   );
 }

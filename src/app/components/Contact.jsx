@@ -1,21 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import GradientCircle from "./GradientCircle";
 
 function Contact() {
-  const [extraCircles, setExtraCircles] = useState({
-    showCenter: false,
-    showTop: false,
-  });
-
-  useEffect(() => {
-    setExtraCircles({
-      showCenter: Math.random() > 0.5,
-      showTop: Math.random() > 0.6,
-    });
-  }, []);
-
   return (
     <div
       id="contact"
@@ -28,19 +16,22 @@ function Contact() {
         id="contact-left"
         constrained
         zIndex={1}
+        overflowFactor={-0.2}
       />
-      <GradientCircle size={200} speed="fast" id="contact-right" constrained />
-      {extraCircles.showCenter && (
-        <GradientCircle
-          size={150}
-          speed="slow"
-          id="contact-center"
-          constrained
-        />
-      )}
-      {extraCircles.showTop && (
-        <GradientCircle size={100} speed="fast" id="contact-top" constrained />
-      )}
+      <GradientCircle
+        size={200}
+        speed="fast"
+        id="contact-right"
+        constrained
+        overflowFactor={-0.1}
+      />
+      <GradientCircle
+        size={130}
+        speed="slow"
+        id="contact-center"
+        constrained
+        overflowFactor={-0.15}
+      />
       <div
         className="container contact-content"
         style={{ position: "relative", zIndex: 2 }}

@@ -35,6 +35,7 @@ function GradientCircle({
   yMin,
   yMax,
   zIndex = 1,
+  overflowFactor = 0.15,
 }) {
   const [mounted, setMounted] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -117,7 +118,7 @@ function GradientCircle({
 
     if (constrained && containerSize) {
       // Constrained mode: wander across the parent container with slight overflow
-      const overflow = 0.15;
+      const overflow = overflowFactor;
       const cxMin = -size * overflow;
       const cxMax = containerSize.width - size + size * overflow;
       const cyMin = -size * overflow;
@@ -180,6 +181,7 @@ function GradientCircle({
     xMax,
     yMin,
     yMax,
+    overflowFactor,
   ]);
 
   const duration = speed === "fast" ? 40 : 90;

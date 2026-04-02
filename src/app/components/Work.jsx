@@ -28,7 +28,7 @@ const PROJECTS = [
     details:
       "Performed software development on a web-app offering customer relation services to gig photographers.",
     longDescription:
-      "Built a full-featured CRM web application for gig photographers at JarvisWorks using React.js and Supabase. Delivered in-app SMS/email messaging via Twilio and a complete invoicing and payments system powered by Stripe.",
+      "Built a full-featured CRM web application called Studio Zoomies at JarvisWorks using React.js and Supabase. Delivered in-app SMS/email messaging via Twilio and a complete system for invoicing and Booking",
     links: [
       {
         label: "Studio Zoomies",
