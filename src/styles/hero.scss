@@ -9,13 +9,11 @@
     font-weight: 900;
     position: relative;
     z-index: 3;
-    padding: 0 0 18rem 0rem;
-    text-align: center;
+    padding: 0;
     animation: hero-title-flicker 1.2s ease-in-out;
 
     @include mq(medium) {
       padding: 0 0 8rem 0rem;
-      text-align: left;
     }
 
     @include mq(large) {
@@ -25,9 +23,16 @@
 }
 
 .hero-content {
+  display: flex;
+  align-items: center;
   width: 100%;
+  height: var(--app-height, 100svh);
   position: relative;
   z-index: 2;
+
+  @include mq(medium) {
+    height: auto;
+  }
 }
 
 .backlayer {

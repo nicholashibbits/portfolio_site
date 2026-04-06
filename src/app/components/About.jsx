@@ -79,7 +79,7 @@ function ImageWithText() {
             DJing, timing, space, and texture matter as much as structure.
           </p>
           <p className="padding-block-8">
-            I use this siteto share projects from my endeavors in music and
+            I use this site to share projects from my endeavors in music and
             programming, as well as thoughts on topics of personal interest.
           </p>
         </motion.div>
