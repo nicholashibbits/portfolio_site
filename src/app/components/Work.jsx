@@ -28,7 +28,7 @@ const PROJECTS = [
     details:
       "Performed software development on a web-app offering customer relation services to gig photographers.",
     longDescription:
-      "Built a full-featured CRM web application called Studio Zoomies at JarvisWorks using Svelte and Supabase. Delivered in-app SMS/email messaging via Twilio and a complete system for invoicing and Booking",
+      "Built a full-featured CRM web application called Studio Zoomies at JarvisWorks using Svelte and Supabase. Delivered in-app SMS/email messaging via Twilio and a complete system for invoicing and Booking.",
     links: [
       {
         label: "Studio Zoomies",
@@ -38,28 +38,28 @@ const PROJECTS = [
   },
   {
     name: "NHIBIT Music",
-    description: "Original tracks and mixes",
+    description: "Original tracks and mixes.",
     details: "",
     links: [],
     wip: true,
   },
   {
     name: "Clarity Dose",
-    description: "Interactive electronic music platform",
+    description: "Interactive electronic music platform.",
     details: "",
     links: [],
     wip: true,
   },
   {
     name: "Topo Tunes",
-    description: "Discover current popular music from around the world",
+    description: "Discover current popular music from around the world.",
     details: "",
     links: [],
     wip: true,
   },
   {
     name: "lil viz",
-    description: "Custom sound visualizer",
+    description: "Custom sound visualizer.",
     details: "",
     links: [],
     wip: true,
