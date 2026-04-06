@@ -10,10 +10,12 @@
     position: relative;
     z-index: 3;
     padding: 0 0 18rem 0rem;
+    text-align: center;
     animation: hero-title-flicker 1.2s ease-in-out;
 
     @include mq(medium) {
       padding: 0 0 8rem 0rem;
+      text-align: left;
     }
 
     @include mq(large) {
