@@ -37,12 +37,24 @@ const PROJECTS = [
     ],
   },
   {
-    name: "NHIBIT Music",
-    description: "Original tracks and mixes.",
+    name: "3D Sandbox",
+    description: "Experiments with 3D web experiences.",
     details: "",
-    links: [],
-    wip: true,
+    longDescription: "Collection of projects built with Three.js.",
+    links: [
+      {
+        label: "3D Text",
+        url: "https://3d-text-xi-six.vercel.app/",
+      },
+    ],
   },
+  // {
+  //   name: "NHIBIT Music",
+  //   description: "Original tracks and mixes.",
+  //   details: "",
+  //   links: [],
+  //   wip: true,
+  // },
   {
     name: "Clarity Dose",
     description: "Interactive electronic music platform.",
