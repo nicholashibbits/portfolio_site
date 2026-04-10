@@ -5,10 +5,8 @@ import { useEffect } from "react";
 export default function ViewportHeight() {
   useEffect(() => {
     const setHeight = () => {
-      document.documentElement.style.setProperty(
-        "--app-height",
-        `${window.innerHeight}px`
-      );
+      const h = window.visualViewport?.height ?? window.innerHeight;
+      document.documentElement.style.setProperty("--app-height", `${h}px`);
     };
 
     const handleOrientationChange = () => {

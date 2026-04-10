@@ -59,7 +59,7 @@ function Hero() {
       </motion.div>
       <div
         ref={heroRef}
-        className=" hero flex flex-justify-center flex-align-center"
+        className=" hero flex flex-justify-center flex-align-start"
         style={{ position: "relative", zIndex: 2 }}
       >
         <div className="hero-content">
