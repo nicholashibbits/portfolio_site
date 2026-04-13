@@ -46,6 +46,10 @@ const PROJECTS = [
         label: "3D Text",
         url: "https://3d-text-xi-six.vercel.app/",
       },
+      {
+        label: "Lights and Shadows",
+        url: "https://light-sandbox.vercel.app/",
+      },
     ],
   },
   // {
