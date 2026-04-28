@@ -20,7 +20,7 @@
     background-repeat: repeat;
     background-size: auto;
     will-change: opacity;
-    animation: texture-breathe 6s ease-in-out infinite;
+    animation: texture-breathe 6s ease-in-out -3s infinite backwards;
   }
 
   &__glow-layer {
@@ -33,8 +33,7 @@
     transform: rotate(5deg) scale(1.3);
     transform-origin: 30% 40%;
     will-change: opacity;
-    animation: glow-pulse 6s ease-in-out infinite;
-    animation-delay: 3s;
+    animation: glow-pulse 6s ease-in-out -1s infinite backwards;
 
     @include mq(large) {
       inset: -10px 0 0 -50px;
@@ -51,7 +50,8 @@
     &--ext {
       display: none;
       inset: -10px 0 0 calc(100% - 1000px);
-      animation-delay: 5.07s;
+      animation-delay: -5s;
+      animation-fill-mode: backwards;
 
       @include mq(large) {
         display: block;
@@ -70,7 +70,7 @@
 
 @keyframes texture-breathe {
   0% {
-    opacity: 0.12;
+    opacity: 0.45;
   }
   50% {
     opacity: 0.9;
@@ -81,7 +81,7 @@
   }
 
   100% {
-    opacity: 0.12;
+    opacity: 0.45;
   }
 }
 
